@@ -371,7 +371,7 @@ kbd { font-family: var(--sans); }
 }
 .folder-sheets { position: absolute; inset: 30px 14px 0; }
 .sheet {
-  position: absolute; left: 4%; right: 4%; top: 0; bottom: 0;
+  position: absolute; left: 4%; right: 4%; top: 0; bottom: 16px;
   padding: 14px 16px;
   border-radius: 9px;
   background: var(--sheet);
@@ -642,6 +642,13 @@ kbd { font-family: var(--sans); }
 .tok-punct { color: var(--ink-3); }
 .tok-comment { color: var(--tok-comment); font-style: italic; }
 .tok-doctype { color: var(--ink-3); }
+.tok-pre { color: var(--ochre); }
+.tok-num { color: var(--ochre); }
+
+/* Program output and input: what appears on (or is typed into) the screen. */
+.prose .code.is-output, .prose .code.is-input { background: var(--well); box-shadow: none; }
+.code.is-output .code-head, .code.is-input .code-head { padding-top: 9px; }
+.code.is-output pre code { color: var(--ink); font-weight: 500; }
 
 /* Live example: code above, a small browser window below. */
 .prose .example {
@@ -759,6 +766,7 @@ details[open] > .callout-body { animation: view-in .4s ease both; }
 .dg-well { fill: var(--well); }
 .dg-dot { fill: var(--accent); }
 .dg-good { fill: var(--green); }
+.dg-ochre { fill: var(--ochre); }
 .dg-bad { fill: var(--red); }
 .dg-box-bad { fill: color-mix(in srgb, var(--red) 9%, transparent); stroke: color-mix(in srgb, var(--red) 50%, transparent); stroke-width: 1; }
 .dg-box-good { fill: color-mix(in srgb, var(--green) 9%, transparent); stroke: color-mix(in srgb, var(--green) 50%, transparent); stroke-width: 1; }
