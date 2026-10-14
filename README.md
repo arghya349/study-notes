@@ -38,3 +38,11 @@ Standard Markdown plus:
 - **Ask AI** on every folder, chapter and section opens ChatGPT, Gemini or Claude with a step-by-step tutoring prompt built from that part of your notes.
 - **Full screen** (button or <kbd>F</kbd>). On iPhone, Safari can't make a page full screen, so the button hides all chrome instead; for a browser-free view use Share → Add to Home Screen.
 - <kbd>⌘K</kbd> or <kbd>/</kbd> search, <kbd>⌘\</kbd> sidebar, <kbd>[</kbd> <kbd>]</kbd> previous and next chapter, **Aa** for text size, typeface and Paper/Night.
+
+## Publishing
+
+The site lives at https://proud-of-you-baby.vercel.app. The GitHub repo is connected to Vercel, so every push to `main` rebuilds and publishes it:
+
+```bash
+git add -A && git commit -m "Add notes" && git push
+```
