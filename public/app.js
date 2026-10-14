@@ -54,10 +54,7 @@ const state = {
 const settings = {
   size: store.get('size', 3),
   face: store.get('face', null),
-  theme: store.get('theme', 'auto'),
-  style: store.get('style', 'folder'),
 };
-const STYLES = ['cobalt', 'willow'];
 
 const icons = {
   chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5.5 6.5 6.5L9 18.5"/></svg>',
@@ -128,22 +125,6 @@ async function loadTree() {
   state.tree = data.root;
   state.version = data.version;
   indexTree(state.tree);
-  // Remember which folders carry their own style, so the next visit paints correctly at once.
-  const skins = {};
-  for (const node of state.nodes.values()) {
-    if (node.type === 'folder' && node.style && state.parents.get(node.url)?.style !== node.style) skins[node.url] = node.style;
-  }
-  store.set('skins', skins);
-}
-
-function applySkin() {
-  const node = state.nodes.get(currentPath());
-  const folder = node?.type === 'note' ? state.parents.get(node.url) : node;
-  const skin = settings.style === 'folder' ? folder?.style : settings.style;
-  if (STYLES.includes(skin)) root.dataset.skin = skin;
-  else delete root.dataset.skin;
-  const face = settings.face ?? (root.dataset.skin ? 'sans' : 'serif');
-  for (const b of $$('#reader [data-face]')) b.setAttribute('aria-pressed', b.dataset.face === face);
 }
 
 /* ───────── Sidebar ───────── */
@@ -354,7 +335,6 @@ async function render({ keepScroll = false } = {}) {
   if (id !== state.renderId) return;
 
   state.note = view.note || null;
-  applySkin();
   const el = $('#view');
   el.innerHTML = view.html;
   decorateHeadings(el);
@@ -702,17 +682,10 @@ function hideToast() {
 
 /* ───────── Live examples ───────── */
 
-const effectiveScheme = () => {
-  if (settings.theme === 'paper') return 'light';
-  if (settings.theme === 'night') return 'dark';
-  return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-};
-
 function fitFrame(frame) {
   try {
     const doc = frame.contentDocument;
     if (!doc?.documentElement) return;
-    doc.documentElement.style.colorScheme = effectiveScheme();
     frame.style.height = '0px';
     frame.style.height = Math.max(56, doc.documentElement.scrollHeight) + 'px';
   } catch {}
@@ -762,17 +735,13 @@ function applySettings() {
   root.style.setProperty('--text-size', SIZES[settings.size] + 'px');
   if (settings.face) root.dataset.face = settings.face;
   else delete root.dataset.face;
-  if (settings.theme === 'auto') delete root.dataset.theme;
-  else root.dataset.theme = settings.theme;
 
   const panel = $('#reader');
   const range = $('#size-range');
   range.value = settings.size;
   range.style.setProperty('--fill', (settings.size / (SIZES.length - 1)) * 100 + '%');
   range.setAttribute('aria-valuetext', SIZES[settings.size] + ' pixels');
-  for (const b of $$('[data-style]', panel)) b.setAttribute('aria-pressed', b.dataset.style === settings.style);
-  for (const b of $$('[data-theme]', panel)) b.setAttribute('aria-checked', b.dataset.theme === settings.theme);
-  if (state.tree) applySkin();
+  for (const b of $$('[data-face]', panel)) b.setAttribute('aria-pressed', b.dataset.face === (settings.face ?? 'serif'));
   $$('.result-frame').forEach(fitFrame);
 }
 
@@ -786,12 +755,9 @@ function toggleReader(force) {
 $('#reader').addEventListener('click', (event) => {
   const b = event.target.closest('button');
   if (!b) return;
-  if (b.dataset.face) settings.face = b.dataset.face;
-  if (b.dataset.theme) settings.theme = b.dataset.theme;
-  if (b.dataset.style) settings.style = b.dataset.style;
+  if (!b.dataset.face) return;
+  settings.face = b.dataset.face;
   store.set('face', settings.face);
-  store.set('theme', settings.theme);
-  store.set('style', settings.style);
   applySettings();
 });
 
@@ -805,8 +771,6 @@ document.addEventListener('pointerdown', (event) => {
   const panel = $('#reader');
   if (!panel.hidden && !panel.contains(event.target) && !event.target.closest('[data-action="reader"]')) toggleReader(false);
 });
-
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => $$('.result-frame').forEach(fitFrame));
 
 /* ───────── Search ───────── */
 

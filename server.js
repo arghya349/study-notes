@@ -18,7 +18,6 @@ const MOUNTS = [
   ['/_vendor/katex/', path.join(ROOT, 'node_modules/katex/dist'), 'public, max-age=86400'],
   ['/_vendor/newsreader/', path.join(ROOT, 'node_modules/@fontsource-variable/newsreader'), 'public, max-age=86400'],
   ['/_vendor/instrument-serif/', path.join(ROOT, 'node_modules/@fontsource/instrument-serif'), 'public, max-age=86400'],
-  ['/_vendor/albert-sans/', path.join(ROOT, 'node_modules/@fontsource-variable/albert-sans'), 'public, max-age=86400'],
   ['/_files/', NOTES_DIR, 'no-cache'],
 ];
 

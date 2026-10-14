@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Notebook</title>
   <meta name="description" content="A quiet place to read your study notes.">
-  <meta name="theme-color" content="#F3F2EE" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F3F2EE">
+  <meta name="color-scheme" content="light">
   <link rel="icon" href="/_static/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/_static/icon-180.png">
   <link rel="manifest" href="/_static/manifest.webmanifest">
@@ -18,7 +18,6 @@
   <link rel="stylesheet" href="/_vendor/newsreader/opsz-italic.css">
   <link rel="stylesheet" href="/_vendor/instrument-serif/latin.css">
   <link rel="stylesheet" href="/_vendor/instrument-serif/latin-italic.css">
-  <link rel="stylesheet" href="/_vendor/albert-sans/index.css">
   <link rel="stylesheet" href="/_vendor/katex/katex.min.css">
   <link rel="stylesheet" href="/_static/app.css">
   <script>
@@ -26,17 +25,8 @@
     try {
       const get = (k) => JSON.parse(localStorage.getItem('notebook:' + k));
       const root = document.documentElement;
-      const theme = get('theme');
-      if (theme === 'paper' || theme === 'night') root.dataset.theme = theme;
       const face = get('face');
       if (face === 'sans' || face === 'serif') root.dataset.face = face;
-      const style = get('style') || 'folder';
-      let skin = style === 'cobalt' || style === 'willow' ? style : null;
-      if (style === 'folder') {
-        const path = decodeURIComponent(location.pathname);
-        for (const [url, s] of Object.entries(get('skins') || {})) if (path === url || path.startsWith(url + '/')) skin = s;
-      }
-      if (skin) root.dataset.skin = skin;
       const size = [16, 17, 18, 19, 20, 22, 24][get('size')];
       if (size) root.style.setProperty('--text-size', size + 'px');
       if (get('sidebar') === false) root.classList.add('sidebar-hidden');
@@ -104,19 +94,6 @@
     <div class="seg faces" role="group" aria-label="Typeface">
       <button type="button" data-face="serif" aria-pressed="true"><span class="face-serif">Serif</span></button>
       <button type="button" data-face="sans" aria-pressed="false"><span class="face-sans">Sans</span></button>
-    </div>
-    <p class="reader-label">Style</p>
-    <div class="seg styles" role="group" aria-label="Style">
-      <button type="button" data-style="folder" aria-pressed="true" title="Each folder's own style">Folder</button>
-      <button type="button" data-style="classic" aria-pressed="false">Classic</button>
-      <button type="button" data-style="cobalt" aria-pressed="false">Cobalt</button>
-      <button type="button" data-style="willow" aria-pressed="false">Willow</button>
-    </div>
-    <p class="reader-label">Appearance</p>
-    <div class="themes" role="radiogroup" aria-label="Appearance">
-      <button type="button" role="radio" data-theme="auto" aria-checked="true"><span class="swatch swatch-auto"></span>Auto</button>
-      <button type="button" role="radio" data-theme="paper" aria-checked="false"><span class="swatch swatch-paper"></span>Paper</button>
-      <button type="button" role="radio" data-theme="night" aria-checked="false"><span class="swatch swatch-night"></span>Night</button>
     </div>
   </div>
 
