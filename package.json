@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node server.js",
     "phone": "HOST=0.0.0.0 node server.js",
-    "new": "node bin/new.js"
+    "new": "node bin/new.js",
+    "build": "node build.js"
   },
   "engines": {
     "node": ">=20"

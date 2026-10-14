@@ -1,5 +1,19 @@
 // Notebook — client. Reads the library from the local server and renders it.
 
+import { searchNotes } from './search.js';
+
+// On Vercel the notebook is pre-rendered: data comes from JSON files and search runs here.
+const STATIC = document.documentElement.dataset.static === 'true';
+const api = {
+  tree: () => getJSON(STATIC ? '/_api/tree.json' : '/_api/tree'),
+  note: (url) => getJSON(STATIC ? encodeURI(`/_api/notes${url}.json`) : '/_api/note?url=' + encodeURIComponent(url)),
+  async search(q) {
+    if (!STATIC) return getJSON('/_api/search?q=' + encodeURIComponent(q));
+    api.index ??= await getJSON('/_api/search.json');
+    return searchNotes(api.index, q);
+  },
+};
+
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const html = String.raw;
@@ -108,7 +122,7 @@ function indexTree(tree) {
 }
 
 async function loadTree() {
-  const data = await getJSON('/_api/tree');
+  const data = await api.tree();
   state.tree = data.root;
   state.version = data.version;
   indexTree(state.tree);
@@ -260,7 +274,7 @@ function folderView(folder) {
 }
 
 async function noteView(node) {
-  const note = await getJSON('/_api/note?url=' + encodeURIComponent(node.url));
+  const note = await api.note(node.url);
   const numbered = note.number != null;
   const meta = [];
   if (numbered) meta.push(`<span>Chapter ${note.number} of ${state.parents.get(node.url).notes.filter((n) => n.number != null).length}</span>`);
@@ -817,7 +831,7 @@ function showAllNotes() {
 async function runSearch() {
   const q = palette.input.value.trim();
   if (!q) return showAllNotes();
-  const results = await getJSON('/_api/search?q=' + encodeURIComponent(q));
+  const results = await api.search(q);
   if (q !== palette.input.value.trim()) return;
   if (!results.length) {
     palette.items = [];
@@ -908,6 +922,7 @@ document.addEventListener('keydown', (event) => {
 /* ───────── Live updates ───────── */
 
 function listen() {
+  if (STATIC) return;
   const events = new EventSource('/_api/events');
   const refresh = async (event) => {
     if (event.data === state.version) return;
