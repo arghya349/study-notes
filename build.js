@@ -28,8 +28,8 @@ for (const url of urls) await write(path.join(OUT, '_api/notes', `${url}.json`),
 
 await fs.cp(path.join(ROOT, 'public'), path.join(OUT, '_static'), { recursive: true });
 await fs.cp(path.join(ROOT, 'node_modules/katex/dist'), path.join(OUT, '_vendor/katex'), { recursive: true });
-for (const font of ['newsreader', 'caveat', 'albert-sans']) {
-  await fs.cp(path.join(ROOT, 'node_modules/@fontsource-variable', font), path.join(OUT, '_vendor', font), { recursive: true });
+for (const font of ['@fontsource-variable/newsreader', '@fontsource-variable/albert-sans', '@fontsource/instrument-serif']) {
+  await fs.cp(path.join(ROOT, 'node_modules', font), path.join(OUT, '_vendor', path.basename(font)), { recursive: true });
 }
 await fs.cp(NOTES_DIR, path.join(OUT, '_files'), { recursive: true, filter: (src) => !/\.(md|markdown)$/i.test(src) && !path.basename(src).startsWith('.') });
 

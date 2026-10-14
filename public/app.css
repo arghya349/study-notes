@@ -1037,7 +1037,7 @@ details[open] > .callout-body { animation: view-in .4s ease both; }
    downward on narrow screens; nothing scrolls sideways. */
 :root {
   --grotesk: "Albert Sans Variable", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --hand: "Caveat Variable", "Bradley Hand", "Segoe Print", cursive;
+  --display: "Instrument Serif", "Newsreader Variable", Georgia, serif;
   --console-bg: light-dark(#1E1F23, #121316);
   --console-ink: #EEECE6;
 }
@@ -1140,18 +1140,18 @@ details[open].callout-predict .callout-reveal::after { content: "Hide"; }
   font: 600 14px/1 var(--sans); color: var(--accent); letter-spacing: 0;
 }
 
-/* Hand-drawn doodles */
-.prose .doodle { margin: 2.2em auto; max-width: 420px; color: var(--accent); }
-.doodle svg { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; filter: url(#sketch); }
+/* Line drawings: fine, even strokes, like an engraved plate */
+.prose .doodle { margin: 2.4em auto; max-width: 420px; color: var(--accent); }
+.doodle svg { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
 .doodle .fill { fill: currentColor; stroke: none; }
-.doodle .soft { opacity: .35; }
-.doodle .hand { fill: currentColor; stroke: none; font: 600 21px var(--hand); }
-.doodle .hand.big { font-size: 42px; }
+.doodle .soft { opacity: .3; }
+.doodle .hand { fill: currentColor; stroke: none; font: italic 400 22px var(--display); }
+.doodle .hand.big { font-size: 46px; font-style: normal; }
+.prose .doodle figcaption { margin-top: 10px; font: italic 400 21px/1.3 var(--display); color: var(--ink-2); }
 .box-pair li > strong:first-child, .box-pair li > p:first-child > strong:first-child { display: block; margin-bottom: 6px; font: 620 15px/1.35 var(--sans); color: var(--ink); }
 .box-pair li > p:first-child:has(> strong:only-child) { margin-bottom: 6px; }
-:root[data-skin] .box-pair li > strong:first-child, :root[data-skin] .box-pair li > p:first-child > strong:first-child { font: 700 21px/1.2 var(--hand); color: var(--accent); }
-:root[data-skin] .prose .box-pair li { background: var(--sheet); box-shadow: inset 0 0 0 1.25px var(--rule-strong); }
-.prose .doodle figcaption { margin-top: 6px; font: 600 21px/1.25 var(--hand); color: var(--ink-2); }
+:root[data-skin] .box-pair li > strong:first-child, :root[data-skin] .box-pair li > p:first-child > strong:first-child { font: italic 400 23px/1.2 var(--display); color: var(--accent); }
+:root[data-skin] .prose .box-pair li { background: var(--sheet); box-shadow: inset 0 0 0 1px var(--rule-strong); }
 
 /* ═════════════════ Folder styles ═════════════════
    Cobalt: blue ink on cream, blue paper at night.
@@ -1213,43 +1213,39 @@ details[open].callout-predict .callout-reveal::after { content: "Hide"; }
 :root[data-skin][data-face="sans"] { --read: var(--grotesk); }
 body { transition: background-color .5s ease, color .5s ease; }
 
-/* Shared look for both styles: grotesk type, handwritten accents,
-   outlined cards, and pen-drawn badges. */
+/* Shared look for both styles: a light grotesk for structure, an italic
+   display serif for accents, and fine hairline outlines. */
 :root[data-skin] .page-title { font-family: var(--grotesk); font-weight: 300; letter-spacing: -.04em; }
-:root[data-skin] .wordmark { font-family: var(--hand); font-size: 27px; font-weight: 600; letter-spacing: 0; }
+:root[data-skin] .wordmark { font: italic 400 26px/1 var(--display); letter-spacing: -.005em; }
 :root[data-skin] .prose h2 { font-family: var(--grotesk); font-weight: 400; letter-spacing: -.025em; }
 :root[data-skin] .prose h3 { font-family: var(--grotesk); font-weight: 620; letter-spacing: -.01em; }
 :root[data-skin] .chapter-title, :root[data-skin] .pager-title, :root[data-skin] .folder-name { font-family: var(--grotesk); font-weight: 400; letter-spacing: -.02em; }
-:root[data-skin] .chapter-num { font-family: var(--hand); font-weight: 600; color: var(--accent); }
-:root[data-skin] .note-meta span:first-child { font: 600 20px/1 var(--hand); color: var(--accent); }
-:root[data-skin] .box-title { font: 600 22px/1.2 var(--hand); color: var(--accent); }
-:root[data-skin] .callout-kind { font: 700 19px/1 var(--hand); letter-spacing: .01em; }
-:root[data-skin] .prose .callout { background: var(--sheet); box-shadow: inset 0 0 0 1.25px var(--rule-strong); }
+:root[data-skin] .chapter-num { font: italic 400 40px/.9 var(--display); color: var(--accent); }
+:root[data-skin] .note-meta span:first-child { font: italic 400 19px/1 var(--display); color: var(--accent); }
+:root[data-skin] .box-title { font: italic 400 23px/1.2 var(--display); color: var(--accent); }
+:root[data-skin] .callout-kind { font: italic 400 20px/1 var(--display); letter-spacing: 0; }
+:root[data-skin] .prose .callout { background: var(--sheet); box-shadow: inset 0 0 0 1px var(--rule-strong); }
 :root[data-skin] .prose .callout-predict { background: var(--accent-tint); }
 :root[data-skin] .prose .code:not(.is-output),
 :root[data-skin] .prose .example,
 :root[data-skin] .prose .diagram,
-:root[data-skin] .prose .table-wrap { box-shadow: inset 0 0 0 1.25px var(--rule-strong); }
+:root[data-skin] .prose .table-wrap { box-shadow: inset 0 0 0 1px var(--rule-strong); }
 :root[data-skin] .prose mark { background: var(--accent); color: var(--on-accent); padding: .04em .32em; border-radius: .28em; }
 :root[data-skin] .prose :not(pre) > code:not(.lit) { background: var(--accent-tint); color: var(--accent); }
 :root[data-skin] .prose[data-chapter] h2:not(.sr-only)::before {
-  background: none; box-shadow: inset 0 0 0 1.75px var(--accent);
-  font: 700 21px/1 var(--hand); color: var(--accent);
-  filter: url(#sketch);
+  background: none; box-shadow: inset 0 0 0 1px var(--accent);
+  font: italic 400 22px/1 var(--display); color: var(--accent);
 }
-:root[data-skin] .prose .box-tiles li { background: var(--sheet); box-shadow: none; }
-:root[data-skin] .prose .box-tiles li::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  border: 1.75px solid var(--accent); border-radius: 22px; filter: url(#sketch);
-}
-:root[data-skin] .tile-key { font-family: var(--hand); font-size: 1.75em; font-weight: 600; color: var(--accent); }
-:root[data-skin] .tile-key code { font-size: .5em; }
-:root[data-skin] .flow-mark { background: none; color: var(--accent); box-shadow: inset 0 0 0 1.75px var(--accent); font: 700 22px/1 var(--hand); filter: url(#sketch); }
-:root[data-skin] .prose .box-flow li:not(:last-child)::before { background: none; border-left: 1.5px dashed var(--rule-strong); }
-:root[data-skin] .box-idea p { font-family: var(--grotesk); font-weight: 400; letter-spacing: -.02em; }
-:root[data-skin] .cover-frame { box-shadow: inset 0 0 0 1.5px var(--accent), 0 28px 60px -36px rgba(0, 0, 0, .45); }
-:root[data-skin] .cover-frame::after { box-shadow: inset 0 0 0 1.5px var(--accent); }
-:root[data-skin] .ask { box-shadow: inset 0 0 0 1.25px var(--rule-strong); }
+:root[data-skin] .prose .box-tiles li { background: var(--sheet); box-shadow: inset 0 0 0 1px var(--rule-strong); }
+:root[data-skin] .tile-key { font: italic 400 2em/1 var(--display); color: var(--accent); letter-spacing: -.01em; }
+:root[data-skin] .tile-key code { font-style: normal; font-size: .42em; }
+:root[data-skin] .flow-mark { background: none; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); font: italic 400 24px/1 var(--display); }
+:root[data-skin] .prose .box-flow li:not(:last-child)::before { background: var(--rule-strong); }
+:root[data-skin] .box-idea p { font: 400 1.75em/1.18 var(--display); letter-spacing: -.012em; }
+:root[data-skin] .box-idea .box-title { color: color-mix(in srgb, var(--on-accent) 72%, transparent); }
+:root[data-skin] .cover-frame { box-shadow: inset 0 0 0 1px var(--accent), 0 28px 60px -36px rgba(0, 0, 0, .45); }
+:root[data-skin] .cover-frame::after { box-shadow: inset 0 0 0 1px var(--accent); }
+:root[data-skin] .ask { box-shadow: inset 0 0 0 1px var(--rule-strong); }
 :root[data-skin] .ask-glyph path:first-child { fill: none; }
 :root[data-skin] .toolbar.is-scrolled { background-color: color-mix(in srgb, var(--paper) 84%, transparent); }
 
