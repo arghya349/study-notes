@@ -17,24 +17,11 @@ Once a page has content, you need ways to **group** pieces together and to **poi
 </div>
 ```
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 196" role="img" aria-label="A page containing a dashed div box. Inside the div are a heading, About Me, and a paragraph. The div draws nothing itself; it groups the heading and paragraph into one unit.">
-<rect class="dg-box" x="20" y="12" width="560" height="172" rx="16"/>
-<text x="36" y="36" class="dg-small">page</text>
-<rect class="dg-box-accent dg-dash" x="56" y="48" width="300" height="116" rx="12"/>
-<text x="72" y="72" class="dg-mono dg-tag" style="font-size:12px">div</text>
-<text x="72" y="104" class="dg-serif" style="font-weight:600">About Me</text>
-<rect class="dg-well" x="72" y="120" width="250" height="9" rx="4.5"/>
-<rect class="dg-well" x="72" y="138" width="180" height="9" rx="4.5"/>
-<text x="384" y="88" class="dg-label">The div draws nothing itself.</text>
-<text x="384" y="108" class="dg-label">It wraps the heading and the</text>
-<text x="384" y="128" class="dg-label">paragraph into one unit that</text>
-<text x="384" y="148" class="dg-label">CSS and JavaScript can target.</text>
-</svg>
-</div>
-<figcaption>A div is an invisible box. What makes it useful is what you put inside, and what you later do with it.</figcaption>
-</figure>
+::: anatomy What the div is doing
+- `<div>` **Opens an invisible box.**
+- `<h2>About Me</h2>`<br>`<p>I am learning…</p>` **Everything inside** now belongs together, so CSS and JavaScript can treat it as one unit.
+- `</div>` **Closes the box.** On screen nothing changes, yet.
+:::
 
 What a div does and doesn't do:
 
@@ -109,31 +96,22 @@ Two more things classes can do:
 
 ## id versus class
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 620 206" role="img" aria-label="Left: four paragraphs, only one of which has id equals apple, so the id points at exactly one element. Right: four paragraphs that all have class equals fruit, so the class gathers all of them.">
-<text x="20" y="22" class="dg-label dg-strong">id: one of a kind</text>
-<rect class="dg-box" x="20" y="38" width="272" height="32" rx="9"/>
-<rect class="dg-box-accent" x="20" y="78" width="272" height="32" rx="9"/>
-<rect class="dg-box" x="20" y="118" width="272" height="32" rx="9"/>
-<rect class="dg-box" x="20" y="158" width="272" height="32" rx="9"/>
-<text x="36" y="59" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan>Mango<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="36" y="99" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">id</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"apple"</tspan><tspan class="dg-punct">&gt;</tspan>Apple<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="36" y="139" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan>Banana<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="36" y="179" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan>Orange<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="330" y="22" class="dg-label dg-strong">class: shared by many</text>
-<rect class="dg-box-hl" x="330" y="38" width="272" height="32" rx="9"/>
-<rect class="dg-box-hl" x="330" y="78" width="272" height="32" rx="9"/>
-<rect class="dg-box-hl" x="330" y="118" width="272" height="32" rx="9"/>
-<rect class="dg-box-hl" x="330" y="158" width="272" height="32" rx="9"/>
-<text x="346" y="59" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">class</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"fruit"</tspan><tspan class="dg-punct">&gt;</tspan>Mango<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="346" y="99" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">class</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"fruit"</tspan><tspan class="dg-punct">&gt;</tspan>Apple<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="346" y="139" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">class</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"fruit"</tspan><tspan class="dg-punct">&gt;</tspan>Banana<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="346" y="179" class="dg-mono" style="font-size:12.5px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">class</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"fruit"</tspan><tspan class="dg-punct">&gt;</tspan>Orange<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-</svg>
-</div>
-<figcaption>An id points at exactly one element. A class gathers any number of them.</figcaption>
-</figure>
+::: pair
+- **id: one of a kind**
+  ```html
+  <p>Mango</p>
+  <p id="apple">Apple</p>
+  <p>Banana</p>
+  ```
+  Exactly one element carries `id="apple"`.
+- **class: shared by many**
+  ```html
+  <p class="fruit">Mango</p>
+  <p class="fruit">Apple</p>
+  <p class="fruit">Banana</p>
+  ```
+  Every element in the group carries `class="fruit"`.
+:::
 
 | `id` | `class` |
 |---|---|
@@ -153,28 +131,10 @@ Two more things classes can do:
 A div says nothing about what it contains. HTML also has containers that **do** carry meaning, and they are often the better choice:
 
 <figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 296" role="img" aria-label="A page layout. A header across the top contains a nav. Below it, main holds a section and an article side by side. A footer runs across the bottom.">
-<rect class="dg-box" x="40" y="10" width="520" height="276" rx="18"/>
-<rect class="dg-box-accent" x="58" y="28" width="484" height="46" rx="11"/>
-<text x="76" y="56" class="dg-mono dg-tag" style="font-size:13px">header</text>
-<rect class="dg-box" x="372" y="38" width="154" height="26" rx="8"/>
-<text x="449" y="56" text-anchor="middle" class="dg-mono dg-tag" style="font-size:12px">nav</text>
-<rect class="dg-box" x="58" y="86" width="484" height="148" rx="11"/>
-<text x="76" y="110" class="dg-mono dg-tag" style="font-size:13px">main</text>
-<rect class="dg-box-hl" x="76" y="122" width="214" height="98" rx="9"/>
-<text x="92" y="144" class="dg-mono dg-tag" style="font-size:12px">section</text>
-<rect class="dg-well" x="92" y="160" width="170" height="8" rx="4"/>
-<rect class="dg-well" x="92" y="176" width="140" height="8" rx="4"/>
-<rect class="dg-well" x="92" y="192" width="156" height="8" rx="4"/>
-<rect class="dg-box-hl" x="310" y="122" width="214" height="98" rx="9"/>
-<text x="326" y="144" class="dg-mono dg-tag" style="font-size:12px">article</text>
-<rect class="dg-well" x="326" y="160" width="170" height="8" rx="4"/>
-<rect class="dg-well" x="326" y="176" width="150" height="8" rx="4"/>
-<rect class="dg-well" x="326" y="192" width="120" height="8" rx="4"/>
-<rect class="dg-box-accent" x="58" y="246" width="484" height="28" rx="9"/>
-<text x="76" y="265" class="dg-mono dg-tag" style="font-size:13px">footer</text>
-</svg>
+<div class="wire">
+<div class="wire-box wire-head is-accent"><span>header</span><div class="wire-box"><span>nav</span></div></div>
+<div class="wire-box"><span>main</span><div class="wire-row"><div class="wire-box is-hl"><span>section</span><i></i><i></i><i></i></div><div class="wire-box is-hl"><span>article</span><i></i><i></i><i></i></div></div></div>
+<div class="wire-box is-accent"><span>footer</span></div>
 </div>
 <figcaption>A typical page skeleton built from meaningful containers instead of anonymous divs.</figcaption>
 </figure>

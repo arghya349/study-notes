@@ -23,14 +23,11 @@ Each word in the name tells you something:
 
 A finished web page is usually made from three languages working together. Each has one job.
 
-<figure class="diagram">
-<div class="dg-grid cols-3">
-<div class="dg-card is-accent"><span class="dg-card-title">HTML <span class="dg-card-role">structure</span></span><p>What is on the page: headings, paragraphs, lists, links, images and forms.</p><pre><span class="tok-punct">&lt;</span><span class="tok-tag">h1</span><span class="tok-punct">&gt;</span>Hello<span class="tok-punct">&lt;/</span><span class="tok-tag">h1</span><span class="tok-punct">&gt;</span></pre></div>
-<div class="dg-card"><span class="dg-card-title">CSS <span class="dg-card-role">presentation</span></span><p>How it looks: colour, type, spacing and layout.</p><pre>h1 { color: navy; }</pre></div>
-<div class="dg-card"><span class="dg-card-title">JavaScript <span class="dg-card-role">behaviour</span></span><p>What it does: reacts to clicks, checks forms and updates content.</p><pre>button.onclick = …</pre></div>
-</div>
-<figcaption>Three layers, one page. This notebook covers the first.</figcaption>
-</figure>
+::: tiles Three layers, one page
+- **HTML** structure: what is on the page, like headings, paragraphs, images and forms
+- **CSS** presentation: how it looks, like colour, type, spacing and layout
+- **JavaScript** behaviour: what it does, like reacting to clicks and checking forms
+:::
 
 A handy way to remember the split: HTML gives a page its **nouns** (heading, paragraph, image, form), CSS gives it **adjectives** (navy, large, centred), and JavaScript gives it **verbs** (open, hide, check, send).
 
@@ -58,26 +55,18 @@ Read it aloud as: *a paragraph starts here, "Hello World", the paragraph ends he
 > [!DEFINITION] Element
 > An element is the complete unit: the opening tag, the content inside it, and the closing tag.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 232" role="img" aria-label="The element p class intro Hello World, labelled: the opening tag contains an attribute with a name, class, and a value, intro. Hello World is the content. Slash p is the closing tag. Together they form one element.">
-<text x="231" y="40" text-anchor="middle" class="dg-label dg-strong">Attribute</text>
-<path class="dg-line" d="M231 46v6M161 64v-5a4 4 0 0 1 4-4h132a4 4 0 0 1 4 4v5"/>
-<text x="186.6" y="84" text-anchor="middle" class="dg-small">name</text>
-<text x="263.4" y="84" text-anchor="middle" class="dg-small">value</text>
-<text x="127.2" y="118" class="dg-mono" style="font-size:18px" textLength="345.6" lengthAdjust="spacing"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan> <tspan class="dg-attr">class</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"intro"</tspan><tspan class="dg-punct">&gt;</tspan>Hello World<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<path class="dg-line" d="M128 132v5a4 4 0 0 0 4 4h172a4 4 0 0 0 4-4v-5M218 141v6"/>
-<path class="dg-line" d="M313 132v5a4 4 0 0 0 4 4h106a4 4 0 0 0 4-4v-5M370 141v6"/>
-<path class="dg-line" d="M432 132v5a4 4 0 0 0 4 4h31a4 4 0 0 0 4-4v-5M451.5 141v6"/>
-<text x="218" y="166" text-anchor="middle" class="dg-label">Opening tag</text>
-<text x="370" y="166" text-anchor="middle" class="dg-label">Content</text>
-<text x="451.5" y="166" text-anchor="middle" class="dg-label">Closing tag</text>
-<path class="dg-accent-line" d="M128 182v6a4 4 0 0 0 4 4h335a4 4 0 0 0 4-4v-6M300 192v8"/>
-<text x="300" y="222" text-anchor="middle" class="dg-text"><tspan class="dg-accent dg-strong">One element</tspan>: opening tag, content and closing tag together</text>
-</svg>
-</div>
-<figcaption>The anatomy of an element. Everything between the first &lt; and the last &gt; belongs to it.</figcaption>
-</figure>
+```html
+<p class="intro">Hello World</p>
+```
+
+::: anatomy Anatomy of an element
+- `<p class="intro">` **Opening tag.** Starts the element, and can carry attributes.
+- `class="intro"` **An attribute**: a name, `class`, and a value, `"intro"`.
+- `Hello World` **The content**, the part people actually see.
+- `</p>` **Closing tag.** The same name with a `/` in front.
+:::
+
+Everything from the first `<` to the last `>` is **one element**.
 
 People often say "tag" when they mean "element", and in conversation that is fine. The precise difference is still worth knowing:
 
@@ -147,27 +136,18 @@ Some attributes are **boolean**: simply being present switches something on, so 
 
 Elements can contain other elements. When they do, the inner element must close **before** the outer one. Picture boxes: one box can sit inside another, but two boxes cannot half overlap.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 214" role="img" aria-label="Left: correctly nested, a b box sits fully inside a p box, written p b Hello slash b slash p. Right: overlapping, the b box sticks out of the p box, written p b Hello slash p slash b, which is wrong.">
-<text x="40" y="22" class="dg-label dg-strong dg-good">Nested</text>
-<rect class="dg-box" x="40" y="38" width="236" height="128" rx="16"/>
-<text x="58" y="64" class="dg-mono" style="font-size:13px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<rect class="dg-box-accent" x="58" y="78" width="200" height="70" rx="11"/>
-<text x="74" y="102" class="dg-mono" style="font-size:13px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="74" y="132" class="dg-serif">Hello</text>
-<text x="158" y="200" text-anchor="middle" class="dg-mono" style="font-size:14px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;&lt;</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;</tspan>Hello<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="324" y="22" class="dg-label dg-strong dg-bad">Overlapping</text>
-<rect class="dg-box" x="324" y="38" width="176" height="112" rx="16"/>
-<text x="342" y="64" class="dg-mono" style="font-size:13px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<rect class="dg-box-bad" x="398" y="80" width="164" height="86" rx="11"/>
-<text x="414" y="104" class="dg-mono" style="font-size:13px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="414" y="134" class="dg-serif">Hello</text>
-<text x="443" y="200" text-anchor="middle" class="dg-mono" style="font-size:14px"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;&lt;</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;</tspan>Hello<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">p</tspan><tspan class="dg-punct">&gt;&lt;/</tspan><tspan class="dg-tag">b</tspan><tspan class="dg-punct">&gt;</tspan></text>
-</svg>
-</div>
-<figcaption>Close the inner element first. The box that opened last closes first.</figcaption>
-</figure>
+::: pair
+- **Nested: correct**
+  ```html
+  <p><b>Hello</b></p>
+  ```
+  `<b>` opens inside `<p>` and closes inside it too.
+- **Overlapping: incorrect**
+  ```html
+  <p><b>Hello</p></b>
+  ```
+  `<b>` is still open when `<p>` closes, so the two boxes cross.
+:::
 
 The element on the outside is the **parent**; the one inside it is the **child**. This family vocabulary comes back in Chapter 2, when the browser turns your page into a tree.
 

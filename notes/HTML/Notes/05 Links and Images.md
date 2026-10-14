@@ -16,25 +16,13 @@ Links are what make the web a *web*: they connect one page to the next. Images b
 
 The text between the opening and closing tags is the **link text**: the part people see and click.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 640 190" role="img" aria-label="The link a href google dot com target underscore blank, Open Google, slash a. The href attribute says where it goes. The target attribute says how it opens. Open Google is the link text that people click. The opening and closing tags surround it.">
-<text x="189.5" y="58" text-anchor="middle" class="dg-label"><tspan class="dg-strong">href</tspan>: where it goes</text>
-<text x="396.5" y="58" text-anchor="middle" class="dg-label"><tspan class="dg-strong">target</tspan>: how it opens</text>
-<path class="dg-line" d="M61 86v-5a4 4 0 0 1 4-4h249a4 4 0 0 1 4 4v5M189.5 77v-8"/>
-<path class="dg-line" d="M331 86v-5a4 4 0 0 1 4-4h123a4 4 0 0 1 4 4v5M396.5 77v-8"/>
-<text x="32" y="112" class="dg-mono" style="font-size:15px" textLength="576" lengthAdjust="spacing"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">a</tspan> <tspan class="dg-attr">href</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"https://www.google.com"</tspan> <tspan class="dg-attr">target</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"_blank"</tspan><tspan class="dg-punct">&gt;</tspan>Open Google<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">a</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<path class="dg-line" d="M34 126v5a4 4 0 0 0 4 4h429a4 4 0 0 0 4-4v-5M252.5 135v6"/>
-<path class="dg-accent-line" d="M476 126v5a4 4 0 0 0 4 4h85a4 4 0 0 0 4-4v-5M522.5 135v6"/>
-<path class="dg-line" d="M575 126v5a4 4 0 0 0 4 4h23a4 4 0 0 0 4-4v-5M590.5 135v6"/>
-<text x="252.5" y="162" text-anchor="middle" class="dg-label">Opening tag</text>
-<text x="520" y="162" text-anchor="middle" class="dg-label dg-strong dg-accent">Link text</text>
-<text x="520" y="179" text-anchor="middle" class="dg-small">what people click</text>
-<text x="600" y="162" text-anchor="middle" class="dg-label">Closing</text>
-</svg>
-</div>
-<figcaption>A link has a destination, an optional way of opening, and the text people click.</figcaption>
-</figure>
+::: anatomy Anatomy of a link
+- `<a href="https://www.google.com" target="_blank">` **Opening tag**, carrying two attributes.
+- `href="https://www.google.com"` **Where it goes.** The destination.
+- `target="_blank"` **How it opens.** Here, in a new tab.
+- `Open Google` **Link text**, the words people click.
+- `</a>` **Closing tag.**
+:::
 
 ### Write link text that makes sense on its own
 

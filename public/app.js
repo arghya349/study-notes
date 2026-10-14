@@ -53,9 +53,11 @@ const state = {
 
 const settings = {
   size: store.get('size', 3),
-  face: store.get('face', 'serif'),
+  face: store.get('face', null),
   theme: store.get('theme', 'auto'),
+  style: store.get('style', 'folder'),
 };
+const STYLES = ['cobalt', 'willow'];
 
 const icons = {
   chevron: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5.5 6.5 6.5L9 18.5"/></svg>',
@@ -126,6 +128,22 @@ async function loadTree() {
   state.tree = data.root;
   state.version = data.version;
   indexTree(state.tree);
+  // Remember which folders carry their own style, so the next visit paints correctly at once.
+  const skins = {};
+  for (const node of state.nodes.values()) {
+    if (node.type === 'folder' && node.style && state.parents.get(node.url)?.style !== node.style) skins[node.url] = node.style;
+  }
+  store.set('skins', skins);
+}
+
+function applySkin() {
+  const node = state.nodes.get(currentPath());
+  const folder = node?.type === 'note' ? state.parents.get(node.url) : node;
+  const skin = settings.style === 'folder' ? folder?.style : settings.style;
+  if (STYLES.includes(skin)) root.dataset.skin = skin;
+  else delete root.dataset.skin;
+  const face = settings.face ?? (root.dataset.skin ? 'sans' : 'serif');
+  for (const b of $$('#reader [data-face]')) b.setAttribute('aria-pressed', b.dataset.face === face);
 }
 
 /* ───────── Sidebar ───────── */
@@ -336,6 +354,7 @@ async function render({ keepScroll = false } = {}) {
   if (id !== state.renderId) return;
 
   state.note = view.note || null;
+  applySkin();
   const el = $('#view');
   el.innerHTML = view.html;
   decorateHeadings(el);
@@ -741,17 +760,19 @@ async function copyCode(button) {
 
 function applySettings() {
   root.style.setProperty('--text-size', SIZES[settings.size] + 'px');
-  if (settings.face === 'sans') root.dataset.face = 'sans';
+  if (settings.face) root.dataset.face = settings.face;
   else delete root.dataset.face;
   if (settings.theme === 'auto') delete root.dataset.theme;
   else root.dataset.theme = settings.theme;
 
   const panel = $('#reader');
-  $('.size-steps', panel).innerHTML = SIZES.map((_, i) => `<i class="${i === settings.size ? 'is-on' : ''}"></i>`).join('');
-  $('[data-size="-1"]', panel).disabled = settings.size === 0;
-  $('[data-size="1"]', panel).disabled = settings.size === SIZES.length - 1;
-  for (const b of $$('[data-face]', panel)) b.setAttribute('aria-pressed', b.dataset.face === settings.face);
+  const range = $('#size-range');
+  range.value = settings.size;
+  range.style.setProperty('--fill', (settings.size / (SIZES.length - 1)) * 100 + '%');
+  range.setAttribute('aria-valuetext', SIZES[settings.size] + ' pixels');
+  for (const b of $$('[data-style]', panel)) b.setAttribute('aria-pressed', b.dataset.style === settings.style);
   for (const b of $$('[data-theme]', panel)) b.setAttribute('aria-checked', b.dataset.theme === settings.theme);
+  if (state.tree) applySkin();
   $$('.result-frame').forEach(fitFrame);
 }
 
@@ -765,12 +786,18 @@ function toggleReader(force) {
 $('#reader').addEventListener('click', (event) => {
   const b = event.target.closest('button');
   if (!b) return;
-  if (b.dataset.size) settings.size = Math.min(SIZES.length - 1, Math.max(0, settings.size + Number(b.dataset.size)));
   if (b.dataset.face) settings.face = b.dataset.face;
   if (b.dataset.theme) settings.theme = b.dataset.theme;
-  store.set('size', settings.size);
+  if (b.dataset.style) settings.style = b.dataset.style;
   store.set('face', settings.face);
   store.set('theme', settings.theme);
+  store.set('style', settings.style);
+  applySettings();
+});
+
+$('#size-range').addEventListener('input', (event) => {
+  settings.size = Number(event.target.value);
+  store.set('size', settings.size);
   applySettings();
 });
 

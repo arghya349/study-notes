@@ -1,27 +1,66 @@
 ---
-summary: The rules of the game before we play it. What a C++ program looks like, how instructions are written, and how the computer follows them.
+summary: The rules of the game, before the first move. What a C++ program looks like, how an instruction is written, and how the computer follows it.
 ---
 
 # Before We Begin C++
 
-Before Chapter 1, we need a Chapter 0: how to **read** and **think** in C++. This isn't a history lesson, a dry list of syntax rules, or an early deep dive into compilers.
+Every game is easier once you know the rules. Before we touch data types or algorithms, let's learn the rules of C++: what a program looks like, how you write an instruction, and how the computer follows it. No history lesson, no heavy theory. Just enough to read your first programs with confidence.
 
-Think of it as learning the rules of a game before playing it. You don't need every rule of chess theory to make your first move, but you do need to know how the pieces, the board and the turns work. C++ is similar. Before we study data types, we need to know what a program looks like, how instructions are written, and how the computer follows them.
+<figure class="doodle">
+<svg viewBox="0 0 400 230" aria-hidden="true">
+<rect x="95" y="180" width="42" height="26" rx="3"/>
+<rect class="fill soft" x="137" y="180" width="42" height="26" rx="3"/>
+<rect x="179" y="180" width="42" height="26" rx="3"/>
+<rect class="fill soft" x="221" y="180" width="42" height="26" rx="3"/>
+<rect x="263" y="180" width="42" height="26" rx="3"/>
+<path d="M160 178q2-16 16-18h48q14 2 16 18"/>
+<path d="M172 160h56"/>
+<path d="M222 160C230 130 238 104 226 78L230 60L218 70C204 68 190 74 180 86L162 104C156 112 160 121 170 120C180 119 188 114 194 116C186 130 176 146 178 160"/>
+<circle class="fill" cx="201" cy="88" r="3.2"/>
+<circle class="fill" cx="167" cy="112" r="1.8"/>
+<path d="M228 86q10 10 6 22M232 106q8 10 4 22M232 128q6 10 2 20"/>
+<path class="soft" d="M252 92c30-22 72-14 84 18" stroke-dasharray="2 9"/>
+<path d="M336 110l-11-1M336 110l1-11"/>
+<path d="M78 70v16M70 78h16M330 34v12M324 40h12M58 150v10M53 155h10"/>
+</svg>
+<figcaption>Learn the pieces and the board first. Strategy comes later.</figcaption>
+</figure>
 
-## What are we actually doing when we program?
+::: tiles By the end of this chapter you can
+- **Read** the shape of any beginner C++ program
+- **Spot** statements and blocks at a glance
+- **Predict** exactly what a program prints
+- **Explain** what write, compile and run mean
+:::
 
-Imagine you want a computer to add two numbers. You already know how:
+## What programming really is
 
-$$
-12 + 7 = 19
-$$
+You know that 12 + 7 is 19 without even thinking. A computer doesn't know what you *want*. It only does what it's told: precisely, literally, and incredibly fast.
 
-But the computer doesn't magically know what you intend. You have to give it instructions in a form it can process. That's programming.
+<figure class="doodle">
+<svg viewBox="0 0 420 220" aria-hidden="true">
+<g transform="rotate(-4 100 112)">
+<rect x="30" y="28" width="142" height="168" rx="12"/>
+<text class="hand" x="48" y="68">1. take 12</text>
+<text class="hand" x="48" y="100">2. take 7</text>
+<text class="hand" x="48" y="132">3. add them</text>
+<text class="hand" x="48" y="164">4. show it</text>
+</g>
+<path d="M192 112c26-14 48-14 68-2"/>
+<path d="M262 111l-10-6M262 111l-11 3"/>
+<rect x="272" y="40" width="128" height="96" rx="14"/>
+<rect class="soft" x="284" y="52" width="104" height="72" rx="7"/>
+<text class="hand big" x="336" y="103" text-anchor="middle">19</text>
+<path d="M324 136l-6 24h40l-6-24M298 162h76"/>
+</svg>
+<figcaption>A program is a recipe the computer follows exactly, one step at a time.</figcaption>
+</figure>
 
-> [!DEFINITION] Program
-> A set of instructions, written in a programming language, that makes a computer perform a task.
+::: idea
+A program is a list of instructions, written in a language the computer can follow.
+:::
 
-Here is that addition as a C++ program:
+Here's our little sum, written in C++:
 
 ```cpp
 #include <iostream>
@@ -37,258 +76,181 @@ int main() {
 19
 ```
 
-That's our first little C++ program. We'll eventually understand every line in detail. For now, let's learn the rules that let us *read* it.
+Six lines just to add two numbers? Don't worry. Most of it is a frame that almost every program shares, and in the next section you'll learn to see straight through it.
 
-## The basic shape of a C++ program
+## The shape of every program
 
-Almost every beginner C++ program you write will start from this pattern:
+Nearly every program you write at the start sits inside the same frame. Learn to recognise it once and you'll spot it everywhere.
 
 ```cpp
 #include <iostream>
 using namespace std;
 
 int main() {
-    // Write your instructions here
+    // your instructions go here
 
     return 0;
 }
 ```
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 222" role="img" aria-label="The shape of a C++ program. The first two lines prepare the program by bringing in tools. int main opens the place where execution starts. The lines inside the braces are the instructions. return 0 finishes and reports success. The braces mark one block.">
-<text x="40" y="44" class="dg-mono" style="font-size:15px"><tspan class="dg-ochre">#include &lt;iostream&gt;</tspan></text>
-<text x="40" y="70" class="dg-mono" style="font-size:15px"><tspan class="dg-tag">using namespace</tspan> std;</text>
-<text x="40" y="122" class="dg-mono" style="font-size:15px"><tspan class="dg-tag">int</tspan> main() {</text>
-<text x="40" y="148" class="dg-mono" style="font-size:15px">    cout &lt;&lt; <tspan class="dg-ochre">12</tspan> + <tspan class="dg-ochre">7</tspan>;</text>
-<text x="40" y="174" class="dg-mono" style="font-size:15px">    <tspan class="dg-tag">return</tspan> <tspan class="dg-ochre">0</tspan>;</text>
-<text x="40" y="200" class="dg-mono" style="font-size:15px">}</text>
-<path class="dg-accent-line" d="M30 108h-6v98h6"/>
-<path class="dg-line" d="M262 28h6v48h-6M268 52h8"/>
-<path class="dg-line" d="M262 108h6v20h-6M268 118h8"/>
-<path class="dg-line" d="M262 134h6v20h-6M268 144h8"/>
-<path class="dg-line" d="M262 160h6v20h-6M268 170h8"/>
-<text x="284" y="56" class="dg-label"><tspan class="dg-strong">Prepare</tspan>: bring in the tools we need</text>
-<text x="284" y="122" class="dg-label"><tspan class="dg-strong">Start here</tspan>: execution begins in main()</text>
-<text x="284" y="148" class="dg-label"><tspan class="dg-strong">Do the work</tspan>: your instructions</text>
-<text x="284" y="174" class="dg-label"><tspan class="dg-strong">Finish</tspan>: report that all went well</text>
-<text x="284" y="200" class="dg-small">The accent bracket on the left is one block: { … }</text>
-</svg>
-</div>
-<figcaption>Not every line does the same job. Some prepare, one marks where execution starts, and some do the actual work.</figcaption>
-</figure>
+Here's what each line is for:
 
-Let's look at the pieces one by one.
+::: anatomy
+- `#include <iostream>` **Brings in the toolbox** for input and output, so we can use `cout` and `cin`.
+- `using namespace std;` **Lets us use short names**, like `cout` instead of `std::cout`.
+- `int main() {` **The front door.** Your program starts running here.
+- `// your instructions go here` **Where the work happens**, one instruction at a time.
+- `return 0;` **Says "finished, all good"** to whatever started the program.
+- `}` **Closes the block** that `{` opened.
+:::
 
-### Rule 1: `#include <iostream>`
+Look closely and you'll notice the lines aren't all doing the same kind of job:
 
-This makes the standard input and output facilities, declared in a header called `iostream`, available to your program.
+::: tiles Three kinds of job
+- **Prepare** `#include` and `using` set things up before anything runs
+- **Start** `main()` marks where running begins
+- **Act** statements like `cout` do the actual work
+:::
 
-For now, remember the practical reason: it lets us use tools such as `cout` to **display output** and `cin` to **receive input**.
+> [!NOTE] Small print, for later
+> - In bigger programs you'll often see `std::cout` written out in full instead of `using namespace std;`.
+> - Why `main` is written `int main()` gets its own chapter.
+> - `return 0;` is optional at the end of `main()`: reaching the closing `}` also counts as success. We'll still write it, because you'll see it everywhere.
 
-### Rule 2: `using namespace std;`
+## One instruction at a time
 
-Many standard C++ facilities belong to a *namespace* called `std`. This line lets us write `cout` instead of `std::cout`.
+The computer reads your instructions **from top to bottom, one at a time**, the way you'd follow a recipe. Let's run two lines in slow motion and watch the screen:
 
-It's common in beginner tutorials. In larger programs you'll often see `std::cout` written out explicitly instead.
+::: trace Watch the screen
+- `cout << 12;` → `12` 12 appears, and the cursor waits right after it.
+- `cout << 7;` → `127` 7 is printed exactly where the cursor was waiting.
+:::
 
-### Rule 3: `int main()`
+Were you expecting `12` and `7` on separate lines? The computer never starts a new line on its own. If you want one, you have to ask for it, with `'\n'`:
 
-This is the **entry point** of a normal C++ program: the place where the program starts executing your instructions.
+::: trace Now with line breaks
+- `cout << 12 << '\n';` → `12⏎` After 12, the cursor drops to the next line.
+- `cout << 7 << '\n';` → `12⏎7⏎` So 7 lands on a line of its own.
+:::
 
-We'll study why it has the return type `int` in a later chapter.
+> [!REMEMBER] Game rule
+> The computer never guesses how you want things to look. No `'\n'`, no new line.
 
-### Rule 4: `{` and `}`
+> [!PREDICT]- What does `cout << 1 << 2 << '\n' << 3;` print?
+> ```output
+> 12
+> 3
+> ```
+> `1` and `2` are printed side by side, `'\n'` starts a new line, and then `3` appears on it.
 
-Curly braces mark the **beginning and end of a block** of code. Everything between the braces that belong to `main()` forms the *body* of that function.
+## The semicolon is a full stop
 
-### Rule 5: `return 0;`
-
-This ends `main()` and reports a **successful finish** to the environment that ran the program.
-
-For now, treat it as a conventional last line you'll commonly see. C++ also allows `main()` to simply reach its closing brace without `return 0;`, and it still counts as success.
-
-> [!REMEMBER] Our first important distinction
-> These lines don't all serve the same purpose. Some **prepare** the program, one **marks where execution begins**, and some **perform actions**.
-
-## C++ code is made of instructions
-
-Consider these two lines:
-
-```cpp
-cout << 12;
-cout << 7;
-```
-
-They are **two separate instructions**. The first displays `12`; the second displays `7`.
-
-```output
-127
-```
-
-Why not `12` and `7` on separate lines? Because neither instruction asked for a line break. The second number is printed exactly where the first one stopped.
-
-Now compare:
-
-```cpp
-cout << 12 << '\n';
-cout << 7 << '\n';
-```
-
-```output
-12
-7
-```
-
-The special character `'\n'` represents a **newline**: it moves the output to the start of the next line.
-
-> [!IMPORTANT] Game rule
-> If you want separate output lines, you must tell the program to produce line breaks. The computer doesn't guess your formatting intentions.
-
-## The semicolon: the punctuation of C++
-
-Look at this statement:
+In English, a full stop ends a sentence. In C++, a **semicolon ends an instruction**. Each instruction is called a **statement**.
 
 ```cpp
 cout << 12 + 7;
 ```
 
-The semicolon `;` marks the **end of the statement**, the way a full stop ends a sentence. In everyday beginner C++, most executable statements end with one.
+::: pair
+- **Every statement ends with `;`**
+  ```cpp
+  int age = 20;
+  cout << age;
+  return 0;
+  ```
+- **One is missing, and nothing runs**
+  ```cpp
+  int age = 20
+  cout << age;
+  ```
+  The compiler stops with an error, so the program never gets to run.
+:::
 
-<figure class="diagram">
-<div class="dg-grid cols-2">
-<div class="dg-card is-right"><span class="dg-verdict">Correct</span><pre>int age = 20<span class="dg-hl">;</span>
-cout &lt;&lt; age<span class="dg-hl">;</span>
-return 0<span class="dg-hl">;</span></pre></div>
-<div class="dg-card is-wrong"><span class="dg-verdict">Incorrect</span><pre>int age = 20<span class="dg-hl"> </span>   ← missing ;
-cout &lt;&lt; age;</pre><p style="margin-top:10px">The compiler reports an error, so the program never runs.</p></div>
-</div>
-<figcaption>Every statement needs its full stop.</figcaption>
-</figure>
+But not every line gets a semicolon. There are just two shapes to recognise:
 
-But here's a detail worth remembering: **not every line ends with a semicolon.**
+::: tiles Two shapes
+- **Statement** one instruction, finished with `;`
+- **Block** a group of statements wrapped in `{ }`
+:::
 
-```cpp
-int main() {
-    cout << 19;
-    return 0;
-}
-```
-
-`int main()` is followed by a **block**, not a semicolon. The **statements** inside the block are the ones that end with semicolons.
+That's why `int main() {` has no semicolon: it opens a **block**. The statements *inside* the block are the ones that end with `;`.
 
 > [!TIP]
-> Don't try to memorise every exception yet. Just learn to recognise two shapes: **statements**, which end in `;`, and **blocks**, which are wrapped in `{ }`.
+> Don't memorise exceptions. Just ask: is this **one instruction** (it ends with `;`), or a **container of instructions** (it's wrapped in `{ }`)?
 
-## Spaces, indentation and comments
+## Spaces are for humans
 
-C++ generally ignores ordinary spaces and line breaks between the pieces of your code, as long as they don't change its meaning. These two do exactly the same thing:
+The compiler doesn't care about extra spaces or line breaks between the pieces of your code. These two do exactly the same thing:
 
-```cpp
-cout << 12 + 7;
-```
+::: pair
+- **Easy to read**
+  ```cpp
+  cout << 12 + 7;
+  ```
+- **Same result, harder to read**
+  ```cpp
+  cout
+      <<
+      12
+      +
+      7;
+  ```
+:::
 
-```cpp
-cout
-    <<
-    12
-    +
-    7;
-```
-
-Both display `19`. The first is simply far easier to read.
-
-> [!NOTE]
-> The computer needs **valid syntax**. Humans need **readable code**. That's why programmers use indentation and sensible spacing even though the compiler doesn't require them.
+Both print `19`. The computer needs correct **grammar**; people need **readable** code. So we space and indent for whoever reads it next, which is very often future you.
 
 ### Comments
 
-A comment is a note for people. The compiler ignores it.
+A comment is a note for people. The compiler skips it completely.
 
 ```cpp
-// This line explains what the next statement does
+// A one-line comment: everything after // is ignored
 cout << 19;
-```
 
-`//` tells the compiler to ignore the rest of that line. For longer notes, C++ also supports comments that span several lines:
-
-```cpp
 /*
-This is a
-multiline comment.
+   A comment that
+   spans several lines
 */
 ```
 
 > [!WARNING]
-> Comments explain code; they don't make incorrect code correct.
+> A comment can explain code, but it can't fix it.
 
 ## Write, compile, run
 
-Here's how your C++ program becomes something you can execute.
+Before you see a single result, your code goes through three stages. Think of writing a letter, having a very strict proofreader check it, and then sending it off.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 200" role="img" aria-label="Three stages. Write the source code in a .cpp file. Compile: the compiler checks and translates it. Run: the program executes and may produce output. A compile error, such as a missing semicolon, stops the program from ever running. A logic error lets it run but gives the wrong answer.">
-<rect class="dg-box-accent" x="20" y="24" width="160" height="70" rx="14"/>
-<rect class="dg-box-accent" x="220" y="24" width="160" height="70" rx="14"/>
-<rect class="dg-box-accent" x="420" y="24" width="160" height="70" rx="14"/>
-<text x="100" y="54" text-anchor="middle" class="dg-text dg-strong">1. Write</text>
-<text x="100" y="76" text-anchor="middle" class="dg-small">source code in a .cpp file</text>
-<text x="300" y="54" text-anchor="middle" class="dg-text dg-strong">2. Compile</text>
-<text x="300" y="76" text-anchor="middle" class="dg-small">check and translate</text>
-<text x="500" y="54" text-anchor="middle" class="dg-text dg-strong">3. Run</text>
-<text x="500" y="76" text-anchor="middle" class="dg-small">execute, show output</text>
-<path class="dg-ink" d="M184 59h26M384 59h26"/>
-<path class="dg-arrow" d="M217 59l-7-4v8zM417 59l-7-4v8z"/>
-<path class="dg-line dg-dash" d="M300 94v34M500 94v34"/>
-<rect class="dg-box-bad" x="210" y="128" width="180" height="58" rx="12"/>
-<rect class="dg-box-hl" x="410" y="128" width="180" height="58" rx="12"/>
-<text x="300" y="152" text-anchor="middle" class="dg-label dg-strong dg-bad">Compile error</text>
-<text x="300" y="172" text-anchor="middle" class="dg-small">e.g. a missing ; so it never runs</text>
-<text x="500" y="152" text-anchor="middle" class="dg-label dg-strong dg-ochre">Logic error</text>
-<text x="500" y="172" text-anchor="middle" class="dg-small">it runs, but the answer is wrong</text>
-</svg>
-</div>
-<figcaption>Two different kinds of mistake can stop you, at two different stages.</figcaption>
-</figure>
+::: flow
+1. **Write** You type instructions into a `.cpp` file. This is your *source code*.
+2. **Compile** The compiler checks your grammar and translates the code into something the computer can run. A grammar mistake, like a missing `;`, stops everything here.
+3. **Run** The computer follows the instructions, top to bottom, and you see the output.
+:::
 
-1. **Write the source code.** You type instructions into a `.cpp` file.
-2. **Compile the program.** The compiler checks your code and translates it into a form the computer can execute.
-3. **Run the program.** It executes its instructions and may produce output.
+Two very different kinds of mistake can catch you:
 
-If you forget a required semicolon, compilation generally fails, so the program never runs. If your program compiles but contains a **logical** mistake, it may run perfectly smoothly while producing the wrong answer. We'll learn to tell these two kinds of problem apart as we go.
+::: pair
+- **Compile error**
 
-## Input, processing and output
+  The grammar is wrong, say a missing `;`. The program never runs, and the compiler points you roughly to the problem.
+- **Logic error**
 
-Most simple programs follow a useful three-step pattern:
+  The grammar is fine, so the program runs happily… and gives the wrong answer. Nothing warns you. Only checking the output catches it.
+:::
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 132" role="img" aria-label="Input: the numbers 12 and 7 arrive through cin. Processing: the program calculates 12 plus 7. Output: 19 is displayed through cout.">
-<rect class="dg-box" x="20" y="18" width="160" height="96" rx="14"/>
-<rect class="dg-box-accent" x="220" y="18" width="160" height="96" rx="14"/>
-<rect class="dg-box" x="420" y="18" width="160" height="96" rx="14"/>
-<text x="100" y="46" text-anchor="middle" class="dg-label dg-strong">Input</text>
-<text x="300" y="46" text-anchor="middle" class="dg-label dg-strong">Processing</text>
-<text x="500" y="46" text-anchor="middle" class="dg-label dg-strong">Output</text>
-<text x="100" y="78" text-anchor="middle" class="dg-serif" style="font-size:22px">12 7</text>
-<text x="300" y="78" text-anchor="middle" class="dg-serif" style="font-size:22px">12 + 7</text>
-<text x="500" y="78" text-anchor="middle" class="dg-serif" style="font-size:22px">19</text>
-<text x="100" y="100" text-anchor="middle" class="dg-mono dg-tag" style="font-size:12px">cin &gt;&gt;</text>
-<text x="300" y="100" text-anchor="middle" class="dg-mono dg-tag" style="font-size:12px">a + b</text>
-<text x="500" y="100" text-anchor="middle" class="dg-mono dg-tag" style="font-size:12px">cout &lt;&lt;</text>
-<path class="dg-ink" d="M184 66h26M384 66h26"/>
-<path class="dg-arrow" d="M217 66l-7-4v8zM417 66l-7-4v8z"/>
-</svg>
-</div>
-<figcaption>Receive information, work on it, show the result.</figcaption>
-</figure>
+> [!REMEMBER]
+> Compile errors shout, which makes them the friendly kind. Logic errors whisper.
 
-- **Input:** receive information.
-- **Processing:** perform a calculation or make a decision.
-- **Output:** display the result.
+## Input, processing, output
 
-Here are all three in one tiny program:
+Most simple programs follow the same three-beat rhythm:
+
+::: flow
+1. **Input** Take something in: `cin >> a >> b;`
+2. **Processing** Work on it: `a + b`
+3. **Output** Show the result: `cout << a + b;`
+:::
+
+Here are all three beats in one tiny program:
 
 ```cpp
 #include <iostream>
@@ -297,58 +259,62 @@ using namespace std;
 int main() {
     int a, b;
 
-    cin >> a >> b;      // input
-
-    cout << a + b;      // processing and output
+    cin >> a >> b;     // input: read two numbers
+    cout << a + b;     // processing and output
 
     return 0;
 }
 ```
 
-Suppose you type:
+If you type this:
 
 ```input
 12 7
 ```
 
-The program reads the two numbers into `a` and `b`, adds them, and displays:
+the program reads `12` into `a` and `7` into `b`, adds them, and shows:
 
 ```output
 19
 ```
 
-For now you only need to recognise these symbols:
+You don't need to understand variables yet. Just learn to recognise these five symbols:
 
-| Symbol | What it does |
-|---|---|
-| `cin` | Receives input |
-| `>>` | Extracts input into variables |
-| `cout` | Displays output |
-| `<<` | Sends output to the output stream |
-| `+` | Adds numbers |
+::: tiles Five symbols to recognise
+- `cin` takes input from the keyboard
+- `>>` moves that input into a variable
+- `cout` shows output on the screen
+- `<<` sends something to the screen
+- `+` adds two numbers
+:::
 
-> [!REMEMBER]
-> The arrows point the way the data flows. `cin >> a` sends data **into** `a`. `cout << a` sends `a` **out** to the screen.
-
-We'll explore variables, types and operators properly in later chapters.
+> [!REMEMBER] Follow the arrows
+> The arrows point the way the data flows. `cin >> a` moves data **into** `a`. `cout << a` sends `a` **out** to the screen.
 
 ## What to learn now, and what can wait
 
-| Learn now | Leave for later |
-|---|---|
-| A C++ program contains instructions | The full meaning of `int main()` |
-| `main()` is where execution begins | How variables are stored in memory |
-| `{ }` enclose blocks | Why types differ in size and precision |
-| Most statements end in `;` | Operator precedence and integer overflow |
-| `cout` displays output; `cin` receives input | Function scope and return values |
-| Comments use `//` or `/* … */` | Advanced compilation details |
-| Writing, compiling and running are different stages | |
+::: tiles Learn now
+- **Instructions** a program is a list of them
+- `main()` where running starts
+- `{ }` wraps a block
+- `;` ends a statement
+- `cin` `cout` input and output, together
+- `//` a note for humans
+:::
 
-The things on the right aren't unimportant. They're simply much easier to understand once you have the basic vocabulary on the left.
+> [!NOTE] Parked for later
+> - The full meaning of `int main()`
+> - How variables live in memory
+> - Why types come in different sizes
+> - Operator precedence and integer overflow
+> - Functions, scope and return values
+> - What the compiler does in detail
+>
+> None of these are unimportant. They're simply much easier once the basics above feel natural.
 
-## Your first exercise
+## Your first prediction
 
-Read this program carefully:
+Read this program slowly:
 
 ```cpp
 #include <iostream>
@@ -361,36 +327,34 @@ int main() {
 }
 ```
 
-What exactly appears on the screen: `13`, `58`, or `5` and `8` on separate lines? And **why**?
+What appears on the screen: `13`, `58`, or `5` and `8` on separate lines? Say your answer out loud, and *why*, before you reveal it.
 
-Take a moment to reason it out before you reveal the answer. Build the habit of *predicting* what code does, rather than just recognising what it looks like.
-
-> [!QUESTION]- What does the program print, and why?
-> It prints `58`.
+> [!PREDICT]- So, what does it print?
+> ```output
+> 58
+> ```
+> - **Not `13`.** There's no `+`, so nothing is added. Each `cout` shows its number exactly as written.
+> - **Not two lines.** Neither statement prints `'\n'`, so `8` appears right where `5` stopped.
 >
-> - Not `13`: there is no `+`, so nothing is added. Each `cout` displays a number exactly as written.
-> - Not two lines: neither statement outputs `'\n'`, so `8` is printed right where `5` stopped.
->
-> To get two lines you would write `cout << 5 << '\n';` and `cout << 8 << '\n';`.
+> To get two lines you'd write `cout << 5 << '\n';` and `cout << 8 << '\n';`.
 
-## Recap and practice
+> [!TIP] The habit that matters most
+> Always **predict first, then run**. Guessing what code will do before you see it is the fastest way to truly understand it, and it's the skill every chapter of DSA builds on.
 
-> [!SUMMARY] Chapter 0 in short
-> - A **program** is a set of instructions the computer follows exactly.
-> - Execution begins in **`main()`**; `#include` and `using` prepare the program.
-> - **Statements** end with `;`. **Blocks** are wrapped in `{ }`.
-> - Spaces and indentation are for humans; **comments** (`//`, `/* … */`) are ignored by the compiler.
-> - Programs are **written**, then **compiled**, then **run**. Compile errors stop the program; logic errors give wrong answers.
-> - `cin >>` brings data in; `cout <<` sends it out. Line breaks only happen when you ask for them with `'\n'`.
+## Recap
 
-> [!QUESTION]- What is the job of `#include <iostream>`?
-> It makes the standard input/output tools available, which is what lets us use `cout` and `cin`.
+::: idea Chapter 0 in one breath
+A program is a list of instructions. It starts in `main()`, statements end with `;`, blocks live in `{ }`, and nothing happens on screen unless you ask for it.
+:::
 
-> [!QUESTION]- What would `cout << 3 << '\n' << 4;` print?
+> [!PREDICT]- What is `#include <iostream>` for?
+> It brings in the input and output tools, so we can use `cout` and `cin`.
+
+> [!PREDICT]- What does `cout << 3 << '\n' << 4;` print?
 > `3` on the first line and `4` on the second, because `'\n'` sits between them.
 
-> [!QUESTION]- Does `int main() {` end with a semicolon? Why or why not?
-> No. `int main()` is followed by a block in braces, not ended like a statement. The statements *inside* the block end with semicolons.
+> [!PREDICT]- Why is there no semicolon after `int main() {`?
+> Because it opens a **block**. Semicolons end statements; the statements inside the block are the ones that get them.
 
-> [!QUESTION]- A program compiles and runs, but prints the wrong total. What kind of error is that?
-> A logic error. The code is valid C++, so it compiles and runs, but the instructions don't do what you intended.
+> [!PREDICT]- The program runs, but the total it prints is wrong. Compile error or logic error?
+> A logic error. The grammar was fine, so it compiled and ran. The instructions just didn't do what you meant.

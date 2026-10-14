@@ -38,36 +38,11 @@ Use an unordered list when **order doesn't matter**: a collection of topics, ing
 
 Each item in either kind of list is an `<li>` element. The list element is the container; the `<li>` elements are what it contains.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 220" role="img" aria-label="An ol container holds three li items: Wake up, Study HTML and Practice coding. The browser draws the numbers 1, 2 and 3 beside them. The ol holds only li items; each li can hold any content.">
-<rect class="dg-box" x="150" y="20" width="300" height="180" rx="18"/>
-<text x="168" y="46" class="dg-mono dg-tag" style="font-size:13px">ol</text>
-<rect class="dg-box-accent" x="196" y="62" width="240" height="34" rx="10"/>
-<rect class="dg-box-accent" x="196" y="106" width="240" height="34" rx="10"/>
-<rect class="dg-box-accent" x="196" y="150" width="240" height="34" rx="10"/>
-<text x="176" y="84" class="dg-label">1.</text>
-<text x="176" y="128" class="dg-label">2.</text>
-<text x="176" y="172" class="dg-label">3.</text>
-<text x="210" y="84" class="dg-mono dg-tag" style="font-size:12px">li</text>
-<text x="210" y="128" class="dg-mono dg-tag" style="font-size:12px">li</text>
-<text x="210" y="172" class="dg-mono dg-tag" style="font-size:12px">li</text>
-<text x="236" y="84" class="dg-serif" style="font-size:16px">Wake up</text>
-<text x="236" y="128" class="dg-serif" style="font-size:16px">Study HTML</text>
-<text x="236" y="172" class="dg-serif" style="font-size:16px">Practice coding</text>
-<path class="dg-line" d="M120 123H168"/>
-<text x="112" y="117" text-anchor="end" class="dg-label">The browser</text>
-<text x="112" y="135" text-anchor="end" class="dg-label">adds the numbers</text>
-<path class="dg-line" d="M450 41H478"/>
-<text x="486" y="37" class="dg-label"><tspan class="dg-strong">ol</tspan> holds only</text>
-<text x="486" y="55" class="dg-label">li elements</text>
-<path class="dg-line" d="M436 167H478"/>
-<text x="486" y="163" class="dg-label"><tspan class="dg-strong">li</tspan> holds any</text>
-<text x="486" y="181" class="dg-label">content</text>
-</svg>
-</div>
-<figcaption>You write the items. The browser supplies numbers or bullets, and renumbers automatically when you add or remove one.</figcaption>
-</figure>
+::: anatomy How a list is built
+- `<ol>` **The container.** Only `<li>` elements go directly inside it.
+- `<li>Wake up</li>`<br>`<li>Study HTML</li>`<br>`<li>Practice coding</li>` **The items.** Each `<li>` can hold any content.
+- `</ol>` **Closes the list.** The browser adds the numbers 1, 2, 3 for you, and renumbers them when items change.
+:::
 
 Two rules keep lists valid:
 

@@ -120,19 +120,10 @@ The first denies saying it at all. The second suggests someone else took it. Sam
 
 `<sup>` raises text above the normal line of type, called the **baseline**. `<sub>` lowers it below.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 196" role="img" aria-label="Two examples on a dashed baseline. Two with a raised three, equals eight, shows sup raising text. H, a lowered two, O shows sub lowering text.">
-<path class="dg-line dg-dash" d="M40 116H560"/>
-<text x="44" y="108" class="dg-small">baseline</text>
-<text x="108" y="116" class="dg-serif" style="font-size:58px">2<tspan class="dg-accent" dy="-27" style="font-size:31px">3</tspan><tspan dy="27"> = 8</tspan></text>
-<text x="386" y="116" class="dg-serif" style="font-size:58px">H<tspan class="dg-accent" dy="13" style="font-size:31px">2</tspan><tspan dy="-13">O</tspan></text>
-<text x="168" y="176" text-anchor="middle" class="dg-label"><tspan class="dg-mono dg-tag" style="font-size:13px">sup</tspan> raises text above the baseline</text>
-<text x="432" y="176" text-anchor="middle" class="dg-label"><tspan class="dg-mono dg-tag" style="font-size:13px">sub</tspan> lowers it below</text>
-</svg>
-</div>
-<figcaption>Superscript and subscript shift text relative to the baseline and make it smaller.</figcaption>
-</figure>
+::: tiles Up and down
+- **2<sup>3</sup>** `<sup>` raises text above the baseline
+- **H<sub>2</sub>O** `<sub>` lowers text below it
+:::
 
 Superscript is used for exponents, ordinal endings and footnote markers. Subscript is used in chemical formulas and some mathematical notation.
 

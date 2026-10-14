@@ -117,38 +117,23 @@ Closes the root element. Nothing belongs after it.
 When the browser reads your file, it builds a family tree of elements in memory. This tree is called the **DOM**, short for Document Object Model, and CSS and JavaScript both work with it.
 
 <figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 600 262" role="img" aria-label="A tree. html is the root. Its two children are head and body. head contains meta charset, meta viewport and title, and title contains the text My Practice Page. body contains h1, with the text Hello world, and p, with the text My first web page.">
-<rect class="dg-well" x="24" y="72" width="276" height="182" rx="18"/>
-<rect class="dg-well" x="330" y="72" width="246" height="182" rx="18"/>
-<path class="dg-ink" d="M300 44V65M160 86V65H440V86"/>
-<path class="dg-ink" d="M160 114V135M70 156V135H250V156M160 135V156"/>
-<path class="dg-ink" d="M440 114V135M390 156V135H500V156"/>
-<path class="dg-line dg-dash" d="M250 184V220M390 184V220M500 184V220"/>
-<rect class="dg-root" x="268" y="16" width="64" height="28" rx="9"/>
-<text x="300" y="35" text-anchor="middle" class="dg-mono dg-on-accent" style="font-size:13px">html</text>
-<rect class="dg-box" x="130" y="86" width="60" height="28" rx="9"/>
-<text x="160" y="105" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">head</text>
-<rect class="dg-box" x="410" y="86" width="60" height="28" rx="9"/>
-<text x="440" y="105" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">body</text>
-<rect class="dg-box" x="42" y="156" width="56" height="28" rx="9"/>
-<text x="70" y="175" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">meta</text>
-<rect class="dg-box" x="132" y="156" width="56" height="28" rx="9"/>
-<text x="160" y="175" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">meta</text>
-<rect class="dg-box" x="221" y="156" width="58" height="28" rx="9"/>
-<text x="250" y="175" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">title</text>
-<rect class="dg-box" x="370" y="156" width="40" height="28" rx="9"/>
-<text x="390" y="175" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">h1</text>
-<rect class="dg-box" x="483" y="156" width="34" height="28" rx="9"/>
-<text x="500" y="175" text-anchor="middle" class="dg-mono dg-tag" style="font-size:13px">p</text>
-<text x="70" y="204" text-anchor="middle" class="dg-small">charset</text>
-<text x="160" y="204" text-anchor="middle" class="dg-small">viewport</text>
-<text x="250" y="238" text-anchor="middle" class="dg-leaf">My Practice Page</text>
-<text x="390" y="238" text-anchor="middle" class="dg-leaf">Hello, world</text>
-<text x="500" y="238" text-anchor="middle" class="dg-leaf">My first web page.</text>
-</svg>
-</div>
-<figcaption>Boxes are elements; italic words are the text inside them. The head side describes the page, the body side is the page.</figcaption>
+<ul class="dg-tree">
+<li><span class="dg-node is-root">html</span>
+<ul>
+<li><span class="dg-node">head</span>
+<ul>
+<li><span class="dg-node">meta</span><span class="dg-note">charset</span></li>
+<li><span class="dg-node">meta</span><span class="dg-note">viewport</span></li>
+<li><span class="dg-node">title</span><span class="dg-note">“My Practice Page”</span></li>
+</ul></li>
+<li><span class="dg-node">body</span>
+<ul>
+<li><span class="dg-node">h1</span><span class="dg-note">“Hello, world”</span></li>
+<li><span class="dg-node">p</span><span class="dg-note">“My first web page.”</span></li>
+</ul></li>
+</ul></li>
+</ul>
+<figcaption>Each box is an element; the quoted words are the text inside it. The head side describes the page, the body side is the page.</figcaption>
 </figure>
 
 Reading the tree with family words from Chapter 1:

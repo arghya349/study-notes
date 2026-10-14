@@ -28,7 +28,9 @@ for (const url of urls) await write(path.join(OUT, '_api/notes', `${url}.json`),
 
 await fs.cp(path.join(ROOT, 'public'), path.join(OUT, '_static'), { recursive: true });
 await fs.cp(path.join(ROOT, 'node_modules/katex/dist'), path.join(OUT, '_vendor/katex'), { recursive: true });
-await fs.cp(path.join(ROOT, 'node_modules/@fontsource-variable/newsreader'), path.join(OUT, '_vendor/newsreader'), { recursive: true });
+for (const font of ['newsreader', 'caveat', 'albert-sans']) {
+  await fs.cp(path.join(ROOT, 'node_modules/@fontsource-variable', font), path.join(OUT, '_vendor', font), { recursive: true });
+}
 await fs.cp(NOTES_DIR, path.join(OUT, '_files'), { recursive: true, filter: (src) => !/\.(md|markdown)$/i.test(src) && !path.basename(src).startsWith('.') });
 
 const index = await fs.readFile(path.join(ROOT, 'public/index.html'), 'utf8');

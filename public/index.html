@@ -16,6 +16,8 @@
   <meta name="apple-mobile-web-app-title" content="Notebook">
   <link rel="stylesheet" href="/_vendor/newsreader/opsz.css">
   <link rel="stylesheet" href="/_vendor/newsreader/opsz-italic.css">
+  <link rel="stylesheet" href="/_vendor/caveat/index.css">
+  <link rel="stylesheet" href="/_vendor/albert-sans/index.css">
   <link rel="stylesheet" href="/_vendor/katex/katex.min.css">
   <link rel="stylesheet" href="/_static/app.css">
   <script>
@@ -25,7 +27,15 @@
       const root = document.documentElement;
       const theme = get('theme');
       if (theme === 'paper' || theme === 'night') root.dataset.theme = theme;
-      if (get('face') === 'sans') root.dataset.face = 'sans';
+      const face = get('face');
+      if (face === 'sans' || face === 'serif') root.dataset.face = face;
+      const style = get('style') || 'folder';
+      let skin = style === 'cobalt' || style === 'willow' ? style : null;
+      if (style === 'folder') {
+        const path = decodeURIComponent(location.pathname);
+        for (const [url, s] of Object.entries(get('skins') || {})) if (path === url || path.startsWith(url + '/')) skin = s;
+      }
+      if (skin) root.dataset.skin = skin;
       const size = [16, 17, 18, 19, 20, 22, 24][get('size')];
       if (size) root.style.setProperty('--text-size', size + 'px');
       if (get('sidebar') === false) root.classList.add('sidebar-hidden');
@@ -34,6 +44,12 @@
   <script type="module" src="/_static/app.js"></script>
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <filter id="sketch" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
   <a class="skip" href="#view">Skip to content</a>
 
   <aside class="sidebar" id="sidebar" aria-label="Library">
@@ -83,15 +99,25 @@
   </div>
 
   <div class="popover" id="reader" role="dialog" aria-label="Reader settings" hidden>
-    <div class="seg" role="group" aria-label="Text size">
-      <button type="button" data-size="-1" aria-label="Smaller text"><span class="size-sm">A</span></button>
-      <button type="button" data-size="1" aria-label="Larger text"><span class="size-lg">A</span></button>
+    <p class="reader-label" id="size-label">Text size</p>
+    <div class="size-row">
+      <span class="size-sm" aria-hidden="true">A</span>
+      <input class="size-range" id="size-range" type="range" min="0" max="6" step="1" aria-labelledby="size-label">
+      <span class="size-lg" aria-hidden="true">A</span>
     </div>
-    <div class="size-steps" aria-hidden="true"></div>
+    <p class="reader-label">Typeface</p>
     <div class="seg faces" role="group" aria-label="Typeface">
       <button type="button" data-face="serif" aria-pressed="true"><span class="face-serif">Serif</span></button>
       <button type="button" data-face="sans" aria-pressed="false"><span class="face-sans">Sans</span></button>
     </div>
+    <p class="reader-label">Style</p>
+    <div class="seg styles" role="group" aria-label="Style">
+      <button type="button" data-style="folder" aria-pressed="true" title="Each folder's own style">Folder</button>
+      <button type="button" data-style="classic" aria-pressed="false">Classic</button>
+      <button type="button" data-style="cobalt" aria-pressed="false">Cobalt</button>
+      <button type="button" data-style="willow" aria-pressed="false">Willow</button>
+    </div>
+    <p class="reader-label">Appearance</p>
     <div class="themes" role="radiogroup" aria-label="Appearance">
       <button type="button" role="radio" data-theme="auto" aria-checked="true"><span class="swatch swatch-auto"></span>Auto</button>
       <button type="button" role="radio" data-theme="paper" aria-checked="false"><span class="swatch swatch-paper"></span>Paper</button>

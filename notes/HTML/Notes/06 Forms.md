@@ -32,29 +32,12 @@ Every field needs a visible description that says what to type. That is the job 
 
 The connection works like this:
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 640 150" role="img" aria-label="label for equals email, and input id equals email. The two values match, so the label is linked to the input. Clicking the word Email on the page puts the cursor in the email box.">
-<rect class="dg-box-accent" x="139" y="37" width="73" height="27" rx="7"/>
-<rect class="dg-box-accent" x="129.5" y="85" width="73" height="27" rx="7"/>
-<path class="dg-accent-line" d="M175.5 64 166 85"/>
-<circle class="dg-dot" cx="175.5" cy="64" r="2.5"/>
-<circle class="dg-dot" cx="166" cy="85" r="2.5"/>
-<text x="226" y="80" class="dg-small dg-accent">same value, so they are linked</text>
-<text x="36" y="56" class="dg-mono" style="font-size:16px" textLength="307.2" lengthAdjust="spacing"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">label</tspan> <tspan class="dg-attr">for</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"email"</tspan><tspan class="dg-punct">&gt;</tspan>Email<tspan class="dg-punct">&lt;/</tspan><tspan class="dg-tag">label</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<text x="36" y="104" class="dg-mono" style="font-size:16px" textLength="297.6" lengthAdjust="spacing"><tspan class="dg-punct">&lt;</tspan><tspan class="dg-tag">input</tspan> <tspan class="dg-attr">id</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"email"</tspan> <tspan class="dg-attr">type</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"email"</tspan><tspan class="dg-punct">&gt;</tspan></text>
-<path class="dg-ink" d="M406 82h12"/>
-<path class="dg-arrow" d="M424 82l-7-4v8z"/>
-<text x="434" y="50" class="dg-text">Email</text>
-<rect class="dg-ring" x="430" y="62" width="184" height="42" rx="12"/>
-<rect class="dg-focus" x="432" y="64" width="180" height="38" rx="10"/>
-<path class="dg-caret" d="M445 75v16"/>
-<path class="dg-cursor" d="M470 33v17l4.5-4 3.2 7 2.6-1.2-3.1-6.8h6z"/>
-<text x="522" y="134" text-anchor="middle" class="dg-small">Clicking the label focuses the box</text>
-</svg>
-</div>
-<figcaption>The label's for and the input's id hold the same value. That shared value is the link between them.</figcaption>
-</figure>
+::: anatomy How the connection works
+- `<label for="email">Email</label>` **The label** names the field it describes, with `for="email"`.
+- `<input id="email" type="email">` **The input** carries that same name, in `id="email"`.
+:::
+
+The two values match, so the browser links them: clicking the word **Email** puts the cursor straight into the box.
 
 - `for="email"` on the label names the input it describes.
 - `id="email"` on the input gives it that name. An id must be unique on the page (Chapter 7 explains why).
@@ -136,36 +119,22 @@ Radio buttons offer **one choice from a group**. Selecting one releases whicheve
 1. **It labels the data that gets sent.** When a form is submitted, each answer travels as a `name=value` pair, such as `gender=female`. A field without a name is not sent at all.
 2. **For radio buttons, it forms the group.** All the options in one group share the same `name`, and that is how the browser knows only one of them may be on.
 
-<figure class="diagram">
-<div class="scroll">
-<svg viewBox="0 0 620 196" role="img" aria-label="Left: three radios share name equals gender, so only Female is selected. Right: each radio has a different name, so all three are selected at once and none can be unselected.">
-<text x="30" y="22" class="dg-label dg-strong dg-good">Same name: one choice</text>
-<rect class="dg-line dg-dash" x="30" y="38" width="250" height="140" rx="16"/>
-<text x="48" y="62" class="dg-mono" style="font-size:12px"><tspan class="dg-attr">name</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"gender"</tspan></text>
-<circle class="dg-radio" cx="58" cy="94" r="8"/>
-<circle class="dg-radio-on" cx="58" cy="124" r="8"/>
-<circle class="dg-dot" cx="58" cy="124" r="4"/>
-<circle class="dg-radio" cx="58" cy="154" r="8"/>
-<text x="76" y="99" class="dg-text">Male</text>
-<text x="76" y="129" class="dg-text">Female</text>
-<text x="76" y="159" class="dg-text">Other</text>
-<text x="340" y="22" class="dg-label dg-strong dg-bad">Different names: no group</text>
-<circle class="dg-radio-on" cx="358" cy="94" r="8"/>
-<circle class="dg-dot" cx="358" cy="94" r="4"/>
-<circle class="dg-radio-on" cx="358" cy="124" r="8"/>
-<circle class="dg-dot" cx="358" cy="124" r="4"/>
-<circle class="dg-radio-on" cx="358" cy="154" r="8"/>
-<circle class="dg-dot" cx="358" cy="154" r="4"/>
-<text x="376" y="99" class="dg-text">Male</text>
-<text x="376" y="129" class="dg-text">Female</text>
-<text x="376" y="159" class="dg-text">Other</text>
-<text x="470" y="98" class="dg-mono" style="font-size:12px"><tspan class="dg-attr">name</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"a"</tspan></text>
-<text x="470" y="128" class="dg-mono" style="font-size:12px"><tspan class="dg-attr">name</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"b"</tspan></text>
-<text x="470" y="158" class="dg-mono" style="font-size:12px"><tspan class="dg-attr">name</tspan><tspan class="dg-punct">=</tspan><tspan class="dg-value">"c"</tspan></text>
-</svg>
-</div>
-<figcaption>Radios with one shared name behave as one question. Give each a different name and every button becomes its own question that can never be switched off.</figcaption>
-</figure>
+::: pair
+- **Same name: one choice**
+  ```html
+  <input type="radio" name="gender"> Male
+  <input type="radio" name="gender"> Female
+  <input type="radio" name="gender"> Other
+  ```
+  Pick one and the others switch off.
+- **Different names: no group**
+  ```html
+  <input type="radio" name="a"> Male
+  <input type="radio" name="b"> Female
+  <input type="radio" name="c"> Other
+  ```
+  Every button can be on at once, and none can be switched off.
+:::
 
 > [!REMEMBER]
 > **Same `name`** for choices that exclude each other. **Different `name`s** for separate questions. And give every radio a `value`: it is what gets sent. Without one, the browser sends the unhelpful word `on`.
