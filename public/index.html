@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Notebook</title>
+  <meta name="description" content="A quiet place to read your study notes.">
+  <meta name="theme-color" content="#F3F2EE" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1C1C1E" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/_static/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/_static/icon-180.png">
+  <link rel="manifest" href="/_static/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Notebook">
+  <link rel="stylesheet" href="/_vendor/newsreader/opsz.css">
+  <link rel="stylesheet" href="/_vendor/newsreader/opsz-italic.css">
+  <link rel="stylesheet" href="/_vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="/_static/app.css">
+  <script>
+    // Apply reader settings before first paint.
+    try {
+      const get = (k) => JSON.parse(localStorage.getItem('notebook:' + k));
+      const root = document.documentElement;
+      const theme = get('theme');
+      if (theme === 'paper' || theme === 'night') root.dataset.theme = theme;
+      if (get('face') === 'sans') root.dataset.face = 'sans';
+      const size = [16, 17, 18, 19, 20, 22, 24][get('size')];
+      if (size) root.style.setProperty('--text-size', size + 'px');
+      if (get('sidebar') === false) root.classList.add('sidebar-hidden');
+    } catch {}
+  </script>
+  <script type="module" src="/_static/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#view">Skip to content</a>
+
+  <aside class="sidebar" id="sidebar" aria-label="Library">
+    <div class="sidebar-head">
+      <a class="wordmark" href="/" data-link>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.75" y="2.75" width="14.5" height="18.5" rx="2.5"/><path d="M8.5 2.75v18.5M13.5 2.75v6.5l1.75-1.3 1.75 1.3v-6.5"/></svg>
+        <span>Notebook</span>
+      </a>
+      <button class="icon-btn" type="button" data-action="toggle-sidebar" aria-label="Hide sidebar" title="Hide sidebar (⌘\)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M9.25 4.5v15"/></svg>
+      </button>
+    </div>
+    <button class="search-field" type="button" data-action="search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 4.5 4.5"/></svg>
+      <span>Search</span>
+      <kbd>⌘K</kbd>
+    </button>
+    <nav class="tree" id="tree" aria-label="Folders and notes"></nav>
+  </aside>
+  <div class="scrim" data-action="close-sidebar" aria-hidden="true"></div>
+
+  <div class="main">
+    <header class="toolbar" id="toolbar">
+      <div class="toolbar-start">
+        <button class="icon-btn show-sidebar" type="button" data-action="toggle-sidebar" aria-label="Show sidebar" title="Show sidebar (⌘\)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M9.25 4.5v15"/></svg>
+        </button>
+        <a class="back" id="back" href="/" data-link hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg>
+          <span></span>
+        </a>
+      </div>
+      <p class="toolbar-title" id="toolbar-title" aria-hidden="true"></p>
+      <div class="toolbar-end">
+        <button class="icon-btn text-btn" type="button" data-action="reader" aria-label="Reader settings" aria-haspopup="dialog" aria-expanded="false" title="Reader settings">Aa</button>
+        <button class="icon-btn" type="button" data-action="search" aria-label="Search" title="Search (⌘K)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 4.5 4.5"/></svg>
+        </button>
+        <button class="icon-btn fullscreen-btn" type="button" data-action="fullscreen" aria-pressed="false" aria-label="Full screen" title="Full screen (F)">
+          <svg class="i-enter" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.75 9.5V4.75H9.5M14.5 4.75h4.75V9.5M19.25 14.5v4.75H14.5M9.5 19.25H4.75V14.5"/></svg>
+          <svg class="i-exit" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 4.75V9.5H4.75M19.25 9.5H14.5V4.75M14.5 19.25V14.5h4.75M4.75 14.5H9.5v4.75"/></svg>
+        </button>
+      </div>
+      <div class="progress" aria-hidden="true"></div>
+    </header>
+    <main class="view" id="view" tabindex="-1"></main>
+  </div>
+
+  <div class="popover" id="reader" role="dialog" aria-label="Reader settings" hidden>
+    <div class="seg" role="group" aria-label="Text size">
+      <button type="button" data-size="-1" aria-label="Smaller text"><span class="size-sm">A</span></button>
+      <button type="button" data-size="1" aria-label="Larger text"><span class="size-lg">A</span></button>
+    </div>
+    <div class="size-steps" aria-hidden="true"></div>
+    <div class="seg faces" role="group" aria-label="Typeface">
+      <button type="button" data-face="serif" aria-pressed="true"><span class="face-serif">Serif</span></button>
+      <button type="button" data-face="sans" aria-pressed="false"><span class="face-sans">Sans</span></button>
+    </div>
+    <div class="themes" role="radiogroup" aria-label="Appearance">
+      <button type="button" role="radio" data-theme="auto" aria-checked="true"><span class="swatch swatch-auto"></span>Auto</button>
+      <button type="button" role="radio" data-theme="paper" aria-checked="false"><span class="swatch swatch-paper"></span>Paper</button>
+      <button type="button" role="radio" data-theme="night" aria-checked="false"><span class="swatch swatch-night"></span>Night</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" hidden>
+    <p class="toast-text"></p>
+    <button type="button" data-action="dismiss-toast">Got it</button>
+  </div>
+
+  <div class="palette" id="palette" hidden>
+    <div class="palette-scrim" data-action="close-palette"></div>
+    <div class="palette-panel" role="dialog" aria-modal="true" aria-label="Search notes">
+      <label class="palette-input">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 4.5 4.5"/></svg>
+        <input id="palette-input" type="text" placeholder="Search notes" autocomplete="off" spellcheck="false" role="combobox" aria-expanded="true" aria-controls="palette-results" aria-autocomplete="list">
+        <kbd>esc</kbd>
+      </label>
+      <div class="palette-body" id="palette-results" role="listbox" aria-label="Results"></div>
+      <div class="palette-foot" aria-hidden="true">
+        <span><kbd>↑</kbd><kbd>↓</kbd> to move</span>
+        <span><kbd>↵</kbd> to open</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
