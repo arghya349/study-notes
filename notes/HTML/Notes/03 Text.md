@@ -6,17 +6,27 @@ summary: Headings, paragraphs, bold and italic (and what they mean), raised and 
 
 Most of the web is words. HTML gives you a small, friendly toolkit for shaping them: headings to organise, paragraphs to hold your writing, a way to stress what matters, and a few neat tricks for raised, lowered and broken lines.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 230" aria-hidden="true">
-<rect x="120" y="14" width="168" height="204" rx="12"/>
-<rect class="fill" x="138" y="34" width="118" height="11" rx="5.5"/>
-<rect class="fill soft" x="138" y="64" width="84" height="8" rx="4"/>
-<path d="M138 92h132M138 106h120M138 120h132M138 134h92"/>
-<rect class="fill soft" x="138" y="156" width="70" height="8" rx="4"/>
-<path d="M138 182h132M138 196h104"/>
-<text class="hand" x="104" y="46" text-anchor="end">h1</text>
-<text class="hand" x="104" y="74" text-anchor="end">h2</text>
-<text class="hand" x="104" y="118" text-anchor="end">p</text>
+<figure class="sketch">
+<svg viewBox="0 0 400 240" aria-hidden="true">
+<g class="washes">
+<path class="w-paper" d="M110 16h176v210H110z"/>
+<path class="w-blue" d="M128 36h120v12H128z"/>
+<path class="w-sky" d="M128 66h86v9h-86zM128 158h70v9h-70z"/>
+<path class="w-orange" d="M262 222l70-84 9 7-70 84z"/>
+</g>
+<g class="ink">
+<rect x="110" y="16" width="176" height="210" rx="10"/>
+<rect class="thin" x="128" y="36" width="120" height="12" rx="6"/>
+<rect class="thin" x="128" y="66" width="86" height="9" rx="4.5"/>
+<path class="thin" d="M128 94h140M128 108h128M128 122h140M128 136h96"/>
+<rect class="thin" x="128" y="158" width="70" height="9" rx="4.5"/>
+<path class="thin" d="M128 186h140M128 200h110"/>
+<path d="M262 222l70-84 9 7-70 84z"/>
+<path d="M262 222l-3 10 9-5"/>
+</g>
+<text class="t-hand" x="98" y="47" text-anchor="end" style="font-size:18px">h1</text>
+<text class="t-hand" x="98" y="76" text-anchor="end" style="font-size:18px">h2</text>
+<text class="t-hand" x="98" y="120" text-anchor="end" style="font-size:18px">p</text>
 </svg>
 <figcaption>A page of text is a little outline: big headings, smaller ones, and paragraphs underneath.</figcaption>
 </figure>

@@ -6,14 +6,28 @@ summary: Links that go anywhere, opening a new tab, file paths that always work,
 
 Links are what make the web a *web*: they carry you from one page to the next. Images bring in everything words can't show. Each needs just one element and a couple of attributes, and by the end of this chapter you'll use both with confidence.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 220" aria-hidden="true">
+<figure class="sketch">
+<svg viewBox="0 0 420 230" aria-hidden="true">
+<g class="washes">
+<rect class="w-grey" x="58" y="92" width="96" height="40" rx="20" transform="rotate(-32 106 112)"/>
+<rect class="w-grey" x="112" y="72" width="96" height="40" rx="20" transform="rotate(-32 160 92)"/>
+<path class="w-ochre" d="M236 40h130v140H236z"/>
+<path class="w-sky" d="M250 54h102v112H250z"/>
+<path class="w-green" d="M252 166v-16q24-34 46-14q22-26 52 6v24z"/>
+<circle class="w-yellow" cx="326" cy="84" r="11"/>
+</g>
+<g class="ink">
 <rect x="58" y="92" width="96" height="40" rx="20" transform="rotate(-32 106 112)"/>
 <rect x="112" y="72" width="96" height="40" rx="20" transform="rotate(-32 160 92)"/>
-<rect x="236" y="46" width="120" height="124" rx="8"/>
-<rect class="soft" x="248" y="58" width="96" height="100" rx="4"/>
-<path d="M254 150l26-38 18 22 14-16 26 32"/>
-<circle cx="320" cy="82" r="9"/>
+<circle class="solid" cx="301" cy="14" r="2.5"/>
+<path class="thin" d="M301 16L252 40M301 16L350 40"/>
+<rect x="236" y="40" width="130" height="140" rx="6"/>
+<rect x="250" y="54" width="102" height="112" rx="2"/>
+<path d="M252 150q24-34 46-14q22-26 52 6"/>
+<circle cx="326" cy="84" r="10"/>
+</g>
+<text class="t-code" x="132" y="196" text-anchor="middle">&lt;a&gt;</text>
+<text class="t-code" x="301" y="204" text-anchor="middle">&lt;img&gt;</text>
 </svg>
 <figcaption>A link carries you somewhere. An image brings something to you.</figcaption>
 </figure>

@@ -6,17 +6,27 @@ summary: Grouping content with div, naming one element with id, labelling many w
 
 Once a page has content, you'll want to group pieces together and point at particular ones. That's all `div`, `id` and `class` do. They change almost nothing you can see; think of them as getting the page ready for CSS and JavaScript, which come next in your journey.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 220" aria-hidden="true">
+<figure class="sketch">
+<svg viewBox="0 0 420 222" aria-hidden="true">
+<g class="washes">
+<path class="w-orange" d="M48 88h104l26 26-26 26H48z"/>
+<path class="w-green" d="M232 50h96l22 22-22 22h-96zM232 100h96l22 22-22 22h-96zM232 150h96l22 22-22 22h-96z"/>
+</g>
+<g class="ink">
 <path d="M48 88h104l26 26-26 26H48z"/>
 <circle cx="164" cy="114" r="4"/>
-<text class="hand" x="62" y="121">#apple</text>
-<path d="M232 50h96l22 22-22 22h-96z"/>
-<path d="M232 100h96l22 22-22 22h-96z"/>
-<path d="M232 150h96l22 22-22 22h-96z"/>
-<text class="hand" x="246" y="79">.fruit</text>
-<text class="hand" x="246" y="129">.fruit</text>
-<text class="hand" x="246" y="179">.fruit</text>
+<path class="thin" d="M168 114q22 8 16 34q-4 16 10 24"/>
+<path d="M232 50h96l22 22-22 22h-96zM232 100h96l22 22-22 22h-96zM232 150h96l22 22-22 22h-96z"/>
+<circle cx="340" cy="72" r="3.5"/><circle cx="340" cy="122" r="3.5"/><circle cx="340" cy="172" r="3.5"/>
+<path class="thin" d="M344 72q30 10 46 50M344 122h46M344 172q30-10 46-50"/>
+<circle class="solid" cx="390" cy="122" r="3"/>
+</g>
+<text class="t-hand" x="98" y="121" text-anchor="middle" style="font-size:20px">#apple</text>
+<text class="t-hand" x="282" y="79" text-anchor="middle" style="font-size:19px">.fruit</text>
+<text class="t-hand" x="282" y="129" text-anchor="middle" style="font-size:19px">.fruit</text>
+<text class="t-hand" x="282" y="179" text-anchor="middle" style="font-size:19px">.fruit</text>
+<text class="t-code" x="106" y="186" text-anchor="middle">id</text>
+<text class="t-code" x="282" y="214" text-anchor="middle">class</text>
 </svg>
 <figcaption>An id is a name tag for one. A class is a label many can share.</figcaption>
 </figure>

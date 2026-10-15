@@ -6,16 +6,25 @@ summary: The frame every page starts from, explained line by line. What lives in
 
 Every HTML page, from a one-line experiment to a huge website, sits inside the same frame. Learn it once and you'll never have to think about it again. Even better, your editor can type the whole thing for you.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 230" aria-hidden="true">
-<rect x="120" y="16" width="160" height="200" rx="12"/>
-<rect class="fill soft" x="134" y="30" width="132" height="40" rx="7"/>
-<path d="M148 98h104M148 118h90M148 138h104M148 158h72M148 178h96"/>
-<path d="M272 50h40M264 138h48"/>
-<text class="hand" x="320" y="56">head</text>
-<text class="hand" x="320" y="144">body</text>
+<figure class="sketch">
+<svg viewBox="0 0 400 240" aria-hidden="true">
+<g class="washes">
+<path class="w-paper" d="M140 70h130v156H140z"/>
+<path class="w-red" d="M162 70q-2-34 22-40h42q24 6 22 40zM118 76q87-16 174 0q-87 14-174 0z"/>
+</g>
+<g class="ink">
+<rect x="140" y="70" width="130" height="156" rx="10"/>
+<path d="M162 70q-2-34 22-40h42q24 6 22 40"/>
+<path d="M118 76q87-16 174 0M118 76q87 14 174 0"/>
+<path d="M163 60h84"/>
+<path class="thin" d="M228 38l6 8M232 48l6 8M235 58l5 6"/>
+<path class="thin" d="M160 110h90M160 128h80M160 146h90M160 164h64M160 182h84M160 200h70"/>
+<path class="thin" d="M300 50h30M276 150h54"/>
+</g>
+<text class="t-hand" x="336" y="56" style="font-size:20px">head</text>
+<text class="t-hand" x="336" y="156" style="font-size:20px">body</text>
 </svg>
-<figcaption>Two halves: the head describes the page, the body is the page.</figcaption>
+<figcaption>The head sits on top and describes the page. The body is the page itself.</figcaption>
 </figure>
 
 ::: tiles By the end of this chapter you can

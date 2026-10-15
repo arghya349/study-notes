@@ -6,16 +6,35 @@ summary: Open the lid on a web page. What HTML is, how it works with CSS and Jav
 
 Every page you've ever opened, a search engine, a news story, a shop, is a plain text file underneath. That file is written in HTML. Let's open the lid and look inside. By the end of this chapter you'll know the three words this whole course is built on: **tag**, **element** and **attribute**.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 220" aria-hidden="true">
-<rect x="70" y="24" width="260" height="172" rx="16"/>
-<path d="M70 58h260"/>
-<circle cx="92" cy="41" r="4"/><circle cx="108" cy="41" r="4"/><circle cx="124" cy="41" r="4"/>
-<path d="M176 98l-34 29 34 29"/>
-<path d="M212 90l-22 76"/>
-<path d="M226 98l34 29-34 29"/>
-<path class="soft" d="M150 178h100"/>
-<path d="M356 50v12M350 56h12M40 150v10M35 155h10"/>
+<figure class="sketch">
+<svg viewBox="0 0 420 236" aria-hidden="true">
+<g class="washes">
+<path class="w-grey" d="M30 40h150v160H30z" transform="rotate(-6 105 120)"/>
+<path class="w-paper" d="M196 70h196v140H196z"/>
+<path class="w-sky" d="M196 70h196v26H196z"/>
+<path class="w-orange" d="M214 110h106v10H214z"/>
+<path class="w-sky" d="M214 156h66v40h-66z"/>
+<path class="w-green" d="M216 194l18-22 12 12 10-10 22 20z"/>
+</g>
+<g class="ink">
+<g transform="rotate(-6 105 120)"><rect x="30" y="40" width="150" height="160" rx="6"/></g>
+<rect x="196" y="70" width="196" height="140" rx="10"/>
+<path d="M196 96h196"/>
+<circle cx="212" cy="83" r="3.5"/><circle cx="224" cy="83" r="3.5"/><circle cx="236" cy="83" r="3.5"/>
+<rect class="thin" x="214" y="110" width="106" height="10" rx="5"/>
+<path class="thin" d="M214 132h158M214 144h136"/>
+<rect x="214" y="156" width="66" height="40" rx="3"/>
+<path class="thin" d="M218 192l18-22 12 12 10-10 20 20"/>
+<path class="thin" d="M292 160h80M292 172h66M292 184h74"/>
+</g>
+<g transform="rotate(-6 105 120)">
+<text class="t-code" x="44" y="72">&lt;h1&gt;Hello&lt;/h1&gt;</text>
+<text class="t-code" x="44" y="96">&lt;p&gt;A short</text>
+<text class="t-code" x="44" y="112">paragraph.&lt;/p&gt;</text>
+<text class="t-code" x="44" y="136">&lt;img src="…"&gt;</text>
+</g>
+<text class="t-hand" x="104" y="228" text-anchor="middle">what you write</text>
+<text class="t-hand" x="294" y="232" text-anchor="middle">what people see</text>
 </svg>
 <figcaption>Underneath every web page is a plain text file of labelled content.</figcaption>
 </figure>

@@ -6,24 +6,36 @@ summary: Numbered lists, bulleted lists, the items inside them, lists inside lis
 
 Shopping lists, recipes, top tens, menus: lists are everywhere, on paper and on the web. HTML has two kinds, and the good news is that they're built from exactly the same pieces.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 220" aria-hidden="true">
-<g transform="rotate(-3 135 110)">
-<rect x="66" y="26" width="140" height="170" rx="10"/>
-<text class="hand" x="84" y="70">1.</text>
-<text class="hand" x="84" y="110">2.</text>
-<text class="hand" x="84" y="150">3.</text>
-<path d="M110 64h76M110 104h62M110 144h70"/>
+<figure class="sketch">
+<svg viewBox="0 0 420 236" aria-hidden="true">
+<g class="washes">
+<path class="w-paper" d="M60 24h150v180H60z" transform="rotate(-3 135 115)"/>
+<path class="w-yellow" d="M226 42h128v140H226z" transform="rotate(4 290 115)"/>
+<circle class="w-red" cx="135" cy="34" r="7"/>
 </g>
-<g transform="rotate(4 280 110)">
-<rect x="218" y="40" width="124" height="140" rx="10"/>
-<circle class="fill" cx="240" cy="78" r="3.5"/>
-<circle class="fill" cx="240" cy="110" r="3.5"/>
-<circle class="fill" cx="240" cy="142" r="3.5"/>
-<path d="M254 78h66M254 110h52M254 142h60"/>
+<g class="ink">
+<g transform="rotate(-3 135 115)">
+<rect x="60" y="24" width="150" height="180" rx="6"/>
+<path class="thin" d="M106 70h82M106 110h66M106 150h76"/>
+<path d="M192 62l5 6 10-12"/>
 </g>
+<circle class="solid" cx="135" cy="34" r="3"/>
+<g transform="rotate(4 290 115)">
+<path d="M226 42h128v120l-20 20H226z"/>
+<path class="thin" d="M354 162h-20v20"/>
+<circle class="solid" cx="248" cy="82" r="3.5"/><circle class="solid" cx="248" cy="114" r="3.5"/><circle class="solid" cx="248" cy="146" r="3.5"/>
+<path class="thin" d="M262 82h70M262 114h56M262 146h64"/>
+</g>
+</g>
+<g transform="rotate(-3 135 115)">
+<text class="t-hand" x="78" y="76" style="font-size:18px">1.</text>
+<text class="t-hand" x="78" y="116" style="font-size:18px">2.</text>
+<text class="t-hand" x="78" y="156" style="font-size:18px">3.</text>
+</g>
+<text class="t-code" x="135" y="226" text-anchor="middle">ol</text>
+<text class="t-code" x="292" y="226" text-anchor="middle">ul</text>
 </svg>
-<figcaption>Numbers when order matters, bullets when it doesn't.</figcaption>
+<figcaption>Numbers when the order matters, bullets when it doesn’t.</figcaption>
 </figure>
 
 ::: tiles By the end of this chapter you can

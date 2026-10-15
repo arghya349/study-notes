@@ -1108,14 +1108,6 @@ details[open].callout-predict .callout-reveal::after { content: "Hide"; }
   font: 600 14px/1 var(--sans); color: var(--accent); letter-spacing: 0;
 }
 
-/* Line drawings: fine, even strokes, like an engraved plate */
-.prose .doodle { margin: 2.4em auto; max-width: 420px; color: var(--accent); }
-.doodle svg { display: block; width: 100%; height: auto; overflow: visible; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-.doodle .fill { fill: currentColor; stroke: none; }
-.doodle .soft { opacity: .3; }
-.doodle .hand { fill: currentColor; stroke: none; font: italic 400 22px var(--display); }
-.doodle .hand.big { font-size: 46px; font-style: normal; }
-.prose .doodle figcaption { margin-top: 10px; font: italic 400 21px/1.3 var(--display); color: var(--ink-2); }
 .box-pair li > strong:first-child, .box-pair li > p:first-child > strong:first-child { display: block; margin-bottom: 6px; font: 620 15px/1.35 var(--sans); color: var(--ink); }
 .box-pair li > p:first-child:has(> strong:only-child) { margin-bottom: 6px; }
 

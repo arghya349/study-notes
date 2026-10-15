@@ -6,22 +6,33 @@ summary: How a page asks you things. The form container, labels that connect to 
 
 Every time a page asks you something, your name, a search, a quiz answer, it's using a form. Forms can look busy, but they're made from a handful of simple pieces that click together. Let's build one, piece by piece.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 230" aria-hidden="true">
-<rect x="112" y="14" width="176" height="204" rx="14"/>
-<path d="M134 42h44M134 104h56"/>
-<rect x="134" y="52" width="132" height="26" rx="7"/>
-<rect x="134" y="114" width="132" height="26" rx="7"/>
-<path d="M144 59v12"/>
-<rect x="134" y="156" width="14" height="14" rx="3"/>
-<path d="M137 163l3.5 3.5 6-8"/>
-<path d="M158 163h58"/>
-<circle cx="141" cy="196" r="7"/>
-<circle class="fill" cx="141" cy="196" r="3"/>
-<circle cx="175" cy="196" r="7"/>
-<rect class="fill soft" x="212" y="184" width="54" height="24" rx="12"/>
+<figure class="sketch">
+<svg viewBox="0 0 400 252" aria-hidden="true">
+<g class="washes">
+<path class="w-ochre" d="M104 20h192v224H104z"/>
+<path class="w-paper" d="M118 40h164v192H118z"/>
+<path class="w-grey" d="M164 14h72v22h-72z"/>
+<path class="w-blue" d="M210 192h56v24h-56z"/>
+</g>
+<g class="ink">
+<rect x="104" y="20" width="192" height="224" rx="12"/>
+<rect x="118" y="40" width="164" height="192" rx="4"/>
+<rect x="164" y="14" width="72" height="22" rx="5"/>
+<path d="M188 14q12-14 24 0"/>
+<path class="thin" d="M134 62h40M134 118h54"/>
+<rect x="134" y="70" width="132" height="26" rx="6"/>
+<rect x="134" y="126" width="132" height="26" rx="6"/>
+<path d="M144 76v14"/>
+<rect x="134" y="166" width="14" height="14" rx="3"/>
+<path d="M137 173l3.5 3.5 6-8"/>
+<path class="thin" d="M158 173h58"/>
+<circle cx="141" cy="204" r="7"/><circle class="solid" cx="141" cy="204" r="3"/>
+<circle cx="175" cy="204" r="7"/>
+<rect x="210" y="192" width="56" height="24" rx="12"/>
+</g>
+
 </svg>
-<figcaption>Labels, boxes, ticks and choices: every form is made of the same few pieces.</figcaption>
+<figcaption>Labels, boxes, ticks and choices: every form is made from the same few pieces.</figcaption>
 </figure>
 
 ::: tiles By the end of this chapter you can

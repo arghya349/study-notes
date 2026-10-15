@@ -6,22 +6,29 @@ summary: The rules of the game, before the first move. What a C++ program looks 
 
 Every game is easier once you know the rules. Before we touch data types or algorithms, let's learn the rules of C++: what a program looks like, how you write an instruction, and how the computer follows it. No history lesson, no heavy theory. Just enough to read your first programs with confidence.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 230" aria-hidden="true">
-<rect x="95" y="180" width="42" height="26" rx="3"/>
-<rect class="fill soft" x="137" y="180" width="42" height="26" rx="3"/>
-<rect x="179" y="180" width="42" height="26" rx="3"/>
-<rect class="fill soft" x="221" y="180" width="42" height="26" rx="3"/>
-<rect x="263" y="180" width="42" height="26" rx="3"/>
-<path d="M160 178q2-16 16-18h48q14 2 16 18"/>
-<path d="M172 160h56"/>
+<figure class="sketch">
+<svg viewBox="0 0 420 240" aria-hidden="true">
+<g class="washes">
+<path class="w-ochre" d="M90 178h48v28H90zM186 178h48v28h-48zM282 178h48v28h-48zM138 206h48v28h-48zM234 206h48v28h-48z"/>
+<path class="w-blue" d="M222 160C230 130 238 104 226 78L230 60L218 70C204 68 190 74 180 86L162 104C156 112 160 121 170 120C180 119 188 114 194 116C186 130 176 146 178 160ZM160 178q2-16 16-18h48q14 2 16 18z"/>
+<path class="w-red" d="M296 204q2-12 10-14q8 2 10 14zM300 184a6 6 0 1 0 12 0a6 6 0 1 0-12 0z"/>
+</g>
+<g class="ink">
+<rect x="90" y="178" width="240" height="56" rx="2"/>
+<path class="thin" d="M138 178v56M186 178v56M234 178v56M282 178v56M90 206h240"/>
+<path d="M160 178q2-16 16-18h48q14 2 16 18M172 160h56"/>
 <path d="M222 160C230 130 238 104 226 78L230 60L218 70C204 68 190 74 180 86L162 104C156 112 160 121 170 120C180 119 188 114 194 116C186 130 176 146 178 160"/>
-<circle class="fill" cx="201" cy="88" r="3.2"/>
-<circle class="fill" cx="167" cy="112" r="1.8"/>
+<circle class="solid" cx="201" cy="88" r="3"/>
+<circle class="solid" cx="167" cy="112" r="1.8"/>
 <path d="M228 86q10 10 6 22M232 106q8 10 4 22M232 128q6 10 2 20"/>
-<path class="soft" d="M252 92c30-22 72-14 84 18" stroke-dasharray="2 9"/>
+<path class="thin" d="M213 101l10-6M212 113l12-7M211 125l13-7M210 137l14-7M210 149l14-7"/>
+<circle cx="306" cy="184" r="6"/>
+<path d="M296 204q2-12 10-14q8 2 10 14"/>
+<path class="dash" d="M252 92c30-22 72-14 84 18"/>
 <path d="M336 110l-11-1M336 110l1-11"/>
-<path d="M78 70v16M70 78h16M330 34v12M324 40h12M58 150v10M53 155h10"/>
+<path class="thin" d="M74 70v16M66 78h16M356 36v12M350 42h12M54 150v10M49 155h10"/>
+</g>
+
 </svg>
 <figcaption>Learn the pieces and the board first. Strategy comes later.</figcaption>
 </figure>
@@ -37,21 +44,31 @@ Every game is easier once you know the rules. Before we touch data types or algo
 
 You know that 12 + 7 is 19 without even thinking. A computer doesn't know what you *want*. It only does what it's told: precisely, literally, and incredibly fast.
 
-<figure class="doodle">
+<figure class="sketch">
 <svg viewBox="0 0 420 220" aria-hidden="true">
-<g transform="rotate(-4 100 112)">
-<rect x="30" y="28" width="142" height="168" rx="12"/>
-<text class="hand" x="48" y="68">1. take 12</text>
-<text class="hand" x="48" y="100">2. take 7</text>
-<text class="hand" x="48" y="132">3. add them</text>
-<text class="hand" x="48" y="164">4. show it</text>
+<g class="washes">
+<path class="w-paper" d="M30 28h142v168H30z" transform="rotate(-4 100 112)"/>
+<path class="w-grey" d="M272 40h128v96H272z"/>
+<path class="w-sky" d="M284 52h104v72H284z"/>
+<path class="w-ochre" d="M292 168h88v12h-88z"/>
 </g>
+<g class="ink">
+<g transform="rotate(-4 100 112)"><rect x="30" y="28" width="142" height="168" rx="12"/><circle class="solid" cx="101" cy="40" r="3"/></g>
 <path d="M192 112c26-14 48-14 68-2"/>
 <path d="M262 111l-10-6M262 111l-11 3"/>
 <rect x="272" y="40" width="128" height="96" rx="14"/>
-<rect class="soft" x="284" y="52" width="104" height="72" rx="7"/>
-<text class="hand big" x="336" y="103" text-anchor="middle">19</text>
-<path d="M324 136l-6 24h40l-6-24M298 162h76"/>
+<rect x="284" y="52" width="104" height="72" rx="7"/>
+<path d="M324 136l-6 24h40l-6-24"/>
+<rect x="292" y="168" width="88" height="12" rx="3"/>
+<path class="thin" d="M300 174h5M311 174h5M322 174h5M333 174h5M344 174h5M355 174h5M366 174h5"/>
+</g>
+<g transform="rotate(-4 100 112)">
+<text class="t-hand" x="48" y="74">1. take 12</text>
+<text class="t-hand" x="48" y="106">2. take 7</text>
+<text class="t-hand" x="48" y="138">3. add them</text>
+<text class="t-hand" x="48" y="170">4. show it</text>
+</g>
+<text class="t-num" x="336" y="104" text-anchor="middle" style="font-size:40px">19</text>
 </svg>
 <figcaption>A program is a recipe the computer follows exactly, one step at a time.</figcaption>
 </figure>
@@ -219,6 +236,40 @@ cout << 19;
 ## Write, compile, run
 
 Before you see a single result, your code goes through three stages. Think of writing a letter, having a very strict proofreader check it, and then sending it off.
+
+<figure class="sketch">
+<svg viewBox="0 0 460 214" aria-hidden="true">
+<g class="washes">
+<path class="w-paper" d="M34 50h84v110H34z" transform="rotate(-5 76 105)"/>
+<path class="w-blue" d="M100 156l6-14 34-48 8 6-34 48z"/>
+<path class="w-paper" d="M200 56h70v92h-70z"/>
+<circle class="w-sky" cx="250" cy="96" r="24"/>
+<path class="w-red" d="M358 176V84q0-30 26-30t26 30v92z"/>
+<path class="w-grey" d="M350 176h68v10h-68z"/>
+</g>
+<g class="ink">
+<g transform="rotate(-5 76 105)"><rect x="34" y="50" width="84" height="110" rx="4"/><path class="thin" d="M46 74h56M46 88h50M46 102h58M46 116h40M46 130h52"/></g>
+<path d="M100 156l6-14 34-48 8 6-34 48z"/>
+<path d="M100 156l1-9 5 3z"/>
+<path class="dash" d="M154 112h32"/><path d="M194 112l-10-5M194 112l-10 5"/>
+<rect x="200" y="56" width="70" height="92" rx="4"/>
+<path class="thin" d="M210 72h46M210 84h40M210 96h48M210 108h30"/>
+<path d="M212 124l8 8 16-20" style="stroke:#B5483A"/>
+<circle cx="250" cy="96" r="26"/>
+<path class="thick" d="M268 116l22 24"/>
+<path class="dash" d="M300 112h32"/><path d="M340 112l-10-5M340 112l-10 5"/>
+<path d="M358 176V84q0-30 26-30t26 30v92"/>
+<path d="M354 84h60"/>
+<path class="thick" d="M372 104h24"/>
+<rect x="350" y="176" width="68" height="10" rx="2"/>
+<circle class="thin" cx="384" cy="132" r="7"/>
+</g>
+<text class="t-hand" x="80" y="200" text-anchor="middle">write</text>
+<text class="t-hand" x="245" y="200" text-anchor="middle">compile</text>
+<text class="t-hand" x="384" y="206" text-anchor="middle">run</text>
+</svg>
+<figcaption>Write the letter, let a strict proofreader check it, then send it off.</figcaption>
+</figure>
 
 ::: flow
 1. **Write** You type instructions into a `.cpp` file. This is your *source code*.

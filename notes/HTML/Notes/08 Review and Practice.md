@@ -6,19 +6,27 @@ summary: Tie it all together. How the chapters connect, a one-page cheat sheet, 
 
 Look how far you've come: a page's skeleton, text, lists, links, images, forms, and the tools to group and name it all. This chapter ties everything together, hands you a one-page cheat sheet, and then lets you prove to yourself that you really know it.
 
-<figure class="doodle">
-<svg viewBox="0 0 400 200" aria-hidden="true">
-<path class="soft" d="M30 160Q55 160 80 140T130 95T185 110T235 130T290 100T340 62"/>
-<circle class="fill" cx="30" cy="160" r="5"/>
-<circle class="fill" cx="80" cy="140" r="5"/>
-<circle class="fill" cx="130" cy="95" r="5"/>
-<circle class="fill" cx="185" cy="110" r="5"/>
-<circle class="fill" cx="235" cy="130" r="5"/>
-<circle class="fill" cx="290" cy="100" r="5"/>
-<circle class="fill" cx="340" cy="62" r="5"/>
-<path d="M340 62V18l28 9-28 9"/>
+<figure class="sketch">
+<svg viewBox="0 0 420 222" aria-hidden="true">
+<g class="washes">
+<path class="w-green" d="M0 222V200Q120 190 200 140T360 70Q385 66 420 84V222Z"/>
+<path class="w-green" d="M0 222V214Q80 200 150 212T300 206T420 196V222Z"/>
+<circle class="w-yellow" cx="74" cy="58" r="20"/>
+<path class="w-red" d="M360 28l28 9-28 9z"/>
+<ellipse class="w-ochre" cx="35" cy="193" rx="9" ry="5"/><ellipse class="w-ochre" cx="100" cy="180" rx="9" ry="5"/><ellipse class="w-ochre" cx="158" cy="159" rx="9" ry="5"/><ellipse class="w-ochre" cx="200" cy="137" rx="9" ry="5"/><ellipse class="w-ochre" cx="240" cy="114" rx="9" ry="5"/><ellipse class="w-ochre" cx="280" cy="94" rx="9" ry="5"/><ellipse class="w-ochre" cx="320" cy="79" rx="9" ry="5"/>
+</g>
+<g class="ink">
+<path d="M0 200Q120 190 200 140T360 70Q385 66 420 84"/>
+<path class="thin" d="M0 214Q80 200 150 212T300 206T420 196"/>
+<circle cx="74" cy="58" r="18"/>
+<path class="thin" d="M74 30v-8M74 94v-8M46 58h-8M110 58h-8M54 38l-6-6M94 78l6 6M54 78l-6 6M94 38l6-6"/>
+<path class="thin" d="M168 40q6-6 12 0q6-6 12 0M206 58q5-5 10 0q5-5 10 0"/>
+<ellipse cx="35" cy="193" rx="9" ry="5"/><ellipse cx="100" cy="180" rx="9" ry="5"/><ellipse cx="158" cy="159" rx="9" ry="5"/><ellipse cx="200" cy="137" rx="9" ry="5"/><ellipse cx="240" cy="114" rx="9" ry="5"/><ellipse cx="280" cy="94" rx="9" ry="5"/><ellipse cx="320" cy="79" rx="9" ry="5"/>
+<path d="M360 70V28l28 9-28 9"/>
+</g>
+<text class="t-hand" x="35" y="182" text-anchor="middle" style="font-size:14px">1</text><text class="t-hand" x="100" y="169" text-anchor="middle" style="font-size:14px">2</text><text class="t-hand" x="158" y="148" text-anchor="middle" style="font-size:14px">3</text><text class="t-hand" x="200" y="126" text-anchor="middle" style="font-size:14px">4</text><text class="t-hand" x="240" y="103" text-anchor="middle" style="font-size:14px">5</text><text class="t-hand" x="280" y="83" text-anchor="middle" style="font-size:14px">6</text><text class="t-hand" x="320" y="68" text-anchor="middle" style="font-size:14px">7</text>
 </svg>
-<figcaption>Seven chapters behind you. Time to check the view from the top.</figcaption>
+<figcaption>Seven chapters behind you. Time to enjoy the view from the top.</figcaption>
 </figure>
 
 ::: tiles In this chapter you'll
