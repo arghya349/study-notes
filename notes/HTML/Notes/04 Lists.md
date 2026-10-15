@@ -1,14 +1,62 @@
 ---
-summary: Ordered and unordered lists, the list items inside them, lists inside lists, and a simple test for choosing the right one.
+summary: Numbered lists, bulleted lists, the items inside them, lists inside lists, and a simple test for choosing the right one.
 ---
 
 # Lists
 
-Lists are everywhere on the web: navigation menus, steps in a recipe, features of a product, search results. HTML has two kinds of list, and both are built from the same small parts.
+Shopping lists, recipes, top tens, menus: lists are everywhere, on paper and on the web. HTML has two kinds, and the good news is that they're built from exactly the same pieces.
 
-## Ordered lists: ol
+<figure class="doodle">
+<svg viewBox="0 0 400 220" aria-hidden="true">
+<g transform="rotate(-3 135 110)">
+<rect x="66" y="26" width="140" height="170" rx="10"/>
+<text class="hand" x="84" y="70">1.</text>
+<text class="hand" x="84" y="110">2.</text>
+<text class="hand" x="84" y="150">3.</text>
+<path d="M110 64h76M110 104h62M110 144h70"/>
+</g>
+<g transform="rotate(4 280 110)">
+<rect x="218" y="40" width="124" height="140" rx="10"/>
+<circle class="fill" cx="240" cy="78" r="3.5"/>
+<circle class="fill" cx="240" cy="110" r="3.5"/>
+<circle class="fill" cx="240" cy="142" r="3.5"/>
+<path d="M254 78h66M254 110h52M254 142h60"/>
+</g>
+</svg>
+<figcaption>Numbers when order matters, bullets when it doesn't.</figcaption>
+</figure>
 
-`<ol>` creates an **ordered list**. The browser numbers the items for you.
+::: tiles By the end of this chapter you can
+- **Number** a list with ol
+- **Bullet** a list with ul
+- **Nest** a list inside a list
+- **Choose** the right one in a second
+:::
+
+## Two kinds of list
+
+::: pair
+- **ol: the numbered list**
+  ```html
+  <ol>
+    <li>Wake up</li>
+    <li>Study HTML</li>
+    <li>Practice coding</li>
+  </ol>
+  ```
+  For when **order matters**: steps, instructions, rankings.
+- **ul: the bulleted list**
+  ```html
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+  ```
+  For when **order doesn't matter**: topics, ingredients, features.
+:::
+
+Here they are in the browser. Notice you never typed a single number or bullet:
 
 ```html preview
 <ol>
@@ -16,15 +64,6 @@ Lists are everywhere on the web: navigation menus, steps in a recipe, features o
   <li>Study HTML</li>
   <li>Practice coding</li>
 </ol>
-```
-
-Use an ordered list when **the sequence or ranking matters**: steps in a process, instructions, a top-ten.
-
-## Unordered lists: ul
-
-`<ul>` creates an **unordered list**, shown with bullets.
-
-```html preview
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -32,26 +71,26 @@ Use an ordered list when **the sequence or ranking matters**: steps in a process
 </ul>
 ```
 
-Use an unordered list when **order doesn't matter**: a collection of topics, ingredients, features.
+## The items: li
 
-## List items: li
-
-Each item in either kind of list is an `<li>` element. The list element is the container; the `<li>` elements are what it contains.
+Every item, in either kind of list, is an `<li>`, short for *list item*. The list is the container; the items are what it holds.
 
 ::: anatomy How a list is built
 - `<ol>` **The container.** Only `<li>` elements go directly inside it.
-- `<li>Wake up</li>`<br>`<li>Study HTML</li>`<br>`<li>Practice coding</li>` **The items.** Each `<li>` can hold any content.
-- `</ol>` **Closes the list.** The browser adds the numbers 1, 2, 3 for you, and renumbers them when items change.
+- `<li>Wake up</li>`<br>`<li>Study HTML</li>`<br>`<li>Practice coding</li>` **The items.** Each `<li>` can hold any content you like.
+- `</ol>` **Closes the list.** The browser adds 1, 2, 3, and renumbers by itself when items change.
 :::
 
-Two rules keep lists valid:
+Two rules keep every list valid:
 
-1. **An `<li>` belongs inside an `<ol>` or a `<ul>`.** On its own it is not a list.
-2. **Only `<li>` elements go directly inside `<ol>` and `<ul>`.** Any other content, including a heading or a paragraph, goes *inside* an `<li>`.
+::: tiles
+- **li lives inside** an `<li>` belongs in an `<ol>` or a `<ul>`
+- **Only li directly** anything else goes *inside* an `<li>`
+:::
 
 ## Lists inside lists
 
-A list item can contain a whole new list. This is how outlines, sub-steps and dropdown menus are built.
+An item can hold a whole new list. That's how outlines, sub-steps and dropdown menus are built.
 
 ```html preview
 <ul>
@@ -66,32 +105,39 @@ A list item can contain a whole new list. This is how outlines, sub-steps and dr
 </ul>
 ```
 
-<figure class="diagram">
-<div class="dg-grid cols-2">
-<div class="dg-card is-right"><span class="dg-verdict">Correct</span><p>The inner list sits inside an <code>li</code>.</p><pre>&lt;ul&gt;
-  &lt;li&gt;Front end
-    <span class="dg-hl">&lt;ul&gt;…&lt;/ul&gt;</span>
-  &lt;/li&gt;
-&lt;/ul&gt;</pre></div>
-<div class="dg-card is-wrong"><span class="dg-verdict">Incorrect</span><p>The inner list sits directly inside a <code>ul</code>.</p><pre>&lt;ul&gt;
-  &lt;li&gt;Front end&lt;/li&gt;
-  <span class="dg-hl">&lt;ul&gt;…&lt;/ul&gt;</span>
-&lt;/ul&gt;</pre></div>
-</div>
-<figcaption>A nested list belongs to the item it expands on, so it goes inside that item.</figcaption>
-</figure>
+The one thing to get right is *where* the inner list goes:
 
-Browsers change the bullet style for each level of nesting automatically, so the hierarchy is visible without any extra work.
+::: pair
+- **Correct: inside the item**
+  ```html
+  <ul>
+    <li>Front end
+      <ul>…</ul>
+    </li>
+  </ul>
+  ```
+  The inner list belongs to the item it expands on.
+- **Incorrect: loose in the list**
+  ```html
+  <ul>
+    <li>Front end</li>
+    <ul>…</ul>
+  </ul>
+  ```
+  Only `<li>` may sit directly inside `<ul>`.
+:::
 
-## Changing how an ordered list counts
+The browser even changes the bullet style for each level, so the hierarchy shows up by itself.
 
-`<ol>` accepts a few attributes that change its numbering:
+## Changing how a numbered list counts
 
-| Attribute | Effect | Example |
-|---|---|---|
-| `start` | Begin counting from a number other than 1 | `<ol start="3">` |
-| `reversed` | Count down instead of up (a boolean attribute) | `<ol reversed>` |
-| `type` | Use letters or Roman numerals: `1`, `A`, `a`, `I` or `i` | `<ol type="A">` |
+`<ol>` has three handy attributes:
+
+::: tiles
+- `start` begin from another number: `<ol start="3">`
+- `reversed` count down instead of up
+- `type` letters or Roman numerals: `A`, `a`, `I`, `i`
+:::
 
 ```html preview
 <ol start="3">
@@ -110,38 +156,33 @@ Browsers change the bullet style for each level of nesting automatically, so the
 ```
 
 > [!NOTE]
-> These attributes change what the numbering *means*. If you only want a different bullet shape or number style for looks, that is done with CSS.
+> These attributes change what the numbering *means*. If you only want a different bullet shape for looks, that's done with CSS.
 
-## Choosing the right list
+## Which list?
 
-<figure class="diagram">
-<div class="dg-grid cols-2">
-<div class="dg-card is-accent"><span class="dg-card-title">ol <span class="dg-card-role">order matters</span></span><p>Recipe steps, installation instructions, a ranking, a timeline.</p></div>
-<div class="dg-card"><span class="dg-card-title">ul <span class="dg-card-role">order doesn't matter</span></span><p>A shopping list, a set of topics, product features, links in a menu.</p></div>
-</div>
-<figcaption>Both lists are made from li items. Only the container changes.</figcaption>
-</figure>
+There's a one-second test:
 
-> [!TIP] A quick test
-> Imagine shuffling the items. If the meaning would change, use `<ol>`. If it wouldn't, use `<ul>`.
+::: idea
+Imagine shuffling the items. If the meaning changes, use `ol`. If it doesn't, use `ul`.
+:::
 
-## Recap and practice
+> [!PREDICT]- The steps for making a cup of tea: ol or ul?
+> `ol`. Pouring the milk before boiling the water would be a very different cup of tea.
 
-> [!SUMMARY] Chapter 4 in short
-> - `<ol>` is an ordered list, numbered by the browser. Use it when order matters.
-> - `<ul>` is an unordered list, shown with bullets. Use it when order doesn't matter.
-> - `<li>` is one item, and it always lives inside `<ol>` or `<ul>`.
-> - A nested list goes *inside* an `<li>`.
-> - `start`, `reversed` and `type` change how an `<ol>` counts.
+> [!PREDICT]- A list of fruits you like: ol or ul?
+> `ul`. Shuffle them and nothing changes, unless it's a ranking of favourites, which would make it an `ol`.
 
-> [!QUESTION]- When should you choose `<ol>` instead of `<ul>`?
-> When the order or ranking of the items carries meaning, such as steps in a process. If the items could be shuffled without changing the meaning, use `<ul>`.
+## Recap
 
-> [!QUESTION]- Where does a nested list go?
-> Inside the `<li>` it belongs to, not directly inside the outer `<ol>` or `<ul>`.
+::: idea Chapter 4 in one breath
+`ol` numbers, `ul` bullets, and both are filled with `li` items. Nested lists go inside an item, and the shuffle test picks the right one.
+:::
 
-> [!QUESTION]- Do you type the numbers in an ordered list yourself?
-> No. The browser adds them, and renumbers automatically when items are added or removed.
+> [!PREDICT]- Do you type the numbers in an ordered list yourself?
+> No. The browser adds them, and renumbers when you add or remove an item.
 
-> [!QUESTION]- How would you make a list count down from 3 to 1?
-> Add the boolean `reversed` attribute: `<ol reversed>` with three `<li>` items.
+> [!PREDICT]- Where does a nested list go?
+> Inside the `<li>` it belongs to, never directly inside the outer `<ol>` or `<ul>`.
+
+> [!PREDICT]- How would you make a list count down from 3 to 1?
+> Add the `reversed` attribute: `<ol reversed>` with three `<li>` items.

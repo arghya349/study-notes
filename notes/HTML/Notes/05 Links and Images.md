@@ -1,49 +1,72 @@
 ---
-summary: The anchor element and where links can point, opening links in a new tab, file paths that always resolve, and images with useful alternative text.
+summary: Links that go anywhere, opening a new tab, file paths that always work, and images with alternative text that actually helps.
 ---
 
 # Links and Images
 
-Links are what make the web a *web*: they connect one page to the next. Images bring in everything that words alone can't show. Both are built with just one element and a couple of attributes each.
+Links are what make the web a *web*: they carry you from one page to the next. Images bring in everything words can't show. Each needs just one element and a couple of attributes, and by the end of this chapter you'll use both with confidence.
+
+<figure class="doodle">
+<svg viewBox="0 0 400 220" aria-hidden="true">
+<rect x="58" y="92" width="96" height="40" rx="20" transform="rotate(-32 106 112)"/>
+<rect x="112" y="72" width="96" height="40" rx="20" transform="rotate(-32 160 92)"/>
+<rect x="236" y="46" width="120" height="124" rx="8"/>
+<rect class="soft" x="248" y="58" width="96" height="100" rx="4"/>
+<path d="M254 150l26-38 18 22 14-16 26 32"/>
+<circle cx="320" cy="82" r="9"/>
+</svg>
+<figcaption>A link carries you somewhere. An image brings something to you.</figcaption>
+</figure>
+
+::: tiles By the end of this chapter you can
+- **Link** to any page, email or number
+- **Open** a link in a new tab
+- **Point** to your own files with paths
+- **Add** images with helpful alt text
+:::
 
 ## The anchor element: a
 
-`<a>`, the **anchor** element, creates a hyperlink. A link can lead to another website, another page on your own site, a file, an email address, or a section further down the same page.
+A link is made with `<a>`, the **anchor** element. Here's one, taken apart:
 
 ```html
-<a href="https://www.google.com">Open Google</a>
+<a href="https://www.google.com" target="_blank">Open Google</a>
 ```
-
-The text between the opening and closing tags is the **link text**: the part people see and click.
 
 ::: anatomy Anatomy of a link
 - `<a href="https://www.google.com" target="_blank">` **Opening tag**, carrying two attributes.
 - `href="https://www.google.com"` **Where it goes.** The destination.
 - `target="_blank"` **How it opens.** Here, in a new tab.
-- `Open Google` **Link text**, the words people click.
+- `Open Google` **The link text**: the words people click.
 - `</a>` **Closing tag.**
 :::
 
 ### Write link text that makes sense on its own
 
-People scan links, and screen reader users can pull up a list of every link on a page. "Click here" means nothing out of context.
+People skim links, and screen reader users can jump through a list of every link on the page. "Click here" means nothing out of context:
 
-| Weak | Better |
-|---|---|
-| `<a href="timetable.html">Click here</a> for the timetable.` | `See the <a href="timetable.html">exam timetable</a>.` |
-| `<a href="void.html">Read more</a>` | `<a href="void.html">Read more about void elements</a>` |
+::: pair
+- **Weak**
+  ```html
+  <a href="timetable.html">Click here</a> for the timetable.
+  ```
+- **Better**
+  ```html
+  See the <a href="timetable.html">exam timetable</a>.
+  ```
+:::
 
-## href: where the link goes
+## Where a link can go
 
-`href`, short for *hypertext reference*, holds the link's destination. Different kinds of value lead to different kinds of place:
+`href` can point to all kinds of places:
 
-| Destination | Example `href` |
-|---|---|
-| Another website | `https://www.google.com` |
-| Another page on your own site | `about.html` |
-| A section of the same page | `#contact` (the section has `id="contact"`, see Chapter 7) |
-| An email address | `mailto:hello@example.com` |
-| A phone number | `tel:+919800000000` |
+::: tiles
+- **Another site** `https://www.google.com`
+- **Your own page** `about.html`
+- **Same page** `#contact` jumps to the element with `id="contact"`
+- **Email** `mailto:hello@example.com`
+- **Phone** `tel:+919800000000`
+:::
 
 ```html preview
 <p><a href="https://www.google.com">Search the web</a></p>
@@ -51,31 +74,26 @@ People scan links, and screen reader users can pull up a list of every link on a
 <p><a href="tel:+919800000000">Call the school office</a></p>
 ```
 
-## target="_blank": opening a new tab
+## Opening a new tab
 
-By default a link opens in the **same tab**, replacing the current page. Adding `target="_blank"` asks the browser to open it in a new browsing context instead, usually a new tab. Whether that is a tab or a window depends on the browser's settings.
+A link normally opens in the **same tab**, replacing the page you're on. `target="_blank"` asks for a new tab instead (or a new window, depending on the browser's settings).
 
 ```html
 <a href="https://www.google.com" target="_blank">Open Google in a new tab</a>
 ```
 
 > [!NOTE] About rel="noopener noreferrer"
-> A page opened with `target="_blank"` used to be able to reach back and control the page that opened it. Modern browsers now block this automatically, but adding `rel="noopener noreferrer"` is still a common defensive habit:
->
-> ```html
-> <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Open Google</a>
-> ```
+> Pages opened this way could once reach back and control the page that opened them. Modern browsers now block that automatically, but many developers still add `rel="noopener noreferrer"` as a safety habit.
 
 > [!TIP]
-> Use new tabs sparingly. People can always choose to open a link in a new tab themselves, but they can't easily undo one you forced. A new tab makes most sense when leaving would lose someone's work, such as a half-filled form.
+> Use new tabs sparingly. People can always choose a new tab themselves, but they can't easily undo one you forced on them. It makes most sense when leaving would lose someone's work, like a half-filled form.
 
-## File paths
+## File paths: directions to your files
 
-When a link or an image points to a file in your own project, `href` or `src` holds a **path**: directions from the current file to the target file. Take this project:
+When a link or image points to a file in your own project, you write a **path**: directions from the file you're in to the file you want. Here's a small project:
 
 <figure class="diagram">
-<div class="dg-grid cols-2">
-<div><ul class="dg-tree">
+<ul class="dg-tree">
 <li><span class="dg-node is-root">my-site/</span>
 <ul>
 <li><span class="dg-node is-file">index.html</span></li>
@@ -85,86 +103,90 @@ When a link or an image points to a file in your own project, `href` or `src` ho
 <li><span class="dg-node">blog/</span>
 <ul><li><span class="dg-node is-file">first-post.html</span></li></ul></li>
 </ul></li>
-</ul></div>
-<div class="dg-card"><span class="dg-card-title">Reading a path</span><p><code>about.html</code> is in the same folder.</p><p style="margin-top:8px"><code>images/mountains.svg</code> means go into <em>images</em>, then find the file.</p><p style="margin-top:8px"><code>../index.html</code> means go up one folder first.</p></div>
-</div>
-<figcaption>A relative path is a set of directions starting from the file you are in.</figcaption>
+</ul>
+<figcaption>A path is a set of directions that starts from the file you're in.</figcaption>
 </figure>
 
-| You are in | You want | You write |
-|---|---|---|
-| `index.html` | the About page | `about.html` |
-| `index.html` | the mountain picture | `images/mountains.svg` |
-| `blog/first-post.html` | the home page | `../index.html` |
-| any page | Google | `https://www.google.com` |
+::: anatomy Reading a path
+- `about.html` **Same folder.** Just the file name.
+- `images/mountains.svg` **Go into** the `images` folder, then find the file.
+- `../index.html` **Go up one folder first.** You'd write this from inside `blog/`.
+- `https://www.google.com` **The full address.** For other websites.
+:::
 
-There are two kinds of path:
+::: pair
+- **Relative paths**
 
-- **Relative paths** start from the current file, like the first three rows. They keep working when you move the whole project folder, so use them for your own files.
-- **Absolute URLs** give the full address, starting with `https://`. Use them for other websites.
+  Start from the current file, like `images/mountains.svg`. Use them for your own files: they keep working when you move the whole project.
+- **Absolute URLs**
+
+  The complete address, starting with `https://`. Use them for other websites.
+:::
 
 > [!WARNING]
-> Paths must match file and folder names exactly. On most web servers `Images/Mountains.svg` and `images/mountains.svg` are different files, so stick to lowercase names without spaces.
+> Paths must match names exactly. On most web servers `Images/Mountains.svg` and `images/mountains.svg` are different files, so stick to lowercase names without spaces.
 
-## The image element: img
+> [!PREDICT]- You're in `blog/first-post.html`. How do you show `images/mountains.svg`?
+> `../images/mountains.svg`. Go up out of `blog/` first, then into `images/`.
 
-`<img>` embeds an image in the page. It is a **void element**, so it has no closing tag. Two attributes do the work:
+## Images: img
+
+`<img>` puts a picture on the page. It's a **void element**, so there's no closing tag. Two attributes do all the work:
 
 ```html preview
 <img src="images/mountains.svg" alt="Blue mountains under a pale morning sky">
 ```
 
-### src: the source
+::: anatomy
+- `src="images/mountains.svg"` **The source.** Where the image file is: a path, or a full URL.
+- `alt="Blue mountains…"` **The alternative text.** The image, described in words.
+:::
 
-`src` says where the image file is. It can be a relative path to a file in your project, as above, or a full URL to an image elsewhere on the web.
+### Pick a sensible format
 
-Common image formats:
+::: tiles
+- **JPEG** photographs
+- **PNG** sharp graphics, transparent backgrounds
+- **SVG** logos and icons, sharp at any size
+- **WebP** smaller files, same quality
+:::
 
-| Format | Best for |
-|---|---|
-| JPEG (`.jpg`) | Photographs |
-| PNG (`.png`) | Graphics that need sharp edges or a transparent background |
-| SVG (`.svg`) | Logos, icons and illustrations. Stays sharp at any size |
-| WebP and AVIF | Modern formats with smaller files for the same quality |
+### Why alt text matters
 
-### alt: the alternative text
+::: tiles
+- **Heard** screen readers read it aloud
+- **Shown** it appears when the image can't load
+- **Found** search engines use it
+:::
 
-`alt` describes the image in words. It is:
-
-- **read aloud by screen readers** for people who can't see the image,
-- **shown in place of the image** if it fails to load,
-- **used by search engines** to understand the image.
-
-Here the file doesn't exist, so the browser falls back to the alternative text:
+Here the file doesn't exist, so the browser shows the alt text instead:
 
 ```html preview
 <img src="images/missing-photo.jpg" alt="Students revising together in a library">
 ```
 
-Good alt text describes what the image shows *for the purpose it serves on the page*:
+Good alt text describes what the image shows *for the job it does on the page*:
 
-| Image | Weak alt | Better alt |
+| Image | Weak | Better |
 |---|---|---|
 | A photo in an article about pets | `alt="image of dog"` | `alt="A golden retriever leaping to catch a red ball"` |
-| A school logo linking to the home page | `alt="logo"` | `alt="Notebook School home"` |
-| A decorative swirl between sections | `alt="decorative swirl"` | `alt=""` |
+| A school logo that links home | `alt="logo"` | `alt="Notebook School home"` |
+| A decorative swirl | `alt="decorative swirl"` | `alt=""` |
 
 > [!REMEMBER]
-> Don't begin alt text with "image of" or "picture of": screen readers already announce that it is an image. For purely decorative images, write an **empty** `alt=""` so they are skipped. Never leave `alt` out entirely, or some screen readers will read out the file name instead.
+> Don't start with "image of": screen readers already say it's an image. For pure decoration, write an **empty** `alt=""` so it's skipped. Never leave `alt` out entirely, or some screen readers read out the file name.
 
-### width and height
-
-You can tell the browser an image's size in advance, in pixels, without units:
+### Tell the browser the size
 
 ```html
 <img src="images/mountains.svg" alt="Blue mountains under a pale morning sky" width="400" height="225">
 ```
 
-The browser then reserves the right space before the file arrives, so the text below doesn't jump when the image finishes loading. Keep the two numbers in the image's real proportion, or it will look stretched.
+With `width` and `height` (in pixels, no units), the browser saves the right space before the image arrives, so the text below doesn't jump. Keep the two numbers in the image's real proportion.
 
 ## Links and images together
 
-An image can sit inside a link, so the whole image becomes clickable. The alt text then describes where the link goes:
+Put an image inside a link and the whole picture becomes clickable. The alt text then describes where it takes you:
 
 ```html preview
 <a href="https://www.google.com/search?q=mountains" target="_blank">
@@ -172,35 +194,29 @@ An image can sit inside a link, so the whole image becomes clickable. The alt te
 </a>
 ```
 
-| | Anchor `<a>` | Image `<img>` |
-|---|---|---|
-| Main attribute | `href`: the destination | `src`: the image file |
-| Closing tag? | Yes: `</a>` | No, it's a void element |
-| Text inside | The link text | None. `alt` stands in for it |
+::: pair
+- **a uses href**
+
+  The destination of a link. Has a closing tag; the link text sits inside.
+- **img uses src**
+
+  The file to show. A void element, with no closing tag; `alt` stands in for text.
+:::
 
 > [!WARNING]
-> A classic mix-up: links use **`href`**, images use **`src`**. Writing `<img href="…">` or `<a src="…">` silently does nothing.
+> The classic mix-up: links use **`href`**, images use **`src`**. `<img href="…">` or `<a src="…">` silently does nothing.
 
-## Recap and practice
+## Recap
 
-> [!SUMMARY] Chapter 5 in short
-> - `<a>` creates a link. `href` is where it goes; the content is the link text.
-> - `target="_blank"` opens the link in a new tab. Use it sparingly.
-> - Relative paths (`images/photo.jpg`, `../index.html`) point to your own files; absolute URLs (`https://…`) point elsewhere.
-> - `<img>` is a void element. `src` is the file; `alt` describes it.
-> - `width` and `height` reserve space so the page doesn't jump.
+::: idea Chapter 5 in one breath
+`a` with `href` takes you somewhere, `img` with `src` brings a picture in, paths are directions from where you stand, and alt text speaks for the image.
+:::
 
-> [!QUESTION]- What is the difference between `href` and `src`?
-> `href` is the destination of a link (on `<a>`). `src` is the location of a file to embed, such as an image (on `<img>`).
+> [!PREDICT]- What's the difference between `href` and `src`?
+> `href` is where a link goes, on `<a>`. `src` is the file to show, on `<img>`.
 
-> [!QUESTION]- Why is alt text important?
-> Screen readers read it aloud, browsers show it when the image can't load, and search engines use it to understand the image.
+> [!PREDICT]- What alt text should a purely decorative image have?
+> An empty one, `alt=""`, so screen readers skip it.
 
-> [!QUESTION]- What alt text should a purely decorative image have?
-> An empty one: `alt=""`. The image is then skipped by screen readers.
-
-> [!QUESTION]- You are in `blog/first-post.html`. How do you link to `index.html` in the folder above?
-> `<a href="../index.html">Home</a>`. The `../` means "go up one folder".
-
-> [!QUESTION]- What does `target="_blank"` do?
-> It asks the browser to open the link in a new browsing context, usually a new tab, instead of replacing the current page.
+> [!PREDICT]- What does `target="_blank"` do?
+> It asks the browser to open the link in a new tab instead of replacing the current page.

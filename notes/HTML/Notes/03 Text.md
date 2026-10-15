@@ -1,14 +1,36 @@
 ---
-summary: Headings, paragraphs, bold and italic (and their meaningful partners), superscript and subscript, line breaks and thematic breaks. The everyday elements for written content.
+summary: Headings, paragraphs, bold and italic (and what they mean), raised and lowered text, line breaks and topic breaks. Your everyday toolkit for words.
 ---
 
 # Working with Text
 
-Most of what people read on the web is text, and HTML has a small set of elements for shaping it. This chapter covers the ones you will reach for every day: headings, paragraphs, bold and italic, raised and lowered text, line breaks and section breaks.
+Most of the web is words. HTML gives you a small, friendly toolkit for shaping them: headings to organise, paragraphs to hold your writing, a way to stress what matters, and a few neat tricks for raised, lowered and broken lines.
+
+<figure class="doodle">
+<svg viewBox="0 0 400 230" aria-hidden="true">
+<rect x="120" y="14" width="168" height="204" rx="12"/>
+<rect class="fill" x="138" y="34" width="118" height="11" rx="5.5"/>
+<rect class="fill soft" x="138" y="64" width="84" height="8" rx="4"/>
+<path d="M138 92h132M138 106h120M138 120h132M138 134h92"/>
+<rect class="fill soft" x="138" y="156" width="70" height="8" rx="4"/>
+<path d="M138 182h132M138 196h104"/>
+<text class="hand" x="104" y="46" text-anchor="end">h1</text>
+<text class="hand" x="104" y="74" text-anchor="end">h2</text>
+<text class="hand" x="104" y="118" text-anchor="end">p</text>
+</svg>
+<figcaption>A page of text is a little outline: big headings, smaller ones, and paragraphs underneath.</figcaption>
+</figure>
+
+::: tiles By the end of this chapter you can
+- **Organise** a page with headings
+- **Write** paragraphs the right way
+- **Choose** between looking bold and being important
+- **Shape** lines with sup, sub, br and hr
+:::
 
 ## Headings: h1 to h6
 
-HTML has six levels of heading, from `<h1>`, the most important, down to `<h6>`, the least.
+HTML has six heading levels, from `<h1>`, the most important, down to `<h6>`, the least.
 
 ```html preview
 <h1>Apple</h1>
@@ -19,7 +41,7 @@ HTML has six levels of heading, from `<h1>`, the most important, down to `<h6>`,
 <h6>Apple</h6>
 ```
 
-Browsers draw higher levels larger by default, but **size is not the point**. Headings describe the *hierarchy* of your content, the way a book's contents page shows parts, chapters and sections.
+The browser makes higher levels bigger, but **size isn't the point**. Headings are an outline of your page, like the contents page of a book:
 
 <figure class="diagram">
 <div class="dg-outline">
@@ -29,29 +51,24 @@ Browsers draw higher levels larger by default, but **size is not the point**. He
 <div class="dg-outline-row" style="--lvl:2"><span class="dg-chip">h3</span><span class="dg-outline-text is-3">Paragraphs</span></div>
 <div class="dg-outline-row" style="--lvl:1"><span class="dg-chip">h2</span><span class="dg-outline-text is-2">Lists</span></div>
 <div class="dg-outline-row" style="--lvl:2"><span class="dg-chip">h3</span><span class="dg-outline-text is-3">Ordered lists</span></div>
-<div class="dg-outline-row" style="--lvl:2"><span class="dg-chip">h3</span><span class="dg-outline-text is-3">Unordered lists</span></div>
 </div>
-<figcaption>Headings outline a page. Each level sits inside the level above it.</figcaption>
+<figcaption>Each level sits inside the level above it.</figcaption>
 </figure>
 
-| Element | Role |
-|---|---|
-| `<h1>` | The main title of the page. Usually used once. |
-| `<h2>` | A major section. |
-| `<h3>` to `<h6>` | Sections inside sections, each one level deeper. |
+Three simple rules:
 
-### Using headings well
+::: tiles
+- **One h1** the main title of the page, used once
+- **No skipping** after an `<h2>` comes `<h3>`, not `<h5>`
+- **Not for size** if you just want big text, that's a job for CSS
+:::
 
-- **Use one `<h1>`** for the page's main title.
-- **Don't skip levels.** After an `<h2>`, the next level down is `<h3>`, not `<h5>`.
-- **Don't pick a heading for its size.** If you only want large or bold text, that is a job for CSS.
-
-> [!NOTE]
-> CSS can make an `<h2>` and an `<h4>` look identical, but their levels still matter. Screen reader users jump between headings to scan a page, and search engines read headings to understand what a page is about.
+> [!NOTE] Why the level matters
+> Screen reader users jump from heading to heading to scan a page, and search engines read headings to understand it. CSS can change the look; the level carries the meaning.
 
 ## Paragraphs: p
 
-The `<p>` element marks a paragraph of text.
+`<p>` holds a paragraph. Each one gets its own block, with space above and below.
 
 ```html preview
 <h1>Learning HTML</h1>
@@ -59,73 +76,54 @@ The `<p>` element marks a paragraph of text.
 <p>CSS can style that structure.</p>
 ```
 
-Browsers show each paragraph as its own block, with space above and below.
-
 > [!WARNING]
-> Use `<p>` for paragraphs, not for spacing. Empty paragraphs like `<p></p>` used to push content down are a common beginner habit. Spacing is a job for CSS.
+> Use `<p>` for paragraphs, not for spacing. Empty paragraphs pushed in to make gaps are a common beginner habit; spacing is a job for CSS.
 
-## Bold and italic
+## Looking bold versus being important
 
-HTML has two pairs of elements here. One element in each pair is about **appearance**, the other about **meaning**.
+HTML has two pairs here. In each pair, one element is about **how it looks**, the other about **what it means**.
 
-### `<b>` and `<strong>`
+::: tiles
+- `<b>` **look at this**, without extra importance
+- `<strong>` **this matters**: important, serious or urgent
+- `<i>` **a different voice**: a term, a foreign phrase, a thought
+- `<em>` **stress this word**, the way you would out loud
+:::
 
-```html
-<p>I am <b>learning</b> HTML.</p>
-```
+Emphasis can completely change a sentence. Read these two out loud:
 
-`<b>` draws attention to words without saying they are more important: keywords in a summary, or product names in a review. It is shown in bold.
+::: pair
+- **"I *never* said she took the book."**
 
-`<strong>` says the words are genuinely **important, serious or urgent**. It is also shown in bold, but the importance is part of the HTML itself.
+  I didn't say it at all.
+- **"I never said *she* took the book."**
 
-```html
-<p><strong>Warning:</strong> the oven is still hot.</p>
-```
+  Someone else took it.
+:::
 
-### `<i>` and `<em>`
-
-```html
-<p><i>Creative Web Development</i> is exciting.</p>
-```
-
-`<i>` marks text in an **alternate voice or mood**: a technical term, a phrase from another language, a thought, the name of a ship. It is shown in italics.
-
-`<em>` adds **stress emphasis**, the kind that changes the meaning of a sentence when you say it aloud:
-
-```html
-<p>I <em>never</em> said she took the book.</p>
-<p>I never said <em>she</em> took the book.</p>
-```
-
-The first denies saying it at all. The second suggests someone else took it. Same words, different meaning.
-
-| Element | Looks | Means |
-|---|---|---|
-| `<b>` | bold | Look at this, without extra importance |
-| `<strong>` | bold | This is important |
-| `<i>` | italic | Different voice: a term, a foreign phrase, a thought |
-| `<em>` | italic | Stress this word; it changes the meaning |
+That's what `<em>` captures: `<p>I <em>never</em> said she took the book.</p>`. Here are all four side by side:
 
 ```html preview
 <p>Remember to bring your <b>notebook</b> and <b>pen</b>.</p>
 <p><strong>Exams start on Monday.</strong></p>
-<p>The word <i>déjà vu</i> comes from French.</p>
+<p>The phrase <i>déjà vu</i> comes from French.</p>
 <p>You <em>must</em> revise this chapter.</p>
 ```
 
-> [!TIP]
-> Ask yourself one question: *would the meaning change if this were read aloud without the styling?* If yes, use `<strong>` or `<em>`. If it is only visual, use `<b>` or `<i>`.
+> [!TIP] One question decides it
+> Would the meaning change if someone read it aloud without the styling? Then use `<strong>` or `<em>`. If it's only for looks, use `<b>` or `<i>`.
 
-## Superscript and subscript
+> [!PREDICT]- A sign says "Do not touch the wire." Which element fits "Do not touch"?
+> `<strong>`. It's a genuine warning, so the importance is part of the meaning, not just the look.
+
+## Up and down: sup and sub
 
 `<sup>` raises text above the normal line of type, called the **baseline**. `<sub>` lowers it below.
 
-::: tiles Up and down
-- **2<sup>3</sup>** `<sup>` raises text above the baseline
-- **H<sub>2</sub>O** `<sub>` lowers text below it
+::: tiles
+- **2<sup>3</sup>** `<sup>` for powers, 1<sup>st</sup>, footnotes
+- **H<sub>2</sub>O** `<sub>` for chemical formulas
 :::
-
-Superscript is used for exponents, ordinal endings and footnote markers. Subscript is used in chemical formulas and some mathematical notation.
 
 ```html preview
 <p>2<sup>3</sup> = 8</p>
@@ -137,9 +135,9 @@ Superscript is used for exponents, ordinal endings and footnote markers. Subscri
 > [!REMEMBER]
 > **sup** goes **up**. **sub** goes **down**, like a submarine.
 
-## Line breaks: br
+## A new line inside text: br
 
-Chapter 1 showed that the browser collapses line breaks in your text into spaces. When a line break is genuinely part of the content, as in an address or a poem, use the void element `<br>`.
+Remember from Chapter 1: the browser turns your line breaks into spaces. When a break is part of the content itself, like the lines of an address, use `<br>`:
 
 ```html preview
 <p>
@@ -150,11 +148,11 @@ Chapter 1 showed that the browser collapses line breaks in your text into spaces
 ```
 
 > [!WARNING]
-> Don't stack `<br>` tags to create gaps, as in `<br><br><br>`. Separate paragraphs belong in separate `<p>` elements, and spacing belongs in CSS.
+> Don't stack `<br><br><br>` to make gaps. Separate paragraphs belong in separate `<p>` elements, and spacing belongs in CSS.
 
-## Thematic breaks: hr
+## A change of topic: hr
 
-`<hr>` marks a **change of topic** between sections, like the small gap or row of asterisks between scenes in a novel. Browsers draw it as a horizontal line by default.
+`<hr>` marks a **shift in subject**, like the row of stars between scenes in a novel. Browsers draw it as a line.
 
 ```html preview
 <p>HTML structures content.</p>
@@ -163,35 +161,28 @@ Chapter 1 showed that the browser collapses line breaks in your text into spaces
 ```
 
 > [!NOTE]
-> The line is only the default *appearance*. What `<hr>` *means* is a shift in subject. If you only want a decorative line, CSS is the better tool.
+> The line is only how it *looks*. What `<hr>` *means* is "new topic". For a purely decorative line, CSS is the better tool.
 
-## Recap and practice
+## Recap
 
-> [!SUMMARY] Chapter 3 in short
-> - `<h1>` to `<h6>` create a **hierarchy** of headings. Choose them by level, not by size.
-> - `<p>` marks a paragraph.
-> - `<b>` and `<i>` change appearance; `<strong>` and `<em>` add importance and emphasis.
-> - `<sup>` raises text above the baseline; `<sub>` lowers it.
-> - `<br>` breaks a line inside text. `<hr>` marks a change of topic.
+::: tiles Your text toolkit
+- `h1–h6` headings, by level
+- `p` a paragraph
+- `b` `strong` bold look, real importance
+- `i` `em` italic look, real stress
+- `sup` `sub` above and below the line
+- `br` `hr` new line, new topic
+:::
 
-| Element | In a word |
-|---|---|
-| `<h1>`–`<h6>` | headings |
-| `<p>` | paragraph |
-| `<b>` / `<strong>` | bold look / importance |
-| `<i>` / `<em>` | italic look / emphasis |
-| `<sup>` / `<sub>` | above / below the baseline |
-| `<br>` | line break |
-| `<hr>` | thematic break |
+::: idea Chapter 3 in one breath
+Choose text elements for what they mean, not how they look. Headings outline, paragraphs hold, strong and em carry weight, and CSS handles the looks.
+:::
 
-> [!QUESTION]- Why shouldn't you choose a heading level for its size?
-> Heading levels describe the structure of the content. Screen readers and search engines rely on that structure, and the size can always be changed with CSS.
+> [!PREDICT]- Why not pick `<h4>` just because it's a nice size?
+> Because levels describe the structure of the page, which screen readers and search engines rely on. The size can always change with CSS.
 
-> [!QUESTION]- When would you use `<strong>` instead of `<b>`?
-> When the words are genuinely important, serious or urgent, such as a warning. `<b>` only draws attention visually.
-
-> [!QUESTION]- How would you write the chemical formula for carbon dioxide?
+> [!PREDICT]- How do you write carbon dioxide, CO₂?
 > `CO<sub>2</sub>`
 
-> [!QUESTION]- What is the difference between `<br>` and `<hr>`?
-> `<br>` breaks a line *within* text, for example in an address. `<hr>` separates *sections* when the topic changes.
+> [!PREDICT]- What's the difference between `<br>` and `<hr>`?
+> `<br>` breaks a line *inside* text, like in an address. `<hr>` separates *topics* between sections.

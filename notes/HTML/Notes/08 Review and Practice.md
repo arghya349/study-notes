@@ -1,26 +1,54 @@
 ---
-summary: How every chapter fits together, a one-page cheat sheet, recall questions with hidden answers, and a coding challenge with a sample solution.
+summary: Tie it all together. How the chapters connect, a one-page cheat sheet, recall questions with hidden answers, and a coding challenge with a sample solution.
 ---
 
 # Review and Practice
 
-You have covered the foundations of HTML: the document skeleton, text, lists, links and images, forms, and the tools for grouping and naming elements. This chapter pulls it all together so you can revise in one place, test yourself, and then build something from memory.
+Look how far you've come: a page's skeleton, text, lists, links, images, forms, and the tools to group and name it all. This chapter ties everything together, hands you a one-page cheat sheet, and then lets you prove to yourself that you really know it.
 
-## How the chapters connect
+<figure class="doodle">
+<svg viewBox="0 0 400 200" aria-hidden="true">
+<path class="soft" d="M30 160Q55 160 80 140T130 95T185 110T235 130T290 100T340 62"/>
+<circle class="fill" cx="30" cy="160" r="5"/>
+<circle class="fill" cx="80" cy="140" r="5"/>
+<circle class="fill" cx="130" cy="95" r="5"/>
+<circle class="fill" cx="185" cy="110" r="5"/>
+<circle class="fill" cx="235" cy="130" r="5"/>
+<circle class="fill" cx="290" cy="100" r="5"/>
+<circle class="fill" cx="340" cy="62" r="5"/>
+<path d="M340 62V18l28 9-28 9"/>
+</svg>
+<figcaption>Seven chapters behind you. Time to check the view from the top.</figcaption>
+</figure>
 
-### Tags and attributes, everywhere
+::: tiles In this chapter you'll
+- **Connect** every chapter into one picture
+- **Revise** from a single cheat sheet
+- **Recall** answers before revealing them
+- **Build** a page from memory
+:::
 
-Every chapter used the same two ideas from Chapter 1. **Tags and elements** establish *what kind* of content or control something is. **Attributes** configure or describe it.
+## How it all connects
+
+Two ideas from Chapter 1 run through everything. **Elements** say *what* something is; **attributes** add the details.
 
 ```html
 <a href="https://www.google.com" target="_blank">Open Google</a>
 ```
 
-Here `<a>` says *this is a link*, while `href` and `target` say *where* it goes and *how* it opens.
+`<a>` says *this is a link*; `href` and `target` say *where* it goes and *how* it opens. Every chapter after that added new elements and attributes to the same pattern:
 
-### The skeleton holds everything
+::: flow
+1. **[[What HTML Is]]** Tags, elements and attributes: the vocabulary for everything else.
+2. **[[The Document Skeleton]]** The frame every page lives in.
+3. **[[Working with Text]]** Headings, paragraphs and emphasis.
+4. **[[Lists]]** Numbered and bulleted items.
+5. **[[Links and Images]]** Connecting pages and showing pictures.
+6. **[[Forms]]** Asking people for information.
+7. **[[Grouping and Identifiers]]** Grouping and naming elements, ready for CSS and JavaScript.
+:::
 
-The boilerplate from Chapter 2 creates the document's frame. Everything from the later chapters, the headings, paragraphs, lists, links, images, forms and divs, lives inside `<body>`.
+And it all sits inside the skeleton. Everything from chapters 3 to 7 lives in the body:
 
 ```html preview
 <!DOCTYPE html>
@@ -38,92 +66,80 @@ The boilerplate from Chapter 2 creates the document's frame. Everything from the
 </html>
 ```
 
-### From static content to interaction
-
-Read in order, the chapters build up a page layer by layer:
-
-1. [[What HTML Is]]: tags, elements and attributes, the vocabulary for everything else.
-2. [[The Document Skeleton]]: the frame every page starts from.
-3. [[Working with Text]]: display and structure written content.
-4. [[Lists]]: organise related items.
-5. [[Links and Images]]: connect pages and show pictures.
-6. [[Forms]]: collect information from people.
-7. [[Grouping and Identifiers]]: group content and name elements for future CSS and JavaScript.
-
 ## Cheat sheet
 
 | Tag or attribute | Purpose | Key detail |
 |---|---|---|
-| `h1`–`h6` | Headings | Six levels; choose by hierarchy, not size |
-| `p` | Paragraph | For paragraphs, not for spacing |
-| `b` / `i` | Bold / italic appearance | Use `strong` / `em` when meaning calls for it |
-| `sup` / `sub` | Above / below the baseline | 2<sup>3</sup>, H<sub>2</sub>O |
-| `br` / `hr` | Line break / thematic break | Void elements; no closing tags |
-| `ol` / `ul` / `li` | Lists and list items | `li` goes inside `ol` or `ul` |
-| `a` / `href` | Hyperlink / destination | The anchor has opening and closing tags |
-| `target="_blank"` | Open a link in a new context | Usually a new tab |
-| `img` / `src` / `alt` | Image / source / alternative text | `img` is a void element |
-| `form` | Groups form controls | Invisible on its own |
-| `label` / `for` | Describes and connects a field | `for` matches the input's `id` |
-| `input` / `type` | Creates a control | text, email, password, checkbox, radio, file, range, date, color |
-| `name` | Names submitted data; groups radios | Radios in one group share a name |
-| `div` | Generic grouping container | Prefer a meaningful element when one fits |
-| `id` | Unique identifier | Never repeat it on a page |
-| `class` | Reusable group label | Can be shared by many elements |
+| `h1`–`h6` | Headings | Choose by level, not size |
+| `p` | Paragraph | For paragraphs, not spacing |
+| `b` / `i` | Bold / italic look | `strong` / `em` when it carries meaning |
+| `sup` / `sub` | Above / below the line | 2<sup>3</sup>, H<sub>2</sub>O |
+| `br` / `hr` | New line / new topic | Void elements, no closing tag |
+| `ol` / `ul` / `li` | Lists and their items | `li` goes inside `ol` or `ul` |
+| `a` / `href` | Link / destination | Has a closing tag |
+| `target="_blank"` | Open in a new tab | Use sparingly |
+| `img` / `src` / `alt` | Image / file / description | Void element |
+| `form` | Holds the fields | Invisible on its own |
+| `label` / `for` | Names a field | `for` matches the field's `id` |
+| `input` / `type` | A field / which kind | text, email, password, checkbox, radio, file, range, date, color |
+| `name` | Names the answer | Radios in one group share it |
+| `div` | Groups content | Prefer a meaningful container when one fits |
+| `id` | One unique name | Never repeat it on a page |
+| `class` | A shared label | Use it as often as you like |
 
 ## Recall without looking
 
-Try to answer each question out loud or on paper **before** revealing the answer. Struggling a little before you check is what makes it stick.
+Say each answer out loud, or write it down, **before** you reveal it. That little struggle to remember is exactly what makes it stick.
 
-> [!QUESTION]- What is the difference between a tag, an element and an attribute?
-> A **tag** is markup in angle brackets, like `<p>`. An **element** is the whole unit: opening tag, content and closing tag. An **attribute** adds extra information inside the opening tag, like `class="intro"`.
+> [!PREDICT]- Tag, element, attribute: what's the difference?
+> A **tag** is the label in angle brackets, like `<p>`. An **element** is the whole package: opening tag, content, closing tag. An **attribute** adds detail inside the opening tag, like `class="intro"`.
 
-> [!QUESTION]- What does each major part of the HTML boilerplate do?
-> `<!DOCTYPE html>` switches on modern standards mode. `<html lang="en">` is the root and declares the language. `<head>` holds metadata: `<meta charset>` sets the encoding, the viewport meta makes the page fit phones, and `<title>` names the tab. `<body>` holds the visible content.
+> [!PREDICT]- What does each part of the boilerplate do?
+> `<!DOCTYPE html>` switches on modern rules. `<html lang="en">` is the root and sets the language. `<head>` holds information about the page: `charset` for letters, the viewport line for phones, `<title>` for the tab. `<body>` holds everything people see.
 
-> [!QUESTION]- Which tags create headings, paragraphs, bold and italic text, superscript and subscript?
-> `h1`–`h6` for headings, `p` for paragraphs, `b` (or `strong`) for bold, `i` (or `em`) for italic, `sup` for superscript and `sub` for subscript.
+> [!PREDICT]- Which tags make headings, paragraphs, bold, italic, superscript and subscript?
+> `h1`–`h6`, `p`, `b` (or `strong`), `i` (or `em`), `sup` and `sub`.
 
-> [!QUESTION]- What is the difference between `br` and `hr`?
-> `br` breaks a line within text, as in an address. `hr` marks a thematic break, a change of topic between sections.
+> [!PREDICT]- What's the difference between `br` and `hr`?
+> `br` breaks a line inside text, like an address. `hr` marks a change of topic between sections.
 
-> [!QUESTION]- When should you choose `ol` instead of `ul`?
-> When the order or ranking of the items matters, such as the steps of a process.
+> [!PREDICT]- When do you choose `ol` instead of `ul`?
+> When the order matters, like steps in a process. The shuffle test: if shuffling changes the meaning, use `ol`.
 
-> [!QUESTION]- What is the difference between `href` and `src`?
-> `href` is the destination of a link, on `<a>`. `src` is the location of a file to embed, such as an image on `<img>`.
+> [!PREDICT]- What's the difference between `href` and `src`?
+> `href` is where a link goes, on `<a>`. `src` is the file to show, on `<img>`.
 
-> [!QUESTION]- Why is alt text important?
-> Screen readers read it aloud, browsers show it if the image fails to load, and search engines use it to understand the image.
+> [!PREDICT]- Why does alt text matter?
+> Screen readers read it aloud, browsers show it when an image can't load, and search engines use it.
 
-> [!QUESTION]- Why should a label's `for` value match an input's `id`?
-> The shared value connects them: clicking the label focuses the input, and screen readers announce the label for that field.
+> [!PREDICT]- Why should a label's `for` match an input's `id`?
+> The shared value links them: clicking the label focuses the field, and screen readers announce it.
 
-> [!QUESTION]- Why do radio buttons in one group share the same `name`?
-> A shared name makes them one group, so only one option can be selected. It is also the name the chosen value is sent under.
+> [!PREDICT]- Why do radio buttons in one group share a `name`?
+> The shared name makes them one question, so only one can be chosen. It's also the name the answer is sent under.
 
-> [!QUESTION]- What is the difference between `id` and `class`?
-> An `id` is unique to one element on the page. A `class` is a reusable label shared by any number of elements.
+> [!PREDICT]- What's the difference between `id` and `class`?
+> An `id` belongs to exactly one element on the page. A `class` is a label any number of elements can share.
 
-> [!QUESTION]- What is a `div`, and why might you use one?
-> A generic container with no meaning or style of its own. It groups content so it can be styled or handled together when no meaningful element fits.
+> [!PREDICT]- What is a `div`, and when would you use one?
+> A plain container with no meaning or look of its own. Use it to group content when no meaningful container fits.
 
 ## Coding challenge
 
-Build a page with everything below. Try it **from memory** first, then compare with the notes.
+Build a page with everything below. Try it **from memory** first, then compare.
 
-- [ ] Start with the full HTML boilerplate and set the title to *My Practice Page*.
+- [ ] Start with the full boilerplate and title it *My Practice Page*.
 - [ ] Add one `h1`, one paragraph, and a phrase using `b` and `i`.
-- [ ] Show a maths expression using `sup` and a chemical formula using `sub`.
-- [ ] Create a list of three learning goals using `ul` and `li`.
+- [ ] Show a maths expression with `sup` and a chemical formula with `sub`.
+- [ ] List three learning goals with `ul` and `li`.
 - [ ] Add a link that opens in a new tab.
-- [ ] Add an image with a meaningful `alt` attribute.
-- [ ] Create a form with name, email, password, a checkbox, and three radio choices sharing the same `name`.
-- [ ] Add a `div` to group a heading and a paragraph.
-- [ ] Give one element a unique `id`, and give several elements the same `class`.
+- [ ] Add an image with a meaningful `alt`.
+- [ ] Build a form with name, email, password, a checkbox, and three radio choices sharing one `name`.
+- [ ] Group a heading and a paragraph in a `div`.
+- [ ] Give one element a unique `id`, and several elements the same `class`.
 
 > [!EXAMPLE]- A sample solution
-> Yours can differ and still be right. Compare the structure, not the exact words.
+> Yours can look different and still be right. Compare the structure, not the exact words.
 >
 > ```html preview
 > <!DOCTYPE html>
@@ -177,9 +193,11 @@ Build a page with everything below. Try it **from memory** first, then compare w
 > </html>
 > ```
 
-## Final summary
+## What you now know
 
-These notes cover the foundations of HTML. **HTML gives a web page its structure.** The boilerplate establishes the document; text elements organise writing; lists group related items; anchors connect pages; images show pictures; forms collect input; and `div`, `id` and `class` group and name elements, ready for styling with CSS and behaviour with JavaScript.
+::: idea
+HTML gives a web page its structure. You can now build that structure from the frame up: text, lists, links, images, forms, and the names that CSS and JavaScript will use next.
+:::
 
-> [!TIP] Keep this notebook growing
-> Add each new lecture as a new chapter in this folder. The best long-term reference keeps your original notes and also shows how every new idea connects to what you already know.
+> [!TIP] Keep the notebook growing
+> Add each new lecture as a new chapter in this folder. The best reference keeps your notes and shows how every new idea connects to the ones before it.

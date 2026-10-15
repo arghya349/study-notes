@@ -1,14 +1,36 @@
 ---
-summary: The div container for grouping content, id for naming one element, class for labelling many, and the meaningful containers that often replace a div.
+summary: Grouping content with div, naming one element with id, labelling many with class, and the meaningful containers that often do a div's job better.
 ---
 
 # Grouping and Identifiers
 
-Once a page has content, you need ways to **group** pieces together and to **point at** particular ones. That is what `div`, `id` and `class` are for. On their own they barely change how a page looks. Their job is to prepare the page for CSS and JavaScript, which you will meet next.
+Once a page has content, you'll want to group pieces together and point at particular ones. That's all `div`, `id` and `class` do. They change almost nothing you can see; think of them as getting the page ready for CSS and JavaScript, which come next in your journey.
 
-## div: a generic container
+<figure class="doodle">
+<svg viewBox="0 0 400 220" aria-hidden="true">
+<path d="M48 88h104l26 26-26 26H48z"/>
+<circle cx="164" cy="114" r="4"/>
+<text class="hand" x="62" y="121">#apple</text>
+<path d="M232 50h96l22 22-22 22h-96z"/>
+<path d="M232 100h96l22 22-22 22h-96z"/>
+<path d="M232 150h96l22 22-22 22h-96z"/>
+<text class="hand" x="246" y="79">.fruit</text>
+<text class="hand" x="246" y="129">.fruit</text>
+<text class="hand" x="246" y="179">.fruit</text>
+</svg>
+<figcaption>An id is a name tag for one. A class is a label many can share.</figcaption>
+</figure>
 
-`<div>` (short for *division*) is a container with no meaning of its own. It groups content when no more specific element fits.
+::: tiles By the end of this chapter you can
+- **Group** content with div
+- **Name** one element with id
+- **Label** many elements with class
+- **Pick** a meaningful container instead
+:::
+
+## div: an invisible box
+
+`<div>`, short for *division*, is a container with no meaning of its own. It simply groups things that belong together.
 
 ```html preview
 <div>
@@ -20,55 +42,58 @@ Once a page has content, you need ways to **group** pieces together and to **poi
 ::: anatomy What the div is doing
 - `<div>` **Opens an invisible box.**
 - `<h2>About Me</h2>`<br>`<p>I am learning…</p>` **Everything inside** now belongs together, so CSS and JavaScript can treat it as one unit.
-- `</div>` **Closes the box.** On screen nothing changes, yet.
+- `</div>` **Closes the box.** On screen, nothing changes yet.
 :::
 
-What a div does and doesn't do:
-
-- It **groups** related content so it can be styled, moved or shown and hidden together.
-- It is a **block**: it starts on a new line and stretches across the available width.
-- Apart from that it adds **no visual style** and **no meaning**. A screen reader gives it no special announcement.
+::: tiles A div in three facts
+- **Groups** related content, to style or move it together
+- **Blocks** starts on a new line and spans the width
+- **Plain** no look and no meaning of its own
+:::
 
 > [!NOTE]
-> This chapter's lecture roadmap listed `div` alongside `id` and `class`, but the original notes explained only the last two. The section above fills that gap, so the roadmap and the notes now match.
+> The lecture roadmap listed `div` next to `id` and `class`, but the original notes only explained the last two. This section fills that gap.
 
 ## id: a unique name
 
-The `id` attribute gives one element a **unique** identifier.
+`id` gives **one** element a name nobody else on the page can have.
 
 ```html
 <p id="apple">Hello</p>
 ```
 
-### Rules for ids
+::: tiles Rules for ids
+- **Unique** never repeat one on a page
+- **No spaces** join words with hyphens: `contact-form`
+- **Exact** `Apple` and `apple` are different ids
+- **Meaningful** `newsletter-email` beats `box2`
+:::
 
-- **Unique.** The same id value must not appear twice on one page.
-- **No spaces.** Use hyphens to join words: `id="contact-form"`.
-- **Case-sensitive.** `id="Apple"` and `id="apple"` are different.
-- **Meaningful.** `id="newsletter-email"` tells you far more than `id="box2"`.
+::: pair
+- **Incorrect: a repeated id**
+  ```html
+  <p id="apple">First paragraph</p>
+  <p id="apple">Second paragraph</p>
+  ```
+- **Correct: different ids**
+  ```html
+  <p id="apple">First paragraph</p>
+  <p id="mango">Second paragraph</p>
+  ```
+:::
 
-<figure class="diagram">
-<div class="dg-grid cols-2">
-<div class="dg-card is-wrong"><span class="dg-verdict">Incorrect: a repeated id</span><pre>&lt;p <span class="dg-hl">id="apple"</span>&gt;First paragraph&lt;/p&gt;
-&lt;p <span class="dg-hl">id="apple"</span>&gt;Second paragraph&lt;/p&gt;</pre></div>
-<div class="dg-card is-right"><span class="dg-verdict">Correct: different ids</span><pre>&lt;p id="apple"&gt;First paragraph&lt;/p&gt;
-&lt;p id="mango"&gt;Second paragraph&lt;/p&gt;</pre></div>
-</div>
-<figcaption>An id is like a roll number. Two students can't share one.</figcaption>
-</figure>
+An id is how other parts of the web find **one specific element**. You've already met two of them:
 
-An id is useful whenever **one specific element** needs to be found. You have already met one use, and will meet the rest soon:
+::: tiles Who uses an id
+- **A label** `for="apple"` points at it (Chapter 6)
+- **A link** `href="#apple"` jumps to it (Chapter 5)
+- **CSS** `#apple { … }` styles it
+- **JavaScript** `getElementById('apple')` finds it
+:::
 
-| Who uses the id | How | Where |
-|---|---|---|
-| A label | `<label for="apple">` points at the input with `id="apple"` | Chapter 6 |
-| A link | `<a href="#apple">` jumps to the element with `id="apple"` | Chapter 5 |
-| CSS | `#apple { … }` styles that one element | Coming next |
-| JavaScript | `document.getElementById('apple')` finds it | Later |
+## class: a shared label
 
-## class: a reusable group name
-
-The `class` attribute puts elements into a named **group**. Unlike an id, the same class can be used on as many elements as you like.
+`class` puts elements into a named **group**. Unlike an id, you can use the same class as often as you like.
 
 ```html preview
 <p class="fruit">Apple</p>
@@ -77,7 +102,7 @@ The `class` attribute puts elements into a named **group**. Unlike an id, the sa
 <p class="fruit">Orange</p>
 ```
 
-All four paragraphs share the class `fruit`. Nothing changes on screen yet, but a single CSS rule can now style all four at once. Here is a glimpse of what that will look like:
+Nothing changes on screen yet, but one CSS rule can now style all four at once. Here's a sneak peek of what's coming:
 
 ```html preview
 <style>
@@ -89,10 +114,10 @@ All four paragraphs share the class `fruit`. Nothing changes on screen yet, but 
 <p class="fruit">Banana</p>
 ```
 
-Two more things classes can do:
-
-- **One element can have several classes**, separated by spaces: `class="fruit sweet"`. It then belongs to both groups.
-- **An element can have an id and classes together**: `<p id="apple" class="fruit sweet">`.
+::: tiles
+- **Many classes** separate them with spaces: `class="fruit sweet"`
+- **Both at once** `<p id="apple" class="fruit">`
+:::
 
 ## id versus class
 
@@ -113,22 +138,19 @@ Two more things classes can do:
   Every element in the group carries `class="fruit"`.
 :::
 
-| `id` | `class` |
-|---|---|
-| A unique identifier for **one** element | A reusable label that **many** elements can share |
-| Must not repeat on the page | Can be used as often as you like |
-| One per element | An element can have several, separated by spaces |
-| Used by a label's `for`, by `#` links, by CSS `#name` | Used by CSS `.name` to style a whole group |
-
-> [!REMEMBER]
-> An **id** is like your roll number: nobody else has it. A **class** is like your section or batch: many students share it, and you can belong to more than one.
+::: idea
+An id is like your roll number: nobody else has it. A class is like your section: many students share it, and you can belong to more than one.
+:::
 
 > [!NOTE]
-> Neither `id` nor `class` changes how an element looks by itself. They are names. CSS and JavaScript decide what happens to the elements those names point at.
+> Neither changes how an element looks by itself. They're names. CSS and JavaScript decide what happens to the elements those names point at.
 
-## Beyond div: meaningful containers
+> [!PREDICT]- Every product card on a shop page should look the same. id or class?
+> `class`. Many cards share it, so one style rule reaches them all.
 
-A div says nothing about what it contains. HTML also has containers that **do** carry meaning, and they are often the better choice:
+## Better than a div: meaningful containers
+
+A `div` says nothing about what's inside it. HTML also has containers that **do** carry meaning, and they're often the better choice:
 
 <figure class="diagram">
 <div class="wire">
@@ -136,17 +158,17 @@ A div says nothing about what it contains. HTML also has containers that **do** 
 <div class="wire-box"><span>main</span><div class="wire-row"><div class="wire-box is-hl"><span>section</span><i></i><i></i><i></i></div><div class="wire-box is-hl"><span>article</span><i></i><i></i><i></i></div></div></div>
 <div class="wire-box is-accent"><span>footer</span></div>
 </div>
-<figcaption>A typical page skeleton built from meaningful containers instead of anonymous divs.</figcaption>
+<figcaption>A typical page, built from meaningful containers instead of anonymous divs.</figcaption>
 </figure>
 
-| Element | Holds |
-|---|---|
-| `<header>` | The introduction to a page or section: a logo, a title, often the navigation |
-| `<nav>` | The main navigation links |
-| `<main>` | The main content of the page. Use it once |
-| `<section>` | A themed group of content, usually with its own heading |
-| `<article>` | A self-contained piece that would make sense on its own, like a blog post |
-| `<footer>` | Closing information: contact details, copyright, related links |
+::: tiles
+- `header` the top of a page: logo, title, often the menu
+- `nav` the main navigation links
+- `main` the main content, used once
+- `section` a themed group with its own heading
+- `article` a self-contained piece, like a blog post
+- `footer` the closing part: contact, copyright
+:::
 
 ```html preview
 <header>
@@ -164,28 +186,22 @@ A div says nothing about what it contains. HTML also has containers that **do** 
 </footer>
 ```
 
-They look just like divs in the browser, but browsers, screen readers and search engines understand them. Screen reader users can jump straight to `<main>` or `<nav>`, for example.
+They look just like divs, but browsers, screen readers and search engines understand them. A screen reader user can jump straight to `<main>`, for example.
 
-> [!TIP] A rule of thumb
-> If one of the meaningful containers describes your content, use it. Reach for `<div>` when none of them fits, typically for grouping that exists only for layout or styling.
+> [!TIP] A simple rule
+> If a meaningful container describes your content, use it. Reach for `<div>` when none fits, usually for grouping that's only there for layout.
 
-## Recap and practice
+## Recap
 
-> [!SUMMARY] Chapter 7 in short
-> - `<div>` is a generic block container with no meaning and no style of its own.
-> - `id` names **one** element uniquely. Don't repeat it on a page.
-> - `class` labels a **group**. Reuse it freely; one element can have several.
-> - Neither changes appearance by itself. They give CSS and JavaScript something to aim at.
-> - Prefer meaningful containers such as `<header>`, `<main>`, `<section>` and `<footer>` when they fit.
+::: idea Chapter 7 in one breath
+`div` groups, `id` names one, `class` labels many, and a meaningful container beats a plain div whenever one fits.
+:::
 
-> [!QUESTION]- What is the difference between `id` and `class`?
-> An id uniquely identifies one element and must not repeat on a page. A class is a reusable label that any number of elements can share.
+> [!PREDICT]- What's the difference between `id` and `class`?
+> An id is unique to one element on the page. A class is a label any number of elements can share.
 
-> [!QUESTION]- What is a div, and why might you use one?
-> A generic block container. You use it to group related content so it can be styled or handled together, when no more meaningful element fits.
+> [!PREDICT]- How do you give a paragraph two classes, `fruit` and `sweet`?
+> `<p class="fruit sweet">Mango</p>`, with a space between the names.
 
-> [!QUESTION]- How would you give one paragraph two classes, `fruit` and `sweet`?
-> `<p class="fruit sweet">Mango</p>`, with the class names separated by a space.
-
-> [!QUESTION]- Name three things that can use an element's id.
-> A label's `for` attribute, a link such as `href="#apple"`, and CSS through `#apple`. JavaScript can find it too, with `getElementById`.
+> [!PREDICT]- Name three things that can use an element's id.
+> A label's `for`, a link like `href="#apple"`, and CSS with `#apple`. JavaScript can find it too.

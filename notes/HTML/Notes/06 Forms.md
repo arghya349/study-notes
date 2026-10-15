@@ -1,50 +1,78 @@
 ---
-summary: How pages collect information. The form element, labels that connect to their fields, every input type in the course, and why radio buttons share a name.
+summary: How a page asks you things. The form container, labels that connect to their fields, nine input types, and why radio buttons share a name.
 ---
 
 # Forms
 
-Sign-up pages, search bars, quizzes, checkout screens: whenever a page asks you for something, it uses a form. This chapter builds forms from the ground up and explains how each piece connects to the next.
+Every time a page asks you something, your name, a search, a quiz answer, it's using a form. Forms can look busy, but they're made from a handful of simple pieces that click together. Let's build one, piece by piece.
+
+<figure class="doodle">
+<svg viewBox="0 0 400 230" aria-hidden="true">
+<rect x="112" y="14" width="176" height="204" rx="14"/>
+<path d="M134 42h44M134 104h56"/>
+<rect x="134" y="52" width="132" height="26" rx="7"/>
+<rect x="134" y="114" width="132" height="26" rx="7"/>
+<path d="M144 59v12"/>
+<rect x="134" y="156" width="14" height="14" rx="3"/>
+<path d="M137 163l3.5 3.5 6-8"/>
+<path d="M158 163h58"/>
+<circle cx="141" cy="196" r="7"/>
+<circle class="fill" cx="141" cy="196" r="3"/>
+<circle cx="175" cy="196" r="7"/>
+<rect class="fill soft" x="212" y="184" width="54" height="24" rx="12"/>
+</svg>
+<figcaption>Labels, boxes, ticks and choices: every form is made of the same few pieces.</figcaption>
+</figure>
+
+::: tiles By the end of this chapter you can
+- **Build** a form from scratch
+- **Connect** a label to its field
+- **Use** nine kinds of input
+- **Group** radio buttons with name
+:::
 
 > [!NOTE]
-> These notes focus on the **front-end structure** of forms: the parts people see and fill in. Sending the answers somewhere, using the `action` and `method` attributes and a server, comes later in a web developer's journey.
+> These notes cover the **front end** of forms: the parts people see and fill in. Actually *sending* the answers somewhere, with the `action` and `method` attributes and a server, comes later in your journey.
 
 ## The form element
 
-`<form>` groups the controls that collect information from someone.
+`<form>` is the container that holds all the fields:
 
 ```html
 <form>
-  <!-- labels, inputs and other controls go here -->
+  <!-- labels, inputs and buttons go in here -->
 </form>
 ```
 
-A form on its own draws nothing on the page. It is an invisible container; the visible parts are the controls you put inside it.
+On its own it draws nothing at all. It's an invisible box; the visible parts are the fields you put inside.
 
-## Labels: label and for
+## Labels: naming each field
 
-Every field needs a visible description that says what to type. That is the job of `<label>`.
+Every field needs words that say what to type. That's the job of `<label>`:
 
 ```html preview
 <label for="name">Name</label>
 <input type="text" id="name">
 ```
 
-The connection works like this:
+Try clicking the word **Name** in the result: the cursor jumps into the box. Here's how that connection works:
 
-::: anatomy How the connection works
-- `<label for="email">Email</label>` **The label** names the field it describes, with `for="email"`.
-- `<input id="email" type="email">` **The input** carries that same name, in `id="email"`.
+::: anatomy
+- `<label for="name">Name</label>` **The label** points at a field, with `for="name"`.
+- `<input type="text" id="name">` **The field** carries that same name, in `id="name"`.
 :::
 
-The two values match, so the browser links them: clicking the word **Email** puts the cursor straight into the box.
+::: idea
+Same value in `for` and `id`, and the two are linked.
+:::
 
-- `for="email"` on the label names the input it describes.
-- `id="email"` on the input gives it that name. An id must be unique on the page (Chapter 7 explains why).
-- Because the values match, **clicking the label focuses the field**. For checkboxes and radio buttons it ticks them, which gives people a much bigger target to hit.
-- Screen readers announce the label when someone reaches the field, so they know what to type.
+::: tiles Why it's worth it
+- **Bigger target** clicking the words focuses or ticks the field
+- **Heard** screen readers announce the label for the field
+- **Clear** nobody has to guess what goes where
+:::
 
-You can also link a label by **wrapping** the input inside it. No `for` or `id` is needed then:
+You can also link them by **wrapping** the field inside the label. Then no `for` or `id` is needed:
 
 ```html
 <label><input type="checkbox"> Remember me</label>
@@ -52,19 +80,19 @@ You can also link a label by **wrapping** the input inside it. No `for` or `id` 
 
 ## The input element
 
-`<input>` creates a control for someone to type into, tick, slide or pick from. It is a **void element**, and its `type` attribute decides which control appears.
+`<input>` creates a field. It's a **void element**, and its `type` attribute decides which kind you get:
 
-| `type` | Creates | Good for |
-|---|---|---|
-| `text` | A single-line text box | Names, short answers |
-| `email` | A text box for email addresses | Sign-ups, contact forms |
-| `password` | A text box that hides what you type | Log-ins |
-| `checkbox` | A box that can be ticked on or off | Agreements, multiple choices |
-| `radio` | One choice from a group | Single-choice questions |
-| `file` | A file picker | Uploading a photo or document |
-| `range` | A slider | Volume, ratings, approximate values |
-| `date` | A date picker | Birthdays, bookings |
-| `color` | A colour picker | Choosing a theme colour |
+::: tiles Nine types of input
+- `text` short answers, names
+- `email` email addresses
+- `password` hides what you type
+- `checkbox` an independent tick
+- `radio` one choice from a group
+- `file` pick a file
+- `range` a slider
+- `date` a date picker
+- `color` a colour picker
+:::
 
 ### Text, email and password
 
@@ -79,16 +107,15 @@ You can also link a label by **wrapping** the input inside it. No `for` or `id` 
 <input type="password" id="user-password">
 ```
 
-- **`text`** is the standard field for short text.
-- **`email`** is designed for email addresses. On phones it brings up a keyboard with an @ key, and browsers check the *format* when the form is sent. It cannot check that the address actually exists.
-- **`password`** shows dots instead of the characters typed.
+::: tiles
+- `email` brings an @ key on phones and checks the *format*, not whether the address exists
+- `password` shows dots instead of letters
+:::
 
 > [!WARNING]
-> A password field hides characters from people looking at the screen. That is a visual privacy feature, **not encryption**. Keeping passwords safe in transit and in storage is the job of HTTPS and the server.
+> A password field hides letters from people looking over your shoulder. That's privacy, **not encryption**. Keeping passwords safe is the job of HTTPS and the server.
 
-### Checkbox
-
-A checkbox is an **independent on/off choice**. Any number of checkboxes can be ticked at the same time. Add the boolean `checked` attribute to tick one in advance.
+### Checkbox: tick as many as you like
 
 ```html preview
 <input type="checkbox" id="terms">
@@ -98,9 +125,9 @@ A checkbox is an **independent on/off choice**. Any number of checkboxes can be 
 <label for="newsletter">Send me the weekly newsletter</label>
 ```
 
-### Radio buttons
+Each checkbox is its own on/off switch. The `checked` attribute ticks one in advance.
 
-Radio buttons offer **one choice from a group**. Selecting one releases whichever was selected before, like the preset buttons on an old car radio that gave them their name.
+### Radio buttons: pick exactly one
 
 ```html preview
 <p>Choose one option:</p>
@@ -112,12 +139,18 @@ Radio buttons offer **one choice from a group**. Selecting one releases whicheve
 <label for="other">Other</label>
 ```
 
+Choose one and the previous choice switches off, like the preset buttons on an old car radio that gave them their name.
+
 ## The name attribute
 
-`name` does two jobs:
+`name` has two jobs:
 
-1. **It labels the data that gets sent.** When a form is submitted, each answer travels as a `name=value` pair, such as `gender=female`. A field without a name is not sent at all.
-2. **For radio buttons, it forms the group.** All the options in one group share the same `name`, and that is how the browser knows only one of them may be on.
+::: tiles
+- **Labels the answer** each answer is sent as `name=value`, like `gender=female`
+- **Groups radios** radios that share a name allow only one choice
+:::
+
+Here's what goes wrong without a shared name:
 
 ::: pair
 - **Same name: one choice**
@@ -136,10 +169,7 @@ Radio buttons offer **one choice from a group**. Selecting one releases whicheve
   Every button can be on at once, and none can be switched off.
 :::
 
-> [!REMEMBER]
-> **Same `name`** for choices that exclude each other. **Different `name`s** for separate questions. And give every radio a `value`: it is what gets sent. Without one, the browser sends the unhelpful word `on`.
-
-Try both versions. In the second, every option can be selected and none can be cleared:
+Try both. In the second group, every option sticks:
 
 ```html preview
 <p><strong>Shared name</strong></p>
@@ -152,47 +182,38 @@ Try both versions. In the second, every option can be selected and none can be c
 <input type="radio" id="b3" name="large"> <label for="b3">Large</label>
 ```
 
-## More input types
+> [!REMEMBER]
+> **Same name** for choices that exclude each other; **different names** for separate questions. And give every radio a `value`: it's what gets sent. Without one, the browser sends the unhelpful word `on`.
 
-### File
+> [!PREDICT]- A quiz has two questions, each with three radio options. How many different names do you need?
+> Two: one shared name per question. All three options of question 1 share one name; all three of question 2 share another.
+
+## Four more types
 
 ```html preview
 <label for="upload">Choose a file</label>
 <input type="file" id="upload">
-```
-
-Lets someone pick a file from their device. The optional `accept` attribute narrows the choice, for example `accept="image/*"` for images only. Actually uploading the file needs a server, beyond this HTML field.
-
-### Range
-
-```html preview
+<br><br>
 <label for="volume">Volume</label>
 <input type="range" id="volume" min="0" max="100" value="50">
-```
-
-Shows a slider. `min` and `max` set the ends of the scale (0 and 100 by default), and `value` sets where the handle starts. Use a range when an approximate value is fine; for an exact number, a typed field is kinder.
-
-### Date
-
-```html preview
+<br><br>
 <label for="exam-date">Exam date</label>
 <input type="date" id="exam-date">
-```
-
-Gives a date picker. Its exact appearance depends on the browser and the operating system, but the value it produces is always written year, month, day, as in `2026-03-14`.
-
-### Color
-
-```html preview
+<br><br>
 <label for="theme">Choose a colour</label>
 <input type="color" id="theme" value="#2b4a72">
 ```
 
-Opens a colour picker. Its value is a hex colour code such as `#2b4a72`.
+::: tiles
+- `file` add `accept="image/*"` to allow images only; uploading needs a server
+- `range` `min` and `max` set the ends, `value` sets the start
+- `date` looks different per browser, but the value is always year-month-day
+- `color` gives a hex code like `#2b4a72`
+:::
 
 ## Placeholder is not a label
 
-The `placeholder` attribute shows hint text inside an empty field:
+`placeholder` shows a faint hint inside an empty field:
 
 ```html preview
 <label for="city">City</label>
@@ -200,11 +221,11 @@ The `placeholder` attribute shows hint text inside an empty field:
 ```
 
 > [!WARNING]
-> A placeholder disappears as soon as someone starts typing, so they can no longer check what the field was for. It is also often too faint to read comfortably. Use it for an *example* of the answer, and always keep a real `<label>`.
+> The hint vanishes as soon as someone types, so they lose track of what the field was for, and it's often too faint to read. Use it for an *example* answer, and always keep a real `<label>`.
 
 ## A complete form
 
-Everything in this chapter, working together:
+Everything from this chapter, working together:
 
 ```html preview
 <form>
@@ -253,45 +274,22 @@ Everything in this chapter, working together:
 </form>
 ```
 
-Two things to notice:
+::: tiles Two things to notice
+- `button` almost every real form needs a send button (it's switched off in these previews)
+- `br` matches the simple course style; real designs space things with CSS
+:::
 
-- The `<button type="submit">` at the end sends the form. It is not in the original lecture, but almost every real form needs one. (Sending is switched off inside these preview windows.)
-- The `<br>` tags match the simple style of the course. In a polished interface, CSS handles this spacing instead.
+## Recap
 
-## Recap and practice
+::: idea Chapter 6 in one breath
+A form holds fields; each field gets a label linked by matching `for` and `id`; `type` picks the field; and radios that share a `name` become one question.
+:::
 
-> [!SUMMARY] Chapter 6 in short
-> - `<form>` groups the controls that collect input. It is invisible on its own.
-> - `<label>` describes a field. Its `for` matches the input's `id`.
-> - `<input>` is a void element; `type` chooses the control.
-> - `name` labels each answer when it is sent, and groups radio buttons.
-> - Checkboxes are independent; radios with a shared name allow one choice.
-> - A placeholder is a hint, never a replacement for a label.
+> [!PREDICT]- Why should a label's `for` match an input's `id`?
+> The matching value links them: clicking the label focuses the field, and screen readers announce it.
 
-| Term | In a word |
-|---|---|
-| `form` | groups the controls |
-| `label` | describes a field |
-| `for` | points a label at an input's `id` |
-| `input` | creates a control |
-| `type` | chooses which control |
-| `name` | names the data, groups radios |
-| `placeholder` | example text inside a field |
-| `checkbox` | independent on/off |
-| `radio` | one choice from a group |
-| `file`, `range`, `date`, `color` | file picker, slider, date picker, colour picker |
+> [!PREDICT]- Checkbox or radio for "Which toppings do you want?"
+> Checkbox. You can want several toppings at once. Radios are for exactly one choice.
 
-> [!QUESTION]- Why should a label's `for` match an input's `id`?
-> The matching value links them. Clicking the label then focuses or ticks the input, and screen readers announce the label when the field is reached.
-
-> [!QUESTION]- Why do radio buttons in one group share the same `name`?
-> The shared name is what makes them one group, so the browser allows only one of them to be selected. It is also the name the chosen value is sent under.
-
-> [!QUESTION]- What is the difference between a checkbox and a radio button?
-> Checkboxes are independent: any number can be on. Radio buttons in a group are mutually exclusive: choosing one turns the others off.
-
-> [!QUESTION]- Does `type="password"` keep a password secure?
-> No. It only hides the characters on screen. Security comes from HTTPS and how the server handles the data.
-
-> [!QUESTION]- Why is a placeholder not a substitute for a label?
-> It disappears once someone starts typing, so they lose the description of the field, and it is often too faint to read.
+> [!PREDICT]- Does `type="password"` keep a password secure?
+> No. It only hides the letters on screen. Real security comes from HTTPS and the server.
