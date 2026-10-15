@@ -1131,3 +1131,66 @@ details[open].callout-predict .callout-reveal::after { content: "Hide"; }
 .wire-head { grid-template-columns: 1fr auto; align-items: center; }
 .wire-head > .wire-box { padding: 6px 18px; }
 .wire-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr)); gap: 10px; }
+
+/* ═════════════════ Ink-and-wash sketches ═════════════════
+   Storybook illustrations: fine dip-pen lines, loose watercolour
+   washes that bleed past the outlines, and a little cross-hatching. */
+:root { --pen: #2B2723; }
+.prose .sketch { margin: 2.6em auto; max-width: 470px; }
+.sketch svg { display: block; width: 100%; height: auto; overflow: visible; }
+.sketch .ink { fill: none; stroke: var(--pen); stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; filter: url(#pen); }
+.sketch .ink .thin { stroke-width: .75; }
+.sketch .ink .thick { stroke-width: 2.6; }
+.sketch .ink .dash { stroke-dasharray: 1.5 6; }
+.sketch .ink .solid { fill: var(--pen); }
+.sketch .washes > * { stroke: none; filter: url(#wash); }
+.w-blue { fill: rgba(64, 108, 168, .24); }
+.w-sky { fill: rgba(96, 146, 196, .16); }
+.w-orange { fill: rgba(232, 146, 46, .42); }
+.w-red { fill: rgba(196, 70, 54, .3); }
+.w-green { fill: rgba(92, 140, 86, .3); }
+.w-ochre { fill: rgba(194, 146, 74, .34); }
+.w-grey { fill: rgba(64, 60, 54, .14); }
+.w-yellow { fill: rgba(242, 196, 64, .5); }
+.w-slate { fill: rgba(46, 50, 54, .9); }
+.w-paper { fill: #FBFAF6; }
+.sketch text { stroke: none; fill: var(--pen); }
+.sketch .t-hand { font: italic 400 16px var(--display); }
+.sketch .t-num { font: 400 30px var(--display); }
+.sketch .t-code { font: 500 11.5px var(--mono); fill: var(--ink-2); }
+.sketch .t-chalk { fill: #F2F0E8; }
+.prose .sketch figcaption { margin-top: 12px; font: italic 400 20px/1.35 var(--display); color: var(--ink-2); text-align: center; text-wrap: balance; }
+.prose .sketch figcaption code { font-style: normal; font-size: .68em; }
+.prose .sketch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 168px), 1fr)); gap: 22px 18px; margin: 2.4em 0; }
+.prose .sketch-row .sketch { margin: 0; max-width: none; }
+.prose .sketch-row figcaption { font-size: 17.5px; }
+
+/* Watch the jars: every variable's value after each line */
+.prose .box-watch > ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: watch; }
+.prose .box-watch li { counter-increment: watch; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 12px; align-items: stretch; margin: 0; }
+.prose .watch-line {
+  position: relative; display: flex; align-items: center; padding: 13px 14px 13px 50px;
+  border-radius: 16px; background: var(--sheet); box-shadow: inset 0 0 0 1px var(--rule);
+  font-size: 14px; white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.prose .watch-line::before {
+  content: counter(watch); position: absolute; left: 14px; top: 50%; translate: 0 -50%;
+  display: grid; place-items: center; width: 24px; height: 24px; border-radius: 8px;
+  background: var(--select); font: 600 12px/1 var(--sans); color: var(--ink-2);
+}
+.watch-jars { display: flex; flex-wrap: wrap; gap: 8px; align-content: center; padding: 8px; border-radius: 16px; background: var(--well); }
+.jar {
+  display: inline-grid; gap: 1px; min-width: 64px; padding: 7px 12px 8px;
+  border-radius: 12px 12px 14px 14px; background: var(--sheet);
+  box-shadow: inset 0 0 0 1px var(--rule); opacity: .62;
+  transition: opacity .3s;
+}
+.jar.is-changed { opacity: 1; background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--accent), 0 6px 14px -10px var(--glass-shadow); }
+.jar-name { font: 500 11px/1.2 var(--mono); color: var(--ink-3); }
+.jar-value { font: 400 22px/1.15 var(--display); color: var(--ink); }
+.jar.is-changed .jar-value { color: var(--accent); }
+.jar.is-unknown .jar-value { color: var(--red); }
+.watch-note { grid-column: 1 / -1; padding: 0 4px 4px; font: 13.5px/1.4 var(--sans); color: var(--ink-3); }
+@container (max-width: 520px) {
+  .prose .box-watch li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
